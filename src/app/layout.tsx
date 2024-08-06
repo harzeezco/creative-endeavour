@@ -1,7 +1,7 @@
+import { Header } from '@/layout';
+import Footer from '@/layout/footer';
 import { IBM_Plex_Sans_Arabic } from 'next/font/google';
 
-import Footer from '../layout/footer';
-import Header from '../layout/header';
 import './globals.css';
 
 const IBM = IBM_Plex_Sans_Arabic({
@@ -18,6 +18,7 @@ export default function RootLayout({
     <html className='no-visible-scrollbar scroll-smooth' lang='en'>
       <body className={`${IBM.className}  text-body`}>
         <Header />
+
         {children}
         <Footer />
       </body>
