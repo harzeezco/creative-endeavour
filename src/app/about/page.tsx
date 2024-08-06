@@ -1,8 +1,9 @@
-import { HeroSection } from '@/page/about';
+// import Hero from '@/page/about/hero-section';
+import Hero from '@/page/about/hero-section';
 
 const AboutPage = () => (
-  <main>
-    <HeroSection />
+  <main className='pt-20'>
+    <Hero />
   </main>
 );
 
