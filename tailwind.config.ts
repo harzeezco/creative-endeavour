@@ -26,7 +26,7 @@ const config: Config = {
         },
         tint: {
           DEFAULT: 'rgba(0, 0, 0, 0.1)',
-          50: '#EFF7FF',
+          50: '#EFEFEF',
           100: '#D0D5DD',
           200: '#EAECF0',
           300: '#667085',
@@ -45,7 +45,7 @@ const config: Config = {
         screens: {
           sm: '840px',
           md: '968px',
-          lg: '1050px',
+          lg: '1070px',
           xl: '1280px',
           '2xl': '1536px',
         },
@@ -68,10 +68,17 @@ const config: Config = {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: '0' },
         },
+        scroll: {
+          to: {
+            transform: 'translate(calc(-50% - 0.5rem))',
+          },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        scroll:
+          'scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite',
       },
     },
   },

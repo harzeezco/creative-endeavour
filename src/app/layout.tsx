@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html className='no-visible-scrollbar scroll-smooth' lang='en'>
-      <body className={`${IBM.className}  text-body`}>
+      <body className={`${IBM.className}`}>
         <Header />
         {children}
         <Footer />
