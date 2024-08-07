@@ -1,13 +1,24 @@
-import { QASection } from '@/page/home/qa-section';
-import { ContactSection, HeroSection, ServiceSection, TrustedCompanies } from '../page/home';
+import JoinNow from '@/components/join-now';
+import LatestNews from '@/components/latest-news';
+import Tenets from '@/components/tenets';
+
+import {
+  ContactSection,
+  HeroSection,
+  ServiceSection,
+  TrustedCompanies,
+} from '../page/home';
 
 const Homepage = () => (
-  <main className='mt-14 2xl:pr-6'>
+  <main className='2xl:pr-6'>
     <HeroSection />
     <TrustedCompanies />
     <ServiceSection />
     <ContactSection />
-    <QASection />
+    <Tenets />
+    <JoinNow />
+    <LatestNews />
+    {/* <QASection /> */}
   </main>
 );
 

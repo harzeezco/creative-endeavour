@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from 'react';
+import Input from '@/components/input';
 import { Button } from '@/components/ui/button';
 import {
   Form,
@@ -9,46 +10,44 @@ import {
   FormItem,
   FormMessage,
 } from '@/components/ui/form';
-import Input from '@/components/input';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
-const formSchema = z
-  .object({
-    user_email: z
-      .string()
-      .regex(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, {
-        message: 'Please Enter a valid email address',
-      })
-      .min(5),
-    name: z
-      .string()
-      .regex(/^[\s'A-Za-z-]{4,50}$/, {
-        message: 'Specify your full name',
-      })
-      .min(3, {
-        message: 'Your full name must be at least 4 characters.',
-      })
-      .max(20, {
-        message:
-          'Your full name must not be longer than 20 characters.',
-      }),
-    message: z
-      .string()
-      .min(10, {
-        message: 'message must be at least 10 characters.',
-      })
-      .max(360, {
-        message: 'Bio must not be longer than 360 characters.',
-      }),
-    work: z.string().optional(),
-  });
+const formSchema = z.object({
+  user_email: z
+    .string()
+    .regex(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, {
+      message: 'Please Enter a valid email address',
+    })
+    .min(5),
+  name: z
+    .string()
+    .regex(/^[\s'A-Za-z-]{4,50}$/, {
+      message: 'Specify your full name',
+    })
+    .min(3, {
+      message: 'Your full name must be at least 4 characters.',
+    })
+    .max(20, {
+      message:
+        'Your full name must not be longer than 20 characters.',
+    }),
+  message: z
+    .string()
+    .min(10, {
+      message: 'message must be at least 10 characters.',
+    })
+    .max(360, {
+      message: 'Bio must not be longer than 360 characters.',
+    }),
+  work: z.string().optional(),
+});
 
 export function ContactForm() {
   const [success, setSuccess] = React.useState(false);
   const [error, setError] = React.useState(false);
-  const [loading, setLoading] = React.useState(false);
+  // const [loading, setLoading] = React.useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -63,7 +62,7 @@ export function ContactForm() {
     e.preventDefault();
     setSuccess(false);
     setError(false);
-    setLoading(true);
+    // setLoading(true);
 
     // const template = {
     //   name: values.name,
@@ -110,14 +109,11 @@ export function ContactForm() {
           render={({ field }) => (
             <FormItem className='w-full'>
               <FormControl>
-                <Input
-                  label='Full Name'
-                  {...field}
-                />
+                <Input label='Full Name' {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
-            )}
+          )}
         />
 
         <FormField
@@ -130,7 +126,7 @@ export function ContactForm() {
               </FormControl>
               <FormMessage />
             </FormItem>
-            )}
+          )}
         />
 
         <FormField
