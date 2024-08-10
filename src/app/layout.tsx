@@ -1,12 +1,4 @@
-import { Footer, Header } from '@/layout';
-import { IBM_Plex_Sans_Arabic } from 'next/font/google';
-
 import './globals.css';
-
-const IBM = IBM_Plex_Sans_Arabic({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-});
 
 export default function RootLayout({
   children,
@@ -14,12 +6,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html className='no-visible-scrollbar scroll-smooth' lang='en'>
-      <body className={`${IBM.className}`}>
-        <Header />
-
+    <html lang='en'>
+      <body>
         {children}
-        <Footer />
       </body>
     </html>
   );

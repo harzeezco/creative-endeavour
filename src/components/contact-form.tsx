@@ -10,12 +10,15 @@ import {
   FormItem,
   FormMessage,
 } from '@/components/ui/form';
+import useLocalize from '@/hooks/use-locale';
+import { cn } from '@/utils/cn';
+import emailjs from '@emailjs/browser';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
 const formSchema = z.object({
-  user_email: z
+  email: z
     .string()
     .regex(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, {
       message: 'Please Enter a valid email address',
@@ -41,18 +44,18 @@ const formSchema = z.object({
     .max(360, {
       message: 'Bio must not be longer than 360 characters.',
     }),
-  work: z.string().optional(),
 });
 
 export function ContactForm() {
   const [success, setSuccess] = React.useState(false);
   const [error, setError] = React.useState(false);
-  // const [loading, setLoading] = React.useState(false);
+  const { locale, t } = useLocalize('Home');
+  const [loading, setLoading] = React.useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      user_email: '',
+      email: '',
       name: '',
       message: '',
     },
@@ -62,113 +65,138 @@ export function ContactForm() {
     e.preventDefault();
     setSuccess(false);
     setError(false);
-    // setLoading(true);
+    setLoading(true);
 
-    // const template = {
-    //   name: values.name,
-    //   user_email: values.user_email,
-    //   message: values.message,
-    //   workType: values.workType,
-    // };
+    const template = {
+      name: values.name,
+      email: values.email,
+      message: values.message,
+    };
 
-    // emailjs
-    //   .send(
-    //     process.env.NEXT_PUBLIC_SERVICE_KEY!,
-    //     process.env.NEXT_PUBLIC_TEMPLATE_ID!,
-    //     template,
-    //     process.env.NEXT_PUBLIC_KEY!,
-    //   )
-    //   .then(
-    //     () => {
+    emailjs
+      .send(
+        process.env.NEXT_PUBLIC_SERVICE_KEY!,
+        process.env.NEXT_PUBLIC_TEMPLATE_ID!,
+        template,
+        process.env.NEXT_PUBLIC_KEY!,
+      )
+      .then(
+        () => {
+          setLoading(false);
+          setSuccess(true);
+          setError(false);
+
+          setTimeout(() => {
+            setSuccess(false);
+          }, 10_000);
+        },
+        () => {
+          setLoading(false);
+          setError(true);
+          setSuccess(false);
+        },
+      );
+
+    //   axios
+    //     .post(
+    //       'https://sheet.best/api/sheets/dc02882c-92c5-4d12-933b-23ea443c9779',
+    //       sheet,
+    //     )
+    //     .then(() => {
+    //       setLoading(false);
     //       setSuccess(true);
     //       setError(false);
+    //     })
+    //     .catch(() => {
     //       setLoading(false);
-    //       form.reset();
-    //       setTimeout(() => {
-    //         setSuccess(false);
-    //       }, 4000);
-    //     },
-    //     (error: any) => {
-    //       console.log(error);
-    //       setLoading(false);
-    //       setSuccess(false);
     //       setError(true);
-    //     },
-    //   );
+    //       setSuccess(false);
+    //     });
   }
 
   return (
-    <Form {...form}>
-      <form
-        className='mx-auto w-full space-y-8 bg-[#FAFAFA] p-7'
-        onSubmit={form.handleSubmit(onSubmit)}
-      >
-        <FormField
-          control={form.control}
-          name='name'
-          render={({ field }) => (
-            <FormItem className='w-full'>
-              <FormControl>
-                <Input label='Full Name' {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name='user_email'
-          render={({ field }) => (
-            <FormItem className='w-full'>
-              <FormControl>
-                <Input label='Email' {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name='message'
-          render={({ field }) => (
-            <FormItem className='mb-4 w-full'>
-              <FormControl>
-                <Input
-                  label='A brief about your project'
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <div>
-          {success && (
-            <p className='text-green-600'>
-              Your message has been sent Successfully. I will soon get
-              back to you.
-            </p>
-          )}
-          {error && (
-            <p className='text-red-500'>
-              Some error occurred. Please send me a direct message
-              using the email bottom 👇
-            </p>
-          )}
+    <div>
+      {success ? (
+        <div className='flex min-h-[300px] w-full
+         items-center justify-center bg-[#FAFAFA] p-7'
+        >
+          <p className='max-w-sm'>
+            {' '}
+            {t('contact-form')}
+          </p>
         </div>
-
-        <div className='mt-7 flex justify-end'>
-          <Button
-            className='w-fit bg-primary px-6 py-4 transition-all hover:bg-green-600 hover:text-white active:bg-green-600'
-            type='submit'
+      ) : (
+        <Form {...form}>
+          <form
+            className={cn(
+              'mx-auto w-full space-y-8 bg-[#FAFAFA] p-7',
+            )}
+            onSubmit={form.handleSubmit(onSubmit)}
           >
-            Send Request
-          </Button>
-        </div>
-      </form>
-    </Form>
+            <FormField
+              control={form.control}
+              name='name'
+              render={({ field }) => (
+                <FormItem className='w-full'>
+                  <FormControl>
+                    <Input label={t('contact-name')} {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name='email'
+              render={({ field }) => (
+                <FormItem className='w-full'>
+                  <FormControl>
+                    <Input label={t('contact-email')} {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name='message'
+              render={({ field }) => (
+                <FormItem className='mb-4 w-full'>
+                  <FormControl>
+                    <Input label={t('contact-brief')} {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <div>
+              {error && (
+                <p className='text-red-500'>Some error occurred.</p>
+              )}
+            </div>
+
+            <div
+              className={cn(
+                locale === 'ar'
+                  ? 'flex justify-start'
+                  : 'justify-end',
+                'mt-7 flex',
+              )}
+            >
+              <Button
+                className='w-fit bg-black px-6 py-4 text-white transition-all duration-300 hover:bg-black/70 active:bg-black/70'
+                disabled={loading}
+                type='submit'
+              >
+                {t('contact-btn')}
+              </Button>
+            </div>
+          </form>
+        </Form>
+      )}
+    </div>
   );
 }

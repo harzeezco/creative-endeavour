@@ -11,13 +11,6 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      // fontSize: {
-      //   base: '1.25rem',
-      //   sm: '1.5rem',
-      //   lg: '1.75rem',
-      //   '4xl': '4rem',
-      //   '2xl': '2.875rem',
-      // },
       colors: {
         primary: {
           DEFAULT: '#1f3d5c',
@@ -52,7 +45,7 @@ const config: Config = {
         padding: {
           DEFAULT: '1rem',
           sm: '0rem',
-          lg: '2rem',
+          lg: '0rem',
           xl: '5rem',
           '2xl': '6rem',
         },
@@ -92,7 +85,7 @@ const config: Config = {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         scroll:
-          'scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite',
+          'scroll var(--animation-duration, 50s) var(--animation-direction, forwards) linear infinite',
       },
     },
   },

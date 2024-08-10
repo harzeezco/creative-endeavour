@@ -8,13 +8,22 @@
   }
 }
 
+.no-visible-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.no-visible-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 .input-container {
   position: relative;
   width: 100%;
 }
 
 .input-container input[type='text'] {
-  font-size: 20px;
   width: 100%;
   border: none;
   border-bottom: 2px solid #ccc;
@@ -24,10 +33,7 @@
 }
 
 .input-container .label {
-  position: absolute;
   font-weight: 600;
-  top: 0;
-  left: 0;
   color: #000;
   opacity: 70%;
   transition: all 0.3s ease;

@@ -2,69 +2,70 @@
 
 import { InfiniteMovingCards } from '@/components/infinite-moving-cards';
 import Image from 'next/image';
+import SlideInAnimation from './slide-in-animation';
 
 export function SlidingImages() {
   return (
-    <div className='relative mt-14 flex flex-col items-center justify-center overflow-hidden rounded-md antialiased'>
+    <SlideInAnimation as='div' className='relative mt-14 flex flex-col items-center justify-center overflow-x-hidden antialiased' delay={0.6}>
       <InfiniteMovingCards direction='right' speed='slow'>
         {testimonials.map(({ alt, size, src }) => (
           <li
             key={alt}
-            className='relative max-w-full shrink-0 rounded-2xl border border-b-0'
+            className='relative max-w-full'
           >
             <Image
               alt={alt}
-              className='h-full max-h-[450px] rounded-[12px]'
-              height={450}
+              className='h-full max-h-[470px]'
+              height={470}
               src={`/images/${src}`}
               width={size}
             />
           </li>
         ))}
       </InfiniteMovingCards>
-    </div>
+    </SlideInAnimation>
   );
 }
 
 const testimonials = [
   {
-    src: 'mock7.webp',
-    alt: 'Charles Dickens',
-    size: 600,
+    src: 'mock7.png',
+    alt: 'Mock1',
+    size: 750,
   },
   {
     src: 'mock2.webp',
-    alt: 'William Shakespeare',
-    size: 600,
+    alt: 'Mock2',
+    size: 730,
   },
   {
-    src: 'mock8.webp',
-    alt: 'Edgar Allan Poe',
-    size: 300,
+    src: 'mock8.png',
+    alt: 'Mock3',
+    size: 350,
   },
   {
     src: 'mock6.webp',
-    alt: 'Jane Austen',
-    size: 600,
+    alt: 'Mock4',
+    size: 750,
   },
   {
     src: 'mock4.webp',
-    alt: 'Herman Melville',
-    size: 300,
+    alt: 'Mock5',
+    size: 350,
   },
   {
     src: 'mock2.webp',
-    alt: 'Herman Melville',
-    size: 400,
+    alt: 'Mock1=5',
+    size: 450,
   },
-    {
+  {
     src: 'mock5.webp',
-    alt: 'Herman Melville',
-    size: 600,
+    alt: 'Mock6',
+    size: 750,
   },
   {
     src: 'mock3.webp',
-    alt: 'Herman Melville',
-    size: 600,
+    alt: 'Mock7',
+    size: 750,
   },
 ];

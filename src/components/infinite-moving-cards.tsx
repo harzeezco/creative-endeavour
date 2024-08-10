@@ -43,6 +43,7 @@ export const InfiniteMovingCards = ({
       setStart(true);
     }
   }
+
   const getDirection = () => {
     if (containerRef.current) {
       if (direction === 'left') {
@@ -58,6 +59,7 @@ export const InfiniteMovingCards = ({
       }
     }
   };
+
   const getSpeed = () => {
     if (containerRef.current) {
       if (speed === 'fast') {
@@ -73,7 +75,7 @@ export const InfiniteMovingCards = ({
       } else {
         containerRef.current.style.setProperty(
           '--animation-duration',
-          '90s',
+          '110s',
         );
       }
     }
@@ -83,7 +85,7 @@ export const InfiniteMovingCards = ({
     <div
       ref={containerRef}
       className={cn(
-        'scroller relative z-20 max-w-7xl overflow-hidden ',
+        'scroller relative z-20 max-w-7xl overflow-hidden',
         className,
       )}
     >
