@@ -51,7 +51,11 @@ const JoinNow = () => {
             {active ? (
               <JoinForm setActive={setActive} />
             ) : (
-              <div className='text-end'>
+              <div
+                className={cn(
+                  locale === 'en' ? 'text-end' : 'text-start',
+                )}
+              >
                 <button
                   className='w-fit bg-black px-4 py-2 text-white transition-all duration-300 hover:bg-black/70 active:bg-black/70'
                   onClick={() => setActive(true)}
