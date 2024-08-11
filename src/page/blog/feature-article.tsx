@@ -13,7 +13,7 @@ export const FeatureArticle = () => {
       <h1 className='mt-3 text-center text-5xl font-medium text-primary-350'>
         Featured Article
       </h1>
-      <div className='mt-20 flex flex-col-reverse items-center justify-between gap-x-10 gap-y-8'>
+      <div className='mt-20 flex  items-center justify-between gap-x-10 gap-y-8 max-md:flex-col-reverse'>
         <div>
           <span className='text-primary-200'>Innovation</span>
           <Link href={`/${locale}/blog/id`}>

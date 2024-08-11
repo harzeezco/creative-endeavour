@@ -6,10 +6,10 @@ export const ContactSection = () => {
   const { locale, t } = useLocalize('Home');
 
   return (
-    <section className='mt-20' id='contact'>
+    <section id='contact'>
       <div
         className={cn(
-          'container flex max-sm:flex-col gap-y-10 justify-between gap-x-16',
+          'container pt-28 flex max-sm:flex-col gap-y-10 justify-between gap-x-16',
           locale === 'ar' ? 'flex-row-reverse' : '',
         )}
       >
@@ -24,7 +24,7 @@ export const ContactSection = () => {
           </h3>
         </div>
 
-        <div className='flex-[1.2]'>
+        <div className='flex-[1.1]'>
           <ContactForm />
         </div>
       </div>

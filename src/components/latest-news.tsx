@@ -33,7 +33,7 @@ const LatestNews = () => {
     <section>
       <div
         className={cn(
-          'container mx-auto mt-20 flex max-lg:flex-col gap-y-10 justify-between gap-x-10',
+          'container mx-auto mt-28 flex max-lg:flex-col gap-y-10 justify-between gap-x-10',
           locale === 'ar' ? 'flex-row-reverse text-end' : '',
         )}
       >

@@ -46,7 +46,7 @@ export const Footer = () => {
       <div
         className={cn(
           locale === 'en' ? ' ' : 'flex-row-reverse',
-          'mx-auto mb-3 flex max-w-[1150px] justify-between max-sm:flex-col gap-y-10 sm:flex-wrap text-[#181A2E]',
+          'mx-auto mb-3 flex max-xl:max-w-[1150px] xl:container justify-between max-sm:flex-col gap-y-10 sm:flex-wrap text-[#181A2E]',
         )}
       >
         <div
@@ -108,7 +108,7 @@ export const Footer = () => {
           />
 
           <Link
-            className='w-fit rounded-[8px] bg-primary-350 px-6 py-2 text-white transition-all duration-300 hover:bg-primary-350/70 active:bg-primary-350/70'
+            className='w-fit bg-primary-350 px-6 py-2 text-white transition-all duration-300 hover:bg-primary-350/70 active:bg-primary-350/70'
             href='#join'
           >
             {t('footer-btn')}
@@ -116,7 +116,7 @@ export const Footer = () => {
         </div>
       </div>
 
-      <div className='mx-auto mt-8 flex max-w-[1150px] items-center justify-between'>
+      <div className='mx-auto mt-8 flex items-center justify-between xl:container max-xl:max-w-[1150px]'>
         <p className='max-w-md'>
           Copyright © {new Date().getFullYear()} Sanam | All Rights
           Reserved | Terms and Conditions | Privacy Policy

@@ -12,7 +12,7 @@ const JoinNow = () => {
   const [active, setActive] = useState(false);
 
   return (
-    <section className='container mt-20' id='join'>
+    <section className='container pt-28' id='join'>
       <div className='flex min-h-[350px] bg-primary-300 p-7 shadow-sm'>
         <div
           className={cn(

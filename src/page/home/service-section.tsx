@@ -69,10 +69,10 @@ export const ServiceSection = () => {
   ];
 
   return (
-    <section className='mt-20 bg-[#EFEFEF] py-10' id='services'>
+    <section className='mt-20 bg-[#EFEFEF] py-16' id='services'>
       <div
         className={cn(
-          'container flex items-center max-lg:flex-wrap justify-center gap-y-8 gap-x-5',
+          'container flex items-center max-lg:flex-wrap justify-center gap-y-8 gap-x-9',
           locale === 'ar' ? 'flex-row-reverse' : '',
         )}
       >
@@ -83,36 +83,38 @@ export const ServiceSection = () => {
               as='div'
               className={cn(
                 locale === 'ar' ? 'text-end' : 'text-start',
-                'flex w-full min-h-[500px] grow flex-col bg-white p-5',
+                'flex w-full justify-between min-h-[500px] grow flex-col bg-white p-5',
               )}
             >
-              <div
-                className={cn(
-                  locale === 'ar' ? 'flex justify-end' : '',
-                )}
-              >
-                <Image
-                  alt={text}
-                  height={25}
-                  src={`/icons/${icon}`}
-                  width={25}
-                />
+              <div>
+                <div
+                  className={cn(
+                    locale === 'ar' ? 'flex justify-end' : '',
+                  )}
+                >
+                  <Image
+                    alt={text}
+                    height={25}
+                    src={`/icons/${icon}`}
+                    width={25}
+                  />
+                </div>
+
+                <h2
+                  className={cn(
+                    'mt-4 text-xl font-semibold text-primary-50',
+                  )}
+                >
+                  {head}
+                </h2>
+
+                <p className='text-primary-200'>{text}</p>
               </div>
 
-              <h2
-                className={cn(
-                  'mt-4 text-xl font-bold text-[#2D313A]',
-                )}
-              >
-                {head}
-              </h2>
-
-              <p className='text-[#697485]'>{text}</p>
-
-              <div className='mt-10 space-y-5 justify-self-end'>
+              <div className='mt-10 space-y-7 justify-self-end'>
                 {content.map(({ desc, title }) => (
                   <div className='group cursor-pointer border-b border-solid border-[#2D313A]'>
-                    <h3 className={cn('pb-2 text-lg font-semibold')}>
+                    <h3 className={cn('pb-1 text-lg font-semibold')}>
                       {title}
                     </h3>
 

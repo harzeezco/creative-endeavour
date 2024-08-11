@@ -131,7 +131,7 @@ export function ContactForm() {
     <div>
       {success ? (
         <div
-          className='flex min-h-[300px] w-full
+          className='flex min-h-[400px] w-full
          items-center justify-center bg-[#FAFAFA] p-7'
         >
           <p className='max-w-sm text-center'> {t('contact-form')}</p>
@@ -139,49 +139,49 @@ export function ContactForm() {
       ) : (
         <Form {...form}>
           <form
-            className={cn(
-              'mx-auto w-full space-y-8 bg-[#FAFAFA] p-7',
-            )}
+            className={cn('mx-auto w-full bg-[#FAFAFA] p-7')}
             onSubmit={form.handleSubmit(onSubmit)}
           >
-            <FormField
-              control={form.control}
-              name='name'
-              render={({ field }) => (
-                <FormItem className='w-full'>
-                  <FormControl>
-                    <Input label={t('contact-name')} {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+            <div className='space-y-12'>
+              <FormField
+                control={form.control}
+                name='name'
+                render={({ field }) => (
+                  <FormItem className='w-full'>
+                    <FormControl>
+                      <Input label={t('contact-name')} {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
-            <FormField
-              control={form.control}
-              name='email'
-              render={({ field }) => (
-                <FormItem className='w-full'>
-                  <FormControl>
-                    <Input label={t('contact-email')} {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+              <FormField
+                control={form.control}
+                name='email'
+                render={({ field }) => (
+                  <FormItem className='w-full'>
+                    <FormControl>
+                      <Input label={t('contact-email')} {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
-            <FormField
-              control={form.control}
-              name='message'
-              render={({ field }) => (
-                <FormItem className='mb-4 w-full'>
-                  <FormControl>
-                    <Input label={t('contact-brief')} {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+              <FormField
+                control={form.control}
+                name='message'
+                render={({ field }) => (
+                  <FormItem className='mb-4 w-full'>
+                    <FormControl>
+                      <Input label={t('contact-brief')} {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
 
             <div>
               {error && (

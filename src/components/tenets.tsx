@@ -34,7 +34,7 @@ const Tenets = () => {
 
   return (
     <div>
-      <section className='container mt-20'>
+      <section className='container mt-28'>
         <div
           className={cn(locale === 'ar' ? 'text-right' : 'text-left')}
         >
@@ -45,7 +45,7 @@ const Tenets = () => {
             {t('tenets-desc')}
           </p>
         </div>
-        <ul className='mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 '>
+        <ul className='mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 '>
           {ourTenets.map((item) => (
             <li
               className={cn(

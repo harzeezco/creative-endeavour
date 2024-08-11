@@ -7,13 +7,11 @@ export const InfiniteMovingCards = ({
   children,
   className,
   direction = 'left',
-  pauseOnHover = true,
   speed = 'fast',
 }: {
   children: React.ReactNode;
   className?: string;
   direction?: 'left' | 'right';
-  pauseOnHover?: boolean;
   speed?: 'fast' | 'normal' | 'slow';
 }) => {
   const containerRef = React.useRef<HTMLDivElement>(null);
@@ -85,7 +83,7 @@ export const InfiniteMovingCards = ({
     <div
       ref={containerRef}
       className={cn(
-        'scroller relative z-20 max-w-7xl overflow-hidden',
+        'scroller relative max-xl:max-w-7xl xl:max-w-[1760px] z-20 overflow-hidden',
         className,
       )}
     >
@@ -94,7 +92,6 @@ export const InfiniteMovingCards = ({
         className={cn(
           'flex min-w-full shrink-0 gap-4 py-4 w-max flex-nowrap',
           start && 'animate-scroll',
-          pauseOnHover && 'hover:[animation-play-state:paused]',
         )}
       >
         {children}

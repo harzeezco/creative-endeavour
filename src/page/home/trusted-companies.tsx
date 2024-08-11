@@ -53,7 +53,7 @@ export const TrustedCompanies = () => {
         <h1 className='text-center text-2xl text-primary-200'>
           {c('client-title')}
         </h1>
-        <ul className='mx-auto mt-6 grid grid-cols-3 gap-y-6 sm:grid-cols-4 lg:grid-cols-8'>
+        <ul className='mx-auto mt-12 grid grid-cols-3 gap-y-6 sm:grid-cols-4 lg:grid-cols-8'>
           {Logos.map(({ alt, src, width }) => (
             <li key={alt}>
               <Image

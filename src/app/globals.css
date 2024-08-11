@@ -63,3 +63,12 @@
 .input-container input[type='text']:valid ~ .underline {
   transform: scaleX(1);
 }
+
+.work {
+  background-image: url('/images/body.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+  width: 100%;
+}

@@ -8,7 +8,7 @@ export const HeroSection = () => {
   const t = useTranslations('Home');
 
   return (
-    <section className='bg-black py-14 sm:min-h-dvh'>
+    <section className='bg-black py-14 sm:min-h-[60dvh]'>
       <SlideInAnimation
         as='h1'
         className={cn(

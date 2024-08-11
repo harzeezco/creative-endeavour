@@ -9,7 +9,7 @@ export function SlidingImages() {
   return (
     <SlideInAnimation
       as='div'
-      className='relative mt-14 flex flex-col items-center justify-center overflow-x-hidden antialiased max-sm:hidden'
+      className='relative mt-16 flex flex-col items-center justify-center overflow-x-hidden antialiased max-sm:hidden'
       delay={0.6}
     >
       <InfiniteMovingCards direction='right' speed='slow'>
