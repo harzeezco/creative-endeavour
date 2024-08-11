@@ -36,7 +36,7 @@ const ourTenets = [
     <div>
       <section className='container mt-20'>
         <div className={cn(locale === 'ar' ? 'text-right' : 'text-left')}>
-          <h1 className='text-5xl font-medium text-primary-350'>
+          <h1 className='text-3xl font-medium text-primary-350 sm:text-4xl lg:text-5xl'>
             {t('tenets-title')}
           </h1>
           <p className='mt-3 text-base text-primary-200'>

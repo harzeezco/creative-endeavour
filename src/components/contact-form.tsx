@@ -16,6 +16,7 @@ import emailjs from '@emailjs/browser';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
+import axios from 'axios';
 
 const formSchema = z.object({
   email: z
@@ -97,21 +98,33 @@ export function ContactForm() {
         },
       );
 
-    //   axios
-    //     .post(
-    //       'https://sheet.best/api/sheets/dc02882c-92c5-4d12-933b-23ea443c9779',
-    //       sheet,
-    //     )
-    //     .then(() => {
-    //       setLoading(false);
-    //       setSuccess(true);
-    //       setError(false);
-    //     })
-    //     .catch(() => {
-    //       setLoading(false);
-    //       setError(true);
-    //       setSuccess(false);
-    //     });
+    const sheet = {
+      name: values.name,
+      email: values.email,
+      message: values.message,
+    };
+
+      axios
+        .post(
+          'https://sheet.best/api/sheets/1d800149-df6a-45d7-83f7-944268ce4edf',
+          sheet,
+        )
+        .then(() => {
+          setLoading(false);
+          setSuccess(true);
+          setError(false);
+
+           setTimeout(() => {
+            setSuccess(false);
+          }, 10_000);
+        })
+        .catch(() => {
+          setLoading(false);
+          setError(true);
+          setSuccess(false);
+        });
+
+    form.reset();
   }
 
   return (
@@ -120,7 +133,7 @@ export function ContactForm() {
         <div className='flex min-h-[300px] w-full
          items-center justify-center bg-[#FAFAFA] p-7'
         >
-          <p className='max-w-sm'>
+          <p className='max-w-sm text-center'>
             {' '}
             {t('contact-form')}
           </p>

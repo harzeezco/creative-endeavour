@@ -16,6 +16,7 @@ import { z } from 'zod';
 import useLocalize from '@/hooks/use-locale';
 import { cn } from '@/utils/cn';
 import emailjs from '@emailjs/browser';
+import axios from 'axios';
 
 const formSchema = z.object({
   email: z
@@ -46,8 +47,7 @@ const formSchema = z.object({
     }),
 });
 
-export function JoinForm({ setActive }: { setActive: (value: boolean) => void}) {
-
+export function JoinForm({ setActive }: { setActive: (value: boolean) => void }) {
   const [error, setError] = React.useState(false);
   const { locale, t } = useLocalize('Home');
   const [loading, setLoading] = React.useState(false);
@@ -63,7 +63,6 @@ export function JoinForm({ setActive }: { setActive: (value: boolean) => void}) 
   });
 
   function onSubmit(values: z.infer<typeof formSchema>, e: any) {
-
     e.preventDefault();
     setSuccess(false);
     setError(false);
@@ -91,7 +90,7 @@ export function JoinForm({ setActive }: { setActive: (value: boolean) => void}) 
           setTimeout(() => {
             setSuccess(false);
             setActive(false);
-          }, 10000)
+          }, 10_000);
         },
         () => {
           setLoading(false);
@@ -100,91 +99,105 @@ export function JoinForm({ setActive }: { setActive: (value: boolean) => void}) 
         },
       );
 
-    //   axios
-    //     .post(
-    //       'https://sheet.best/api/sheets/dc02882c-92c5-4d12-933b-23ea443c9779',
-    //       sheet,
-    //     )
-    //     .then(() => {
-    //       setLoading(false);
-    //       setSuccess(true);
-    //       setError(false);
-    //     })
-    //     .catch(() => {
-    //       setLoading(false);
-    //       setError(true);
-    //       setSuccess(false);
-    //     });
+    const sheet = {
+      name: values.name,
+      email: values.email,
+      message: values.message,
+    };
+
+      axios
+        .post(
+          'https://sheet.best/api/sheets/1d800149-df6a-45d7-83f7-944268ce4edf',
+          sheet,
+        )
+        .then(() => {
+          setLoading(false);
+          setSuccess(true);
+          setError(false);
+
+           setTimeout(() => {
+            setSuccess(false);
+          }, 10_000);
+        })
+        .catch(() => {
+          setLoading(false);
+          setError(true);
+          setSuccess(false);
+        });
+
+    form.reset();
   }
 
   return (
     <div>
-      {success ? <div><p className='text-lg font-semibold'>{t('contact-form')}</p></div> : <Form {...form}>
-      <form
-        className={cn('w-full space-y-8 bg-transparent')}
-        onSubmit={form.handleSubmit(onSubmit)}
-      >
-        <FormField
-          control={form.control}
-          name='name'
-          render={({ field }) => (
-            <FormItem className='w-full'>
-              <FormControl>
-                <Input label={t('contact-name')} {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name='email'
-          render={({ field }) => (
-            <FormItem className='w-full'>
-              <FormControl>
-                <Input label={t('contact-email')} {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name='message'
-          render={({ field }) => (
-            <FormItem className='mb-4 w-full'>
-              <FormControl>
-                <Input
-                  label={t('contact-why')}
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <div>
-          {error && (
-            <p className='text-red-500'>
-              Some error occurred. 
-            </p>
-          )}
-        </div>
-
-        <div className={cn(locale === 'ar' ? 'flex justify-start' : 'justify-end', 'mt-7 flex')}>
-          <Button
-              className='w-fit bg-black px-6 py-4 text-white transition-all duration-300 hover:bg-black/70 active:bg-black/70'
-              disabled={loading}
-            type='submit'
+      {success ? <div><p className='text-lg font-semibold'>{t('contact-form')}</p></div> : (
+        <Form {...form}>
+          <form
+            className={cn('w-full space-y-8 bg-transparent')}
+            onSubmit={form.handleSubmit(onSubmit)}
           >
-            {t('contact-btn')}
-          </Button>
-        </div>
-      </form>
-    </Form>}
+            <FormField
+              control={form.control}
+              name='name'
+              render={({ field }) => (
+                <FormItem className='w-full'>
+                  <FormControl>
+                    <Input label={t('contact-name')} {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+          )}
+            />
+
+            <FormField
+              control={form.control}
+              name='email'
+              render={({ field }) => (
+                <FormItem className='w-full'>
+                  <FormControl>
+                    <Input label={t('contact-email')} {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+          )}
+            />
+
+            <FormField
+              control={form.control}
+              name='message'
+              render={({ field }) => (
+                <FormItem className='mb-4 w-full'>
+                  <FormControl>
+                    <Input
+                      label={t('contact-why')}
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+          )}
+            />
+
+            <div>
+              {error && (
+              <p className='text-red-500'>
+                Some error occurred.
+              </p>
+          )}
+            </div>
+
+            <div className={cn(locale === 'ar' ? 'flex justify-start' : 'justify-end', 'mt-7 flex')}>
+              <Button
+                className='w-fit bg-black px-6 py-4 text-white transition-all duration-300 hover:bg-black/70 active:bg-black/70'
+                disabled={loading}
+                type='submit'
+              >
+                {t('contact-btn')}
+              </Button>
+            </div>
+          </form>
+        </Form>
+)}
     </div>
   );
 }

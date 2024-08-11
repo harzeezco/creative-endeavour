@@ -8,14 +8,14 @@ export const ContactSection = () => {
   return (
     <section className='mt-20' id='contact'>
       <div className={cn('container flex max-sm:flex-col gap-y-10 justify-between gap-x-16', locale === 'ar' ? 'flex-row-reverse' : '')}>
-        <div className='flex flex-[1] justify-end'>
-          <h3 className='md:text-3xl text-xl font-bold'>
+        <div className={cn('flex flex-[1]', locale === 'ar' && 'justify-end')}>
+          <h3 className='text-xl font-bold md:text-3xl'>
             {t('contact-title')}
           </h3>
         </div>
 
         <div className='flex-[1.2]'>
-          <ContactForm  />
+          <ContactForm />
         </div>
       </div>
     </section>

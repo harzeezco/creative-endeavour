@@ -82,9 +82,9 @@ export const Footer = () => {
         <div className='flex flex-col gap-7'>
           <LocaleSwitch className='' icon='/icons/globe-black.svg' textClass='text-[#181A2E]' />
 
-          <button className='w-fit rounded-[8px] bg-black px-6 py-2 text-white'>
+          <Link className='w-fit rounded-[8px] bg-primary-350 px-6 py-2 text-white transition-all duration-300 hover:bg-primary-350/70 active:bg-primary-350/70' href='#join'>
             {t('footer-btn')}
-          </button>
+          </Link>
         </div>
       </div>
 
@@ -109,7 +109,7 @@ export const Footer = () => {
   );
 };
 
-const SOCIALS = [
+export const SOCIALS = [
   {
     icon: <FaLinkedinIn />,
     href: '',

@@ -1,3 +1,4 @@
+import SlideInAnimation from '@/components/slide-in-animation';
 import { cn } from '@/utils/cn';
 import { ArrowRight } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
@@ -61,7 +62,7 @@ export const ServiceSection = () => {
         },
         {
           title: s('service-content3-c'),
-                    desc: 'An expert that enlightens your functional area output'
+          desc: 'An expert that enlightens your functional area output'
         },
       ],
     },
@@ -71,7 +72,7 @@ export const ServiceSection = () => {
     <section className='mt-20 bg-[#EFEFEF] py-10' id='services'>
       <div className={cn('container flex items-center max-lg:flex-wrap justify-center gap-y-8 gap-x-5', locale === 'ar' ? 'flex-row-reverse' : '')}>
         {Services.map(({ content, head, icon, text }) => (
-          <div className={cn(locale === 'ar' ? 'text-end' : 'text-start', 'flex w-full min-h-[500px] grow flex-col bg-white p-5')}>
+          <SlideInAnimation key={text} as='div' className={cn(locale === 'ar' ? 'text-end' : 'text-start', 'flex w-full min-h-[500px] grow flex-col bg-white p-5')}>
             <div className={cn(locale === 'ar' ? 'flex justify-end' : '')}>
               <Image
                 alt={text}
@@ -102,7 +103,7 @@ export const ServiceSection = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </SlideInAnimation>
         ))}
       </div>
     </section>

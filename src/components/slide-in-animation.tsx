@@ -20,7 +20,7 @@ const SlideInAnimation = <C extends React.ElementType = 'div'>({
   as,
   children,
   className,
-  delay = 0.3,
+  delay = 0.2,
   ...otherProps
 }: ContainerTypes<C>) => {
   const Component = as ?? 'div';
