@@ -1,7 +1,6 @@
 import JoinNow from '@/components/join-now';
 import LatestNews from '@/components/latest-news';
 import Tenets from '@/components/tenets';
-
 import {
   ContactSection,
   HeroSection,
@@ -20,6 +19,6 @@ const Homepage = () => (
     <LatestNews />
     {/* <QASection /> */}
   </main>
-  );
+);
 
 export default Homepage;

@@ -11,7 +11,6 @@ export const pathnames = {
   // specify each external path per locale
   '/about': {
     en: '/about',
-    ar: '/about'
+    ar: '/about',
   },
-
 } satisfies Pathnames<typeof locales>;

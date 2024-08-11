@@ -11,7 +11,7 @@ const IBM = IBM_Plex_Sans_Arabic({
 
 export default async function LocaleLayout({
   children,
-  params: { locale }
+  params: { locale },
 }: {
   children: React.ReactNode;
   params: { locale: string };
@@ -21,7 +21,10 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html className='no-visible-scrollbar scroll-smooth' lang={locale}>
+    <html
+      className='no-visible-scrollbar scroll-smooth'
+      lang={locale}
+    >
       <body className={`${IBM.className}`}>
         <NextIntlClientProvider messages={messages}>
           <Header />

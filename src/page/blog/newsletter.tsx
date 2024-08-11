@@ -1,14 +1,17 @@
 'use client';
 
+import { NewsletterForm } from '@/components/newsletter-form';
 import { cn } from '@/utils/cn';
 import Image from 'next/image';
-import { NewsletterForm } from '@/components/newsletter-form';
 
 export const NewsletterSection = () => (
   <section className='container mt-20'>
     <div className='flex min-h-[350px] bg-primary-300 p-10 shadow-sm'>
-
-      <div className={cn('flex w-full items-end max-sm:flex-col justify-between')}>
+      <div
+        className={cn(
+          'flex w-full items-end max-sm:flex-col justify-between',
+        )}
+      >
         <div className='flex h-full max-w-[606px] flex-1 flex-col justify-between'>
           <div className=''>
             <Image
@@ -24,7 +27,8 @@ export const NewsletterSection = () => (
               Sign up for our newsletter
             </h1>
             <p className='mt-3 max-w-sm text-base text-primary-200'>
-              Stay up to date and learn about design, innovation, accessibility, and more.
+              Stay up to date and learn about design, innovation,
+              accessibility, and more.
             </p>
           </div>
         </div>
@@ -35,4 +39,4 @@ export const NewsletterSection = () => (
       </div>
     </div>
   </section>
-  );
+);

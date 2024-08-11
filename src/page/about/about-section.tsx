@@ -5,7 +5,12 @@ export const AboutSection = () => {
   const { locale, t } = useLocalize('About');
 
   return (
-    <section className={cn('mx-auto max-w-4xl max-sm:px-4', locale === 'ar' && 'text-end')}>
+    <section
+      className={cn(
+        'mx-auto max-w-4xl max-sm:px-4',
+        locale === 'ar' && 'text-end',
+      )}
+    >
       <div>
         <h1 className='text-5xl font-medium text-primary-350'>
           {t('about-head')}
@@ -16,13 +21,9 @@ export const AboutSection = () => {
       </div>
 
       <div className={cn('text-xl text-primary-200')}>
-        <p>
-          {t('about-content1')}
-        </p>
+        <p>{t('about-content1')}</p>
 
-        <p className='mt-7'>
-          {t('about-content2')}
-        </p>
+        <p className='mt-7'>{t('about-content2')}</p>
       </div>
     </section>
   );

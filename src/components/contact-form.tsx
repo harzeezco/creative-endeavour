@@ -14,9 +14,9 @@ import useLocalize from '@/hooks/use-locale';
 import { cn } from '@/utils/cn';
 import emailjs from '@emailjs/browser';
 import { zodResolver } from '@hookform/resolvers/zod';
+import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
-import axios from 'axios';
 
 const formSchema = z.object({
   email: z
@@ -104,25 +104,25 @@ export function ContactForm() {
       message: values.message,
     };
 
-      axios
-        .post(
-          'https://sheet.best/api/sheets/1d800149-df6a-45d7-83f7-944268ce4edf',
-          sheet,
-        )
-        .then(() => {
-          setLoading(false);
-          setSuccess(true);
-          setError(false);
+    axios
+      .post(
+        'https://sheet.best/api/sheets/1d800149-df6a-45d7-83f7-944268ce4edf',
+        sheet,
+      )
+      .then(() => {
+        setLoading(false);
+        setSuccess(true);
+        setError(false);
 
-           setTimeout(() => {
-            setSuccess(false);
-          }, 10_000);
-        })
-        .catch(() => {
-          setLoading(false);
-          setError(true);
+        setTimeout(() => {
           setSuccess(false);
-        });
+        }, 10_000);
+      })
+      .catch(() => {
+        setLoading(false);
+        setError(true);
+        setSuccess(false);
+      });
 
     form.reset();
   }
@@ -130,13 +130,11 @@ export function ContactForm() {
   return (
     <div>
       {success ? (
-        <div className='flex min-h-[300px] w-full
+        <div
+          className='flex min-h-[300px] w-full
          items-center justify-center bg-[#FAFAFA] p-7'
         >
-          <p className='max-w-sm text-center'>
-            {' '}
-            {t('contact-form')}
-          </p>
+          <p className='max-w-sm text-center'> {t('contact-form')}</p>
         </div>
       ) : (
         <Form {...form}>

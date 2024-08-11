@@ -25,7 +25,6 @@ export const HeroSection = () => {
             Discover Our Works
           </button>
         </SlideInAnimation>
-
       </div>
 
       <SlidingImages />

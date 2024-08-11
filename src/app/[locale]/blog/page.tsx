@@ -8,6 +8,6 @@ const BlogPage = () => (
     <CategorySection />
     <NewsletterSection />
   </main>
-  );
+);
 
 export default BlogPage;

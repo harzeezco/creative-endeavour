@@ -2,17 +2,19 @@
 
 import { InfiniteMovingCards } from '@/components/infinite-moving-cards';
 import Image from 'next/image';
+
 import SlideInAnimation from './slide-in-animation';
 
 export function SlidingImages() {
   return (
-    <SlideInAnimation as='div' className='relative mt-14 flex flex-col items-center justify-center overflow-x-hidden antialiased max-sm:hidden' delay={0.6}>
+    <SlideInAnimation
+      as='div'
+      className='relative mt-14 flex flex-col items-center justify-center overflow-x-hidden antialiased max-sm:hidden'
+      delay={0.6}
+    >
       <InfiniteMovingCards direction='right' speed='slow'>
         {testimonials.map(({ alt, size, src }) => (
-          <li
-            key={alt}
-            className='relative max-w-full'
-          >
+          <li key={alt} className='relative max-w-full'>
             <Image
               alt={alt}
               className='h-full max-h-[470px]'

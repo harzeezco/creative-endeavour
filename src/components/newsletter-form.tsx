@@ -10,11 +10,10 @@ import {
   FormItem,
   FormMessage,
 } from '@/components/ui/form';
+import { cn } from '@/utils/cn';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
-import useLocalize from '@/hooks/use-locale';
-import { cn } from '@/utils/cn';
 
 const formSchema = z.object({
   user_email: z
@@ -22,13 +21,12 @@ const formSchema = z.object({
     .regex(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, {
       message: 'Please Enter a valid email address',
     })
-    .min(5)
+    .min(5),
 });
 
 export function NewsletterForm() {
   const [success, setSuccess] = React.useState(false);
   const [error, setError] = React.useState(false);
-  const { locale, t } = useLocalize('Home');
   // const [loading, setLoading] = React.useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -83,7 +81,6 @@ export function NewsletterForm() {
         className={cn('mx-auto w-full space-y-8 bg-[#FAFAFA] p-7')}
         onSubmit={form.handleSubmit(onSubmit)}
       >
-
         <FormField
           control={form.control}
           name='user_email'

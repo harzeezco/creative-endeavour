@@ -1,16 +1,23 @@
 'use client';
 
 import LocaleSwitch from '@/components/locale-dropdown';
+import SlideInAnimation from '@/components/slide-in-animation';
 import { Button } from '@/components/ui/button';
-import { Drawer, DrawerClose, DrawerContent, DrawerFooter, DrawerTrigger } from '@/components/ui/drawer';
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerFooter,
+  DrawerTrigger,
+} from '@/components/ui/drawer';
 import useLocalize from '@/hooks/use-locale';
 import { cn } from '@/utils/cn';
 import { Menu } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+
 import { SOCIALS } from './footer';
-import SlideInAnimation from '@/components/slide-in-animation';
 
 export function DrawerBar({
   children,
@@ -18,9 +25,9 @@ export function DrawerBar({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
-    const { locale, t } = useLocalize('Home');
+  const { locale, t } = useLocalize('Home');
 
-    const navLinks = [
+  const navLinks = [
     {
       label: t('link-work'),
       href: '/work',
@@ -53,9 +60,9 @@ export function DrawerBar({
               return (
                 <Link
                   key={href}
-                  href={href === '/work'
-                    ? '/work'
-                    : `/${locale}${href}`}
+                  href={
+                    href === '/work' ? '/work' : `/${locale}${href}`
+                  }
                 >
                   <DrawerClose asChild>
                     <div
@@ -75,20 +82,18 @@ export function DrawerBar({
           </div>
 
           <ul className='mb-11 mt-3 flex gap-3'>
-            {SOCIALS.map(
-              ({ href, icon }) => (
-                <Link
-                  key={href}
-                  className={cn(
-                    'border-dark-400/20 border flex size-[70px] flex-col items-center justify-center gap-3 rounded-[2vw] border-solid bg-dark-600 p-2 transition-all duration-200',
-                  )}
-                  href={href}
-                  target='_blank'
-                >
-                  {icon}
-                </Link>
-              ),
-            )}
+            {SOCIALS.map(({ href, icon }) => (
+              <Link
+                key={href}
+                className={cn(
+                  'border-dark-400/20 border flex size-[70px] flex-col items-center justify-center gap-3 rounded-[2vw] border-solid bg-dark-600 p-2 transition-all duration-200',
+                )}
+                href={href}
+                target='_blank'
+              >
+                {icon}
+              </Link>
+            ))}
           </ul>
           <DrawerFooter>
             <DrawerClose asChild>
@@ -148,9 +153,9 @@ export const Header = () => {
       <SlideInAnimation delay={0}>
         <div
           className={cn(
-          locale === 'en' ? '' : 'flex-row-reverse',
-          'container flex items-center justify-between py-4  text-base',
-        )}
+            locale === 'en' ? '' : 'flex-row-reverse',
+            'container flex items-center justify-between py-4  text-base',
+          )}
         >
           <Link href='/'>
             <Image
@@ -167,18 +172,23 @@ export const Header = () => {
                 <Link
                   key={item.href}
                   href={
-                  item.href === '/work'
-                    ? '/work'
-                    : `/${locale}${item.href}`
-                }
+                    item.href === '/work'
+                      ? '/work'
+                      : `/${locale}${item.href}`
+                  }
                 >
                   <li key={item.label}>{item.label}</li>
                 </Link>
-            ))}
+              ))}
             </ul>
           </nav>
 
-          <div className={cn(locale === 'ar' ? 'flex-row-reverse' : '', 'flex items-center gap-x-2')}>
+          <div
+            className={cn(
+              locale === 'ar' ? 'flex-row-reverse' : '',
+              'flex items-center gap-x-2',
+            )}
+          >
             <LocaleSwitch
               className={btnAR}
               icon='/icons/globe.svg'
@@ -191,7 +201,6 @@ export const Header = () => {
               </DrawerBar>
             </div>
           </div>
-
         </div>
       </SlideInAnimation>
     </header>
