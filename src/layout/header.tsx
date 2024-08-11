@@ -145,7 +145,10 @@ export const Header = () => {
   return (
     <header
       className={cn(
-        navigate === '/en' || navigate === '/ar'
+        navigate === '/en' ||
+          navigate === '/ar' ||
+          navigate === '/en/' ||
+          navigate === '/ar/'
           ? 'bg-black text-white'
           : 'bg-white border-primary-650 border-b',
       )}
