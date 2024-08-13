@@ -5,11 +5,7 @@ import useLocalize from '@/hooks/use-locale';
 import { cn } from '@/utils/cn';
 import Image from 'next/image';
 import Link from 'next/link';
-import {
-  FaInstagram,
-  FaLinkedinIn,
-  FaXTwitter,
-} from 'react-icons/fa6';
+import { FaLinkedinIn, FaXTwitter } from 'react-icons/fa6';
 
 export const Footer = () => {
   const { locale, t } = useLocalize('Home');
@@ -94,9 +90,9 @@ export const Footer = () => {
           </h3>
           <Link
             className='border-b border-solid'
-            href='mailto:info@sanam.sa?subject=Pre-filled Subject&body=Please%20enter%20your%20message%20here.'
+            href='mailto:Hello@sanaam.sa?subject=Pre-filled Subject&body=Please%20enter%20your%20message%20here.'
           >
-            Info@sanam.sa
+            Hello@sanaam.sa
           </Link>
         </div>
 
@@ -118,7 +114,7 @@ export const Footer = () => {
 
       <div className='mx-auto mt-8 flex items-center justify-between xl:container max-xl:max-w-[1150px]'>
         <p className='max-w-md'>
-          Copyright © {new Date().getFullYear()} Sanam | All Rights
+          Copyright © {new Date().getFullYear()} Sanaam | All Rights
           Reserved | Terms and Conditions | Privacy Policy
         </p>
 
@@ -140,14 +136,10 @@ export const Footer = () => {
 export const SOCIALS = [
   {
     icon: <FaLinkedinIn />,
-    href: '',
+    href: 'https://www.linkedin.com/company/sanaam-sa',
   },
   {
     icon: <FaXTwitter />,
-    href: '',
-  },
-  {
-    icon: <FaInstagram />,
-    href: '',
+    href: 'https://x.com/sanaam_sa',
   },
 ];

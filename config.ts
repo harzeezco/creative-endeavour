@@ -5,10 +5,9 @@ export type ConfigProps = {
 };
 
 const config = {
-  appName: 'medicare-support',
-  appDescription:
-    'Connect with ready-to-buy consumer instantly through our network of buyers!',
-  domainName: 'medicare-support.com',
+  appName: 'sanaam',
+  appDescription: '',
+  domainName: 'sanaam.sa',
 } as ConfigProps;
 
 export default config;

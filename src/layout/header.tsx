@@ -110,7 +110,7 @@ export const Header = () => {
   const { locale, t } = useLocalize('Home');
   const navigate = usePathname();
   const logoAR =
-    navigate === ('/ar' || navigate === '/ar/') && locale === 'ar'
+    (navigate === '/ar' || navigate === '/ar/') && locale === 'ar'
       ? '/icons/logo-ar-white.svg'
       : '/icons/logo-ar.svg';
   const logoEN =

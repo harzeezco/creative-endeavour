@@ -32,7 +32,7 @@ export const getSEOTags = ({
     description: openGraph?.description || config.appDescription,
     url: openGraph?.url || `https://${config.domainName}/`,
     siteName: openGraph?.title || config.appName,
-    locale: 'en_US',
+    locale: ['en_US', 'Arabic'],
     type: 'website',
   },
 
@@ -40,7 +40,7 @@ export const getSEOTags = ({
     title: openGraph?.title || config.appName,
     description: openGraph?.description || config.appDescription,
     card: 'summary_large_image',
-    creator: '@medicare-support',
+    creator: '@sanaam.sa',
   },
 
   ...(canonicalUrlRelative && {
@@ -61,7 +61,7 @@ export const renderSchemaTags = () => (
         url: `https://${config.domainName}/`,
         author: {
           '@type': 'COmpany',
-          name: 'medicare support',
+          name: 'Sanaam',
         },
         datePublished: '2023-08-01',
         applicationCategory: 'EducationalApplication',

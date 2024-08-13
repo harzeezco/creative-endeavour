@@ -1,68 +1,68 @@
 import SlideInAnimation from '@/components/slide-in-animation';
+import useLocalize from '@/hooks/use-locale';
 import { cn } from '@/utils/cn';
-import { ArrowRight } from 'lucide-react';
-import { useLocale, useTranslations } from 'next-intl';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export const ServiceSection = () => {
-  const s = useTranslations('Home');
-  const locale = useLocale();
+  const { locale, t } = useLocalize('Home');
 
   const Services = [
     {
       icon: 'd.svg',
-      head: s('service-title1'),
-      text: s('service-desc1'),
+      head: t('service-title1'),
+      text: t('service-desc1'),
       content: [
         {
-          title: s('service-content1-a'),
-          desc: 'An expert that enlightens your functional area output',
+          title: t('service-content1-a'),
+          desc: t('service-content1-a-desc'),
         },
         {
-          title: s('service-content1-b'),
-          desc: 'An expert that enlightens your functional area output',
+          title: t('service-content1-b'),
+          desc: t('service-content1-b-desc'),
         },
         {
-          title: s('service-content1-c'),
-          desc: 'An expert that enlightens your functional area output',
+          title: t('service-content1-c'),
+          desc: t('service-content1-c-desc'),
         },
       ],
     },
     {
       icon: 'design.svg',
-      head: s('service-title2'),
-      text: s('service-desc2'),
+      head: t('service-title2'),
+      text: t('service-desc2'),
       content: [
         {
-          title: s('service-content2-a'),
-          desc: 'An expert that enlightens your functional area output',
+          title: t('service-content2-a'),
+          desc: t('service-content2-a-desc'),
         },
         {
-          title: s('service-content2-b'),
-          desc: 'An expert that enlightens your functional area output',
+          title: t('service-content2-b'),
+          desc: t('service-content2-b-desc'),
         },
         {
-          title: s('service-content2-c'),
-          desc: 'An expert that enlightens your functional area output',
+          title: t('service-content2-c'),
+          desc: t('service-content2-c-desc'),
         },
       ],
     },
     {
       icon: 'head.svg',
-      head: s('service-title3'),
-      text: s('service-desc3'),
+      head: t('service-title3'),
+      text: t('service-desc3'),
       content: [
         {
-          title: s('service-content3-a'),
-          desc: 'An expert that enlightens your functional area output',
+          title: t('service-content3-a'),
+          desc: t('service-content3-a-desc'),
         },
         {
-          title: s('service-content3-b'),
-          desc: 'An expert that enlightens your functional area output',
+          title: t('service-content3-b'),
+          desc: t('service-content3-b-desc'),
         },
         {
-          title: s('service-content3-c'),
-          desc: 'An expert that enlightens your functional area output',
+          title: t('service-content3-c'),
+          desc: t('service-content3-c-desc'),
         },
       ],
     },
@@ -113,17 +113,29 @@ export const ServiceSection = () => {
 
               <div className='mt-10 space-y-7 justify-self-end'>
                 {content.map(({ desc, title }) => (
-                  <div className='group cursor-pointer border-b border-solid border-[#2D313A]'>
+                  <Link
+                    className='group cursor-pointer border-b border-solid border-[#2D313A]'
+                    href='#contact'
+                  >
                     <h3 className={cn('pb-1 text-lg font-semibold')}>
                       {title}
                     </h3>
 
-                    <div className='invisible flex h-0 items-end justify-between pb-3 text-primary-200 opacity-0 transition-all duration-300 group-hover:visible group-hover:h-16 group-hover:opacity-100'>
+                    <div
+                      className={cn(
+                        'invisible flex max-h-0 items-end justify-between pb-3 text-primary-200 opacity-0 transition-all duration-400 group-hover:visible group-hover:min-h-16 group-hover:max-h-20 group-hover:opacity-100',
+                        locale === 'ar' ? 'flex-row-reverse' : '',
+                      )}
+                    >
                       <span>{desc}</span>
 
-                      <ArrowRight />
+                      {locale === 'ar' ? (
+                        <ArrowLeft className='shrink-0' size={22} />
+                      ) : (
+                        <ArrowRight className='shrink-0' size={22} />
+                      )}
                     </div>
-                  </div>
+                  </Link>
                 ))}
               </div>
             </SlideInAnimation>

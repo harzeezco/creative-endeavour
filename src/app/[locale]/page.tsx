@@ -1,5 +1,4 @@
 import JoinNow from '@/components/join-now';
-import LatestNews from '@/components/latest-news';
 import Tenets from '@/components/tenets';
 import {
   ContactSection,
@@ -7,6 +6,17 @@ import {
   ServiceSection,
   TrustedCompanies,
 } from '@/page/home';
+import { getSEOTags } from '@/utils/seo';
+
+import config from '../../../config';
+
+export const metadata = getSEOTags({
+  title: ` | ${config.appName}`,
+  canonicalUrlRelative: '/',
+  description:
+    'We partner with organizations to deliver innovative UI/UX design and effective growth strategies, helping you enhance customer experiences and achieve measurable growth',
+  keywords: '',
+});
 
 const Homepage = () => (
   <main className='2xl:pr-6'>
@@ -16,7 +26,7 @@ const Homepage = () => (
     <ContactSection />
     <Tenets />
     <JoinNow />
-    <LatestNews />
+    {/* <LatestNews /> */}
     {/* <QASection /> */}
   </main>
 );

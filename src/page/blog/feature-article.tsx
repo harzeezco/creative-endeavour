@@ -24,7 +24,7 @@ export const FeatureArticle = () => {
 
           <p className='mt-3 font-medium text-primary-200'>
             Key guiding principles for our day to day operations at
-            Sanam
+            Sanaam
           </p>
         </div>
 
