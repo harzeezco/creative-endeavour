@@ -13,7 +13,7 @@ const JoinNow = () => {
 
   return (
     <section className='container pt-28' id='join'>
-      <div className='flex min-h-[350px] bg-primary-300 p-7 shadow-sm'>
+      <div className='flex min-h-[350px] bg-primary-300 p-7 shadow-sm 2xl:min-h-[450px]'>
         <div
           className={cn(
             'flex w-full items-end max-lg:flex-col gap-y-10 justify-between',
@@ -37,11 +37,19 @@ const JoinNow = () => {
                 width={30}
               />
             </div>
-            <div>
+            <div
+              className={cn(
+                locale === 'ar' ? 'flex flex-col items-end' : '',
+              )}
+            >
               <h1 className='text-3xl font-medium text-primary-350 sm:text-4xl lg:text-5xl'>
                 {t('join-title')}
               </h1>
-              <p className='mt-3 max-w-sm text-base text-primary-200'>
+              <p
+                className={cn(
+                  'mt-3 max-w-sm text-base text-primary-200',
+                )}
+              >
                 {t('join-desc')}
               </p>
             </div>

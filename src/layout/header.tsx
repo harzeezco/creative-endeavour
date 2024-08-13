@@ -109,6 +109,7 @@ export function DrawerBar({
 export const Header = () => {
   const { locale, t } = useLocalize('Home');
   const navigate = usePathname();
+
   const logoAR =
     (navigate === '/ar' || navigate === '/ar/') && locale === 'ar'
       ? '/icons/logo-ar-white.svg'
@@ -143,74 +144,74 @@ export const Header = () => {
   ];
 
   return (
-    <header
-      className={cn(
-        navigate === '/en' ||
-          navigate === '/ar' ||
-          navigate === '/en/' ||
-          navigate === '/ar/'
-          ? 'bg-black text-white'
-          : 'bg-white border-primary-650 border-b',
-      )}
-    >
-      <SlideInAnimation delay={0}>
-        <div
+    <div>
+      {navigate.includes('work') ? null : (
+        <header
           className={cn(
-            locale === 'en' ? '' : 'flex-row-reverse',
-            'container flex items-center justify-between py-4  text-base',
+            navigate === '/en' ||
+              navigate === '/ar' ||
+              navigate === '/en/' ||
+              navigate === '/ar/'
+              ? 'bg-black text-white'
+              : 'bg-white border-primary-650 border-b',
           )}
         >
-          <Link href='/'>
-            <Image
-              alt='logo'
-              height={50}
-              src={locale === 'ar' ? logoAR : logoEN}
-              width={70}
-            />
-          </Link>
-
-          <nav>
-            <ul
+          <SlideInAnimation delay={0}>
+            <div
               className={cn(
-                'flex items-center justify-between gap-x-6 max-md:hidden',
-                locale === 'ar' && 'flex-row-reverse',
+                locale === 'en' ? '' : 'flex-row-reverse',
+                'container flex items-center justify-between py-4  text-base',
               )}
             >
-              {navLinks.map((item) => (
-                <Link
-                  key={item.href}
-                  href={
-                    item.href === '/work'
-                      ? '/work'
-                      : `/${locale}${item.href}`
-                  }
+              <Link href='/'>
+                <Image
+                  alt='logo'
+                  height={50}
+                  src={locale === 'ar' ? logoAR : logoEN}
+                  width={70}
+                />
+              </Link>
+
+              <nav>
+                <ul
+                  className={cn(
+                    'flex items-center justify-between gap-x-6 max-md:hidden',
+                    locale === 'ar' && 'flex-row-reverse',
+                  )}
                 >
-                  <li key={item.label}>{item.label}</li>
-                </Link>
-              ))}
-            </ul>
-          </nav>
+                  {navLinks.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={`/${locale}${item.href}`}
+                    >
+                      <li key={item.label}>{item.label}</li>
+                    </Link>
+                  ))}
+                </ul>
+              </nav>
 
-          <div
-            className={cn(
-              locale === 'ar' ? 'flex-row-reverse' : '',
-              'flex items-center gap-x-2',
-            )}
-          >
-            <LocaleSwitch
-              className={btnAR}
-              icon='/icons/globe.svg'
-              textClass=''
-            />
+              <div
+                className={cn(
+                  locale === 'ar' ? 'flex-row-reverse' : '',
+                  'flex items-center gap-x-2',
+                )}
+              >
+                <LocaleSwitch
+                  className={btnAR}
+                  icon='/icons/globe.svg'
+                  textClass=''
+                />
 
-            <div className='md:hidden'>
-              <DrawerBar>
-                <Menu />
-              </DrawerBar>
+                <div className='md:hidden'>
+                  <DrawerBar>
+                    <Menu />
+                  </DrawerBar>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </SlideInAnimation>
-    </header>
+          </SlideInAnimation>
+        </header>
+      )}
+    </div>
   );
 };

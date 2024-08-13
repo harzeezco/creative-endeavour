@@ -142,7 +142,7 @@ export function ContactForm() {
             className={cn('mx-auto w-full bg-[#FAFAFA] p-7')}
             onSubmit={form.handleSubmit(onSubmit)}
           >
-            <div className='space-y-12'>
+            <div className='space-y-16'>
               <FormField
                 control={form.control}
                 name='name'

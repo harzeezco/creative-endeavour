@@ -48,7 +48,7 @@ export const TrustedCompanies = () => {
   const c = useTranslations('Home');
 
   return (
-    <section className='mt-20'>
+    <section className='mt-20 2xl:py-16'>
       <div className='mx-auto max-w-6xl max-md:px-4'>
         <h1 className='text-center text-2xl text-primary-200'>
           {c('client-title')}

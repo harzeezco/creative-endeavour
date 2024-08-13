@@ -7,7 +7,7 @@ export const AboutSection = () => {
   return (
     <section
       className={cn(
-        'mx-auto max-w-4xl max-sm:px-4',
+        'mx-auto max-w-4xl 2xl:container max-sm:px-4',
         locale === 'ar' && 'text-end',
       )}
     >

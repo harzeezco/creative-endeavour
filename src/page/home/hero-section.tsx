@@ -22,7 +22,7 @@ export const HeroSection = () => {
       <div className='mt-5 flex items-center justify-center sm:hidden'>
         <SlideInAnimation as={Link} delay={0.3} href='/work'>
           <button className='rounded-[8px] bg-[#2D313A] px-6 py-3 text-white transition-all duration-300 hover:bg-[#2D313A]/70 active:bg-[#2D313A]/70'>
-            Discover Our Works
+            {t('hero-btn')}
           </button>
         </SlideInAnimation>
       </div>

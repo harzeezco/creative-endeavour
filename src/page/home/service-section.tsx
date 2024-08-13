@@ -69,7 +69,7 @@ export const ServiceSection = () => {
   ];
 
   return (
-    <section className='mt-20 bg-[#EFEFEF] py-16' id='services'>
+    <section className='mt-20 bg-[#EFEFEF] py-20' id='services'>
       <div
         className={cn(
           'container flex items-center max-lg:flex-wrap justify-center gap-y-8 gap-x-9',
@@ -83,7 +83,7 @@ export const ServiceSection = () => {
               as='div'
               className={cn(
                 locale === 'ar' ? 'text-end' : 'text-start',
-                'flex w-full justify-between min-h-[500px] grow flex-col bg-white p-5',
+                'flex w-full justify-between min-h-[500px] grow flex-col bg-white px-5 pb-10 pt-6',
               )}
             >
               <div>
@@ -102,7 +102,7 @@ export const ServiceSection = () => {
 
                 <h2
                   className={cn(
-                    'mt-4 text-xl font-semibold text-primary-50',
+                    'mt-4 text-xl 2xl:text-2xl font-semibold text-primary-50',
                   )}
                 >
                   {head}
@@ -111,7 +111,7 @@ export const ServiceSection = () => {
                 <p className='text-primary-200'>{text}</p>
               </div>
 
-              <div className='mt-10 space-y-7 justify-self-end'>
+              <div className='mt-10 space-y-10 justify-self-end'>
                 {content.map(({ desc, title }) => (
                   <div className='border-b border-solid border-[#2D313A]'>
                     <Link
@@ -119,7 +119,9 @@ export const ServiceSection = () => {
                       href='#contact'
                     >
                       <h3
-                        className={cn('pb-1 text-lg font-semibold')}
+                        className={cn(
+                          'pb-1 2xl:text-xl text-lg font-semibold',
+                        )}
                       >
                         {title}
                       </h3>
