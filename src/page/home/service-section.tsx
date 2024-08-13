@@ -113,29 +113,36 @@ export const ServiceSection = () => {
 
               <div className='mt-10 space-y-7 justify-self-end'>
                 {content.map(({ desc, title }) => (
-                  <Link
-                    className='group cursor-pointer border-b border-solid border-[#2D313A]'
-                    href='#contact'
-                  >
-                    <h3 className={cn('pb-1 text-lg font-semibold')}>
-                      {title}
-                    </h3>
-
-                    <div
-                      className={cn(
-                        'invisible flex max-h-0 items-end justify-between pb-3 text-primary-200 opacity-0 transition-all duration-400 group-hover:visible group-hover:min-h-16 group-hover:max-h-20 group-hover:opacity-100',
-                        locale === 'ar' ? 'flex-row-reverse' : '',
-                      )}
+                  <div className='border-b border-solid border-[#2D313A]'>
+                    <Link
+                      className='group cursor-pointer'
+                      href='#contact'
                     >
-                      <span>{desc}</span>
+                      <h3
+                        className={cn('pb-1 text-lg font-semibold')}
+                      >
+                        {title}
+                      </h3>
 
-                      {locale === 'ar' ? (
-                        <ArrowLeft className='shrink-0' size={22} />
-                      ) : (
-                        <ArrowRight className='shrink-0' size={22} />
-                      )}
-                    </div>
-                  </Link>
+                      <div
+                        className={cn(
+                          'invisible flex max-h-0 items-end justify-between pb-3 text-primary-200 opacity-0 transition-all duration-400 group-hover:visible group-hover:min-h-16 group-hover:max-h-20 group-hover:opacity-100',
+                          locale === 'ar' ? 'flex-row-reverse' : '',
+                        )}
+                      >
+                        <span>{desc}</span>
+
+                        {locale === 'ar' ? (
+                          <ArrowLeft className='shrink-0' size={22} />
+                        ) : (
+                          <ArrowRight
+                            className='shrink-0'
+                            size={22}
+                          />
+                        )}
+                      </div>
+                    </Link>
+                  </div>
                 ))}
               </div>
             </SlideInAnimation>

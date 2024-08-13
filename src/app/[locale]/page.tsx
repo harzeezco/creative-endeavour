@@ -11,11 +11,12 @@ import { getSEOTags } from '@/utils/seo';
 import config from '../../../config';
 
 export const metadata = getSEOTags({
-  title: ` | ${config.appName}`,
+  title: `Home | ${config.appName}`,
   canonicalUrlRelative: '/',
   description:
     'We partner with organizations to deliver innovative UI/UX design and effective growth strategies, helping you enhance customer experiences and achieve measurable growth',
-  keywords: '',
+  keywords:
+    'UI/UX design, Building MVPs, Design & Research, Innovation Lab-aas',
 });
 
 const Homepage = () => (

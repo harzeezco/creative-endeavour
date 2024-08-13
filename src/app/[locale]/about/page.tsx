@@ -10,7 +10,8 @@ export const metadata = getSEOTags({
   canonicalUrlRelative: '/about',
   description:
     'We partner with organizations to deliver innovative UI/UX design and effective growth strategies, helping you enhance customer experiences and achieve measurable growth',
-  keywords: '',
+  keywords:
+    'UI/UX design, Building MVPs, Design & Research, Innovation Lab-aas',
 });
 
 const AboutPage = () => (
