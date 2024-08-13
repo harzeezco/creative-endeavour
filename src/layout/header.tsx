@@ -170,7 +170,12 @@ export const Header = () => {
           </Link>
 
           <nav>
-            <ul className='flex items-center justify-between gap-x-6 max-md:hidden '>
+            <ul
+              className={cn(
+                'flex items-center justify-between gap-x-6 max-md:hidden',
+                locale === 'ar' && 'flex-row-reverse',
+              )}
+            >
               {navLinks.map((item) => (
                 <Link
                   key={item.href}
