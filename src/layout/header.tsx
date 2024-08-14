@@ -58,12 +58,7 @@ export function DrawerBar({
               const isActive = href === pathname;
 
               return (
-                <Link
-                  key={href}
-                  href={
-                    href === '/work' ? '/work' : `/${locale}${href}`
-                  }
-                >
+                <Link key={href} href={`/${locale}${href}`}>
                   <DrawerClose asChild>
                     <div
                       className={cn(
