@@ -8,7 +8,7 @@ export type ConfigProps = {
 
 export const config: ConfigProps = {
   appName: 'sanaam',
-  appDescription: 'We partner with organizations to deliver innovative UI/UX design and effective growth strategies, helping you enhance customer experiences and achieve measurable growth.',
+  appDescription: '.We partner with organizations to deliver innovative UI/UX design and effective growth strategies, helping you enhance customer experiences and achieve measurable growth.',
   domainName: 'https://sanaam.sa',
 };
 
