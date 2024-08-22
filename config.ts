@@ -1,21 +1,18 @@
-
 import Image from 'next/image';
 
 export type ConfigProps = {
   appDescription: string;
   appName: string;
   domainName: string;
-  logo: string;  // Change this to a string to use with next/image
+  logo: string;
 };
 
-const config: ConfigProps = {
+export const config: ConfigProps = {
   appName: 'sanaam',
   appDescription: 'We partner with organizations to deliver innovative UI/UX design and effective growth strategies, helping you enhance customer experiences and achieve measurable growth.',
   domainName: 'https://sanaam.sa',
-  logo: '/icons/logo.svg',  // Set this as a path for next/image
+  logo: '/icons/logo.svg',  // Path for the logo
 };
-
-export default config;
 
 export const MyComponent = () => (
   <div>
@@ -23,11 +20,13 @@ export const MyComponent = () => (
     <p>{config.appDescription}</p>
     <a href={config.domainName}>Visit Us</a>
     <Image
-      alt="image"
-      className="object-cover"
-      height={30}
+      alt="Logo"
       src={config.logo}
       width={30}
+      height={30}
+      className="object-cover"
     />
   </div>
 );
+
+export default config;
