@@ -14,19 +14,21 @@ export const config: ConfigProps = {
   logo: '/icons/logo.svg',  // Path for the logo
 };
 
-export const MyComponent = () => (
-  <div>
-    <h1>{config.appName}</h1>
-    <p>{config.appDescription}</p>
-    <a href={config.domainName}>Visit Us</a>
-    <Image
-      alt="Logo"
-      src={config.logo}
-      width={30}
-      height={30}
-      className="object-cover"
-    />
-  </div>
-);
+export const MyComponent = () => {
+  return (
+    <div>
+      <h1>{config.appName}</h1>
+      <p>{config.appDescription}</p>
+      <a href={config.domainName}>Visit Us</a>
+      <Image
+        alt="Logo"
+        src={config.logo}
+        width={30}
+        height={30}
+        className="object-cover"
+      />
+    </div>
+  );
+};
 
 export default config;
