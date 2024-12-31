@@ -13,7 +13,7 @@ const config: Config = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#1f3d5c',
+          DEFAULT: '#737373',
           50: '#2D313A',
           100: '#6f7d93',
           200: '#697485',
@@ -28,7 +28,7 @@ const config: Config = {
           750: '#172E45',
         },
         body: {
-          DEFAULT: '#314564',
+          DEFAULT: '#0A0A0A',
         },
         tint: {
           DEFAULT: 'rgba(0, 0, 0, 0.1)',
@@ -52,7 +52,7 @@ const config: Config = {
         screens: {
           sm: '840px',
           md: '968px',
-          lg: '1030px',
+          lg: '1100px',
           xl: '1280px',
           '2xl': '1536px',
         },
@@ -64,7 +64,7 @@ const config: Config = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       fontFamily: {
-        bricolage: ['var(--font-bricolage)'],
+        bricolage: ['var(--font-nebulica)'],
       },
       keyframes: {
         'accordion-down': {

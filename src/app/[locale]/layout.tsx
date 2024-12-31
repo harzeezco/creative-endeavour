@@ -1,13 +1,8 @@
 import { Footer, Header } from '@/layout';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
-import { IBM_Plex_Sans_Arabic } from 'next/font/google';
 
-const IBM = IBM_Plex_Sans_Arabic({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  display: 'swap',
-});
+import { inter, nebulica } from '../font';
 
 export default async function LocaleLayout({
   children,
@@ -25,7 +20,7 @@ export default async function LocaleLayout({
       className='no-visible-scrollbar scroll-smooth'
       lang={locale}
     >
-      <body className={`${IBM.className}`}>
+      <body className={`${inter.className} ${nebulica.variable}`}>
         <NextIntlClientProvider messages={messages}>
           <Header />
           {children}

@@ -105,65 +105,51 @@ export const Header = () => {
   const { locale, t } = useLocalize('Home');
   const navigate = usePathname();
 
-  const logoAR =
-    (navigate === '/ar' || navigate === '/ar/') && locale === 'ar'
-      ? '/icons/logo-ar-white.svg'
-      : '/icons/logo-ar.svg';
-  const logoEN =
-    locale === 'en' && (navigate === '/en' || navigate === '/en/')
-      ? '/icons/logo-white.svg'
-      : '/icons/logo.svg';
-
-  const btnAR =
-    navigate === '/ar' && locale === 'ar'
-      ? 'text-white border border-solid rounded-[8px] border-white px-4 py-2'
-      : 'bg-[#2D313A] px-4 py-2 transition-all hover:bg-[#2D313A]/70 duration-300 text-white rounded-md active:bg-[#2D313A]/70';
-
   const navLinks = [
     {
-      label: t('link-work'),
-      href: '/work',
-    },
-    {
-      label: t('link-service'),
-      href: '#services',
+      label: t('link-home'),
+      href: '',
     },
     {
       label: t('link-about'),
       href: '/about',
     },
     {
-      label: t('link-contact'),
-      href: '#contact',
+      label: t('link-service'),
+      href: '/services',
+    },
+    {
+      label: t('link-project'),
+      href: '/work',
     },
   ];
 
   return (
-    <div>
-      {navigate.includes('work') ? null : (
-        <header
-          className={cn(
-            navigate === '/en' ||
-              navigate === '/ar' ||
-              navigate === '/en/' ||
-              navigate === '/ar/'
-              ? 'bg-black text-white'
-              : 'bg-white border-primary-650 border-b',
-          )}
-        >
-          <SlideInAnimation delay={0}>
+    <div className='border-b border-solid border-[#D9D9D9]'>
+      <header className={cn()}>
+        <SlideInAnimation delay={0}>
+          <div
+            className={cn(
+              locale === 'en' ? '' : 'flex-row-reverse',
+              'container flex items-center justify-between py-3  text-base',
+            )}
+          >
             <div
               className={cn(
-                locale === 'en' ? '' : 'flex-row-reverse',
-                'container flex items-center justify-between py-4  text-base',
+                locale === 'ar' && 'flex-row-reverse',
+                'flex items-center gap-x-12',
               )}
             >
               <Link href='/'>
                 <Image
                   alt='logo'
-                  height={50}
-                  src={locale === 'ar' ? logoAR : logoEN}
-                  width={70}
+                  height={90}
+                  src={
+                    locale === 'ar'
+                      ? '/icons/logo-ar.svg'
+                      : '/icons/logo.svg'
+                  }
+                  width={130}
                 />
               </Link>
 
@@ -174,39 +160,71 @@ export const Header = () => {
                     locale === 'ar' && 'flex-row-reverse',
                   )}
                 >
-                  {navLinks.map((item) => (
-                    <Link
-                      key={item.href}
-                      href={`/${locale}${item.href}`}
-                    >
-                      <li key={item.label}>{item.label}</li>
-                    </Link>
-                  ))}
+                  {navLinks.map((item) => {
+                    const isActive =
+                      `/${locale}${item.href}` === navigate;
+
+                    return (
+                      <Link
+                        key={item.href}
+                        className={cn(
+                          isActive
+                            ? 'text-body'
+                            : 'text-primary hover:text-body',
+                          'transition-all duration-300',
+                        )}
+                        href={`/${locale}${item.href}`}
+                      >
+                        <li
+                          key={item.label}
+                          className={cn(
+                            locale === 'ar' && 'flex-row-reverse',
+                            'flex items-center gap-x-[2px]',
+                          )}
+                        >
+                          {isActive && (
+                            <div className='-translate-y-[30%] text-6xl'>
+                              .
+                            </div>
+                          )}
+                          {item.label}
+                        </li>
+                      </Link>
+                    );
+                  })}
                 </ul>
               </nav>
+            </div>
 
-              <div
-                className={cn(
-                  locale === 'ar' ? 'flex-row-reverse' : '',
-                  'flex items-center gap-x-2',
-                )}
-              >
-                <LocaleSwitch
-                  className={btnAR}
-                  icon='/icons/globe.svg'
-                  textClass=''
-                />
+            <div
+              className={cn(
+                locale === 'ar' ? 'flex-row-reverse' : '',
+                'flex items-center gap-x-3',
+              )}
+            >
+              <div>
+                <Link
+                  className='border-b-[1.5px] border-solid border-primary transition duration-300 hover:border-0'
+                  href='mailto:hello@creativeendeavour.com'
+                >
+                  hello@creativeendeavour.com
+                </Link>
+              </div>
+              <LocaleSwitch
+                className='rounded-md bg-[#2D313A] px-4 py-2 text-white transition-all duration-300 hover:bg-[#2D313A]/70 active:bg-[#2D313A]/70'
+                icon='/icons/globe.svg'
+                textClass=''
+              />
 
-                <div className='md:hidden'>
-                  <DrawerBar>
-                    <Menu />
-                  </DrawerBar>
-                </div>
+              <div className='md:hidden'>
+                <DrawerBar>
+                  <Menu />
+                </DrawerBar>
               </div>
             </div>
-          </SlideInAnimation>
-        </header>
-      )}
+          </div>
+        </SlideInAnimation>
+      </header>
     </div>
   );
 };

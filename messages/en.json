@@ -1,11 +1,11 @@
 {
   "Home": {
     "title": "Your Vision, Our Mission: Collaborating to Create Products That Inspire",
-    "link-work": "Work",
+    "link-home": "Home",
     "hero-btn": "Discover our Works",
-    "link-service": "Services",
-    "link-about": "About Us",
-    "link-contact": "Contact Us",
+    "link-service": "Service",
+    "link-about": "About us",
+    "link-project": "Work/Project",
     "client-title": "Experience the Excellence: Our Team's Expertise, Your Success",
     "service-title1": "Design & Research",
     "service-desc1": "Crafting Exceptional User Experiences with Strategic Design and Insightful Research",
