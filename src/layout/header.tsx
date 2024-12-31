@@ -204,7 +204,7 @@ export const Header = () => {
             >
               <div>
                 <Link
-                  className='border-b-[1.5px] border-solid border-primary transition duration-300 hover:border-0'
+                  className='border-b-[1.5px] border-solid border-[#0A0A0A] text-[#0A0A0A] transition duration-300 hover:border-0'
                   href='mailto:hello@creativeendeavour.com'
                 >
                   hello@creativeendeavour.com

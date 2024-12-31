@@ -17,7 +17,7 @@ export default async function LocaleLayout({
 
   return (
     <html
-      className='no-visible-scrollbar scroll-smooth'
+      className='no-visible-scrollbar scroll-smooth text-primary'
       lang={locale}
     >
       <body className={`${inter.className} ${nebulica.variable}`}>
