@@ -1,6 +1,7 @@
-import JoinNow from '@/components/join-now';
+import Contact from '@/components/contact';
 import {
   About,
+  Faq,
   HeroSection,
   Projects,
   ServiceSection,
@@ -29,7 +30,19 @@ const Homepage = () => (
     <ServiceSection />
     <Projects />
     <Testimonials />
-    <JoinNow />
+    <div className='container'>
+      <hr className='border-t border-[#E0E0E0]' />
+    </div>
+    <Faq />
+    <div className='container my-20'>
+      <hr className='border-t border-[#E0E0E0]' />
+    </div>
+    <Contact
+      btnText='Let’s Talk'
+      desc="Let's explore how we can elevate your vision through our unique software development,AI integration and Reverse Engineering"
+      href='#contact'
+      title='"TELL US YOUR NEXT BIG IDEA"'
+    />
   </main>
 );
 
