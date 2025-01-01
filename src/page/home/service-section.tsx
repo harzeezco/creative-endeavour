@@ -1,156 +1,144 @@
-import SlideInAnimation from '@/components/slide-in-animation';
+'use client';
+
 import useLocalize from '@/hooks/use-locale';
 import { cn } from '@/utils/cn';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { Minus } from 'lucide-react';
 import Image from 'next/image';
-import Link from 'next/link';
 
 export const ServiceSection = () => {
   const { locale, t } = useLocalize('Home');
 
-  const Services = [
-    {
-      icon: 'd.svg',
-      head: t('service-title1'),
-      text: t('service-desc1'),
-      content: [
-        {
-          title: t('service-content1-a'),
-          desc: t('service-content1-a-desc'),
-        },
-        {
-          title: t('service-content1-b'),
-          desc: t('service-content1-b-desc'),
-        },
-        {
-          title: t('service-content1-c'),
-          desc: t('service-content1-c-desc'),
-        },
-      ],
-    },
-    {
-      icon: 'design.svg',
-      head: t('service-title2'),
-      text: t('service-desc2'),
-      content: [
-        {
-          title: t('service-content2-a'),
-          desc: t('service-content2-a-desc'),
-        },
-        {
-          title: t('service-content2-b'),
-          desc: t('service-content2-b-desc'),
-        },
-        {
-          title: t('service-content2-c'),
-          desc: t('service-content2-c-desc'),
-        },
-      ],
-    },
-    {
-      icon: 'head.svg',
-      head: t('service-title3'),
-      text: t('service-desc3'),
-      content: [
-        {
-          title: t('service-content3-a'),
-          desc: t('service-content3-a-desc'),
-        },
-        {
-          title: t('service-content3-b'),
-          desc: t('service-content3-b-desc'),
-        },
-        {
-          title: t('service-content3-c'),
-          desc: t('service-content3-c-desc'),
-        },
-      ],
-    },
-  ];
-
   return (
-    <section className='mt-20 bg-[#EFEFEF] py-20' id='services'>
-      <div
-        className={cn(
-          'container flex items-center max-lg:flex-wrap justify-center gap-y-8 gap-x-9',
-          locale === 'ar' ? 'flex-row-reverse' : '',
-        )}
-      >
-        {Services.map(({ content, head, icon, text }) => (
-          <div className='w-full'>
-            <SlideInAnimation
-              key={text}
-              as='div'
-              className={cn(
-                locale === 'ar' ? 'text-end' : 'text-start',
-                'flex w-full justify-between min-h-[500px] grow flex-col bg-white px-5 pb-10 pt-6',
-              )}
-            >
-              <div>
-                <div
-                  className={cn(
-                    locale === 'ar' ? 'flex justify-end' : '',
-                  )}
-                >
-                  <Image
-                    alt={text}
-                    height={25}
-                    src={`/icons/${icon}`}
-                    width={25}
-                  />
-                </div>
+    <section className='container py-14'>
+      <div className='mb-8 flex justify-between max-sm:flex-col'>
+        <div>
+          <p
+            className={cn(
+              locale === 'en' ? '' : 'flex-row-reverse',
+              'flex items-center gap-2 mb-2',
+            )}
+          >
+            <span className='text-lg text-[#111111]'>
+              {t('service-label')}
+            </span>
+            <Image
+              alt='line'
+              height={30}
+              src='/icons/line.svg'
+              width={50}
+            />
+          </p>
+        </div>
 
-                <h2
-                  className={cn(
-                    'mt-4 text-xl 2xl:text-2xl font-semibold text-primary-50',
-                  )}
-                >
-                  {head}
-                </h2>
+        <div>
+          <h1
+            className={cn(
+              'font-nebulica text-black text-2xl max-w-xl sm:text-3xl lg:text-4xl  md:!leading-[1.1]',
+            )}
+          >
+            {t('service-title')}
+          </h1>
 
-                <p className='text-primary-200'>{text}</p>
-              </div>
-
-              <div className='mt-10 space-y-10 justify-self-end'>
-                {content.map(({ desc, title }) => (
-                  <div className='border-b border-solid border-[#2D313A]'>
-                    <Link
-                      className='group cursor-pointer'
-                      href='#contact'
-                    >
-                      <h3
-                        className={cn(
-                          'pb-1 2xl:text-xl text-lg font-semibold',
-                        )}
-                      >
-                        {title}
-                      </h3>
-
-                      <div
-                        className={cn(
-                          'invisible flex max-h-0 items-end justify-between pb-3 text-primary-200 opacity-0 transition-all duration-400 group-hover:visible group-hover:min-h-16 group-hover:max-h-20 group-hover:opacity-100',
-                          locale === 'ar' ? 'flex-row-reverse' : '',
-                        )}
-                      >
-                        <span>{desc}</span>
-
-                        {locale === 'ar' ? (
-                          <ArrowLeft className='shrink-0' size={22} />
-                        ) : (
-                          <ArrowRight
-                            className='shrink-0'
-                            size={22}
-                          />
-                        )}
-                      </div>
-                    </Link>
-                  </div>
-                ))}
-              </div>
-            </SlideInAnimation>
-          </div>
-        ))}
+          <p className='mt-5 max-w-[650px] text-lg'>
+            {t('service-desc')}
+          </p>
+        </div>
       </div>
+
+      <Service
+        isOpen
+        desc='Custom solutions tailored to your business needs'
+        number='01'
+        samples={Samples}
+        title='SOFTWARE DEVELOPMENT'
+      />
+
+      <Service
+        desc='Custom solutions tailored to your business needs'
+        isOpen={false}
+        number='02'
+        samples={[]}
+        title='AI INTEGRATION'
+      />
+
+      <Service
+        desc='Custom solutions tailored to your business needs'
+        isOpen={false}
+        number='03'
+        samples={[]}
+        title='REVERSE ENGINEERING'
+      />
+
+      <Service
+        desc='Custom solutions tailored to your business needs'
+        isOpen={false}
+        number='04'
+        samples={[]}
+        title='BUSINESS DIGITALIZATION'
+      />
     </section>
   );
 };
+
+function Service({
+  desc,
+  isOpen,
+  number,
+  samples,
+  title,
+}: {
+  desc: string;
+  isOpen: boolean;
+  number: string;
+  samples: {
+    alt: string;
+    src: string;
+  }[];
+  title: string;
+}) {
+  return (
+    <div className='border-y border-solid border-[#D9D9D9] py-6'>
+      <div className='mb-2 flex items-center justify-between'>
+        <div className='grid grid-cols-[50px_auto] gap-x-5 font-nebulica text-4xl text-body'>
+          <p className='text-center'>{number}</p>
+          <h2 className=''>{title}</h2>
+        </div>
+
+        <button aria-label='close' type='button'>
+          <Minus />
+        </button>
+      </div>
+
+      <p>{desc}</p>
+
+      {isOpen && (
+        <div className='mt-8 flex items-center gap-x-4'>
+          {samples.map((sample) => (
+            <Image
+              key={sample.src}
+              alt={sample.alt}
+              height={500}
+              src={`/images/${sample.src}`}
+              width={500}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+const Samples = [
+  {
+    alt: 'coinbase',
+    src: 'sample1.png',
+  },
+  {
+    alt: 'sportify',
+    src: 'sample2.png',
+  },
+  {
+    alt: 'slack',
+    src: 'sample3.png',
+  },
+];
