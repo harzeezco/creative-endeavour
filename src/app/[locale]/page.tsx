@@ -2,8 +2,8 @@ import JoinNow from '@/components/join-now';
 import Tenets from '@/components/tenets';
 import {
   About,
-  ContactSection,
   HeroSection,
+  Projects,
   ServiceSection,
 } from '@/page/home';
 import { getSEOTags } from '@/utils/seo';
@@ -27,7 +27,7 @@ const Homepage = () => (
     <HeroSection />
     <About />
     <ServiceSection />
-    <ContactSection />
+    <Projects />
     <Tenets />
     <JoinNow />
   </main>
