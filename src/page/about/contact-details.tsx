@@ -4,7 +4,7 @@ import useLocalize from '@/hooks/use-locale';
 import { cn } from '@/utils/cn';
 import Image from 'next/image';
 
-export const Contact = () => {
+export const ContactDetails = () => {
   const { locale, t } = useLocalize('About');
 
   return (
