@@ -65,6 +65,7 @@ const config: Config = {
       },
       fontFamily: {
         nebulica: ['var(--font-nebulica)'],
+        cairo: ['var(--font-cairo)'],
       },
       keyframes: {
         'accordion-down': {
