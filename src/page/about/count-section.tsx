@@ -1,3 +1,5 @@
+'use client';
+
 import useLocalize from '@/hooks/use-locale';
 
 export const CountSection = () => {
