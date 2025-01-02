@@ -109,15 +109,25 @@ export const Footer = () => {
           </div>
 
           <div className='mt-10 bg-black p-3'>
-            <div className='container flex items-center justify-between text-white'>
-              <p className='max-w-md'>
-                © {new Date().getFullYear()} Creative Endeavour All
-                rights reserved.
+            <div
+              className={cn(
+                locale === 'en' ? '' : 'flex-row-reverse',
+                'container flex items-center justify-between text-white',
+              )}
+            >
+              <p
+                className={cn(
+                  locale === 'en' ? 'flex-row-reverse' : '',
+                  'flex max-w-md gap-2',
+                )}
+              >
+                <span>{t('copy')}</span>
+                <span>{new Date().getFullYear()} ©</span>
               </p>
 
               <div className='flex items-center gap-5'>
-                <Link href={`/${locale}/policy`}>Privacy Policy</Link>
-                <Link href={`/${locale}/terms`}>Term of Service</Link>
+                <Link href={`/${locale}/policy`}>{t('privacy')}</Link>
+                <Link href={`/${locale}/terms`}>{t('terms')}</Link>
               </div>
             </div>
           </div>

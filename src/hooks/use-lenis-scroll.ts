@@ -13,7 +13,7 @@ function useLenisScroll() {
     }
 
     requestAnimationFrame(raf);
-  });
+  }, []);
 
   return null;
 }

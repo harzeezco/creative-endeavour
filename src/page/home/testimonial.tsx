@@ -10,7 +10,12 @@ export const Testimonials = () => {
 
   return (
     <section className='container py-14'>
-      <div className='mb-8 flex justify-between max-sm:flex-col'>
+      <div
+        className={cn(
+          'mb-8 flex justify-between max-sm:flex-col',
+          locale === 'en' ? '' : 'flex-row-reverse',
+        )}
+      >
         <div>
           <p
             className={cn(
@@ -33,7 +38,10 @@ export const Testimonials = () => {
         <div>
           <h1
             className={cn(
-              'font-nebulica text-black text-2xl max-w-xl sm:text-3xl lg:text-4xl  md:!leading-[1.1]',
+              locale === 'en'
+                ? 'font-nebulica'
+                : 'text-end font-cairo',
+              'text-black text-2xl max-w-xl sm:text-3xl lg:text-4xl  md:!leading-[1.1]',
             )}
           >
             {t('testimonial-title')}
