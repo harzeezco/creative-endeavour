@@ -1,4 +1,10 @@
-import { About, Achievement, Hero, Principles } from '@/page/about';
+import {
+  About,
+  Achievement,
+  Contact,
+  Hero,
+  Principles,
+} from '@/page/about';
 import { getSEOTags } from '@/utils/seo';
 
 import config from '../../../../config';
@@ -24,6 +30,7 @@ const AboutPage = () => (
     </div>
     <Achievement />
     <Principles />
+    <Contact />
   </main>
 );
 
