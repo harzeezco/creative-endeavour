@@ -163,5 +163,25 @@
     "project4-label2": "Data integration and Analytics",
     "project4-label3": "Cloud Migration",
     "include": "INCLUDED :"
+  },
+  "Work": {
+    "title": "Showcasing our Best Creative Works",
+    "hero-label": "WORK/PROJECT",
+    "hero-desc": "Explore showcasing of our best and creative project",
+    "main-title": "Showcasing Our Technical Excellence.",
+    "main-content": "FEATURED PROJECT",
+    "main-label": "FEATURED PROJECT",
+    "main-desc": "Explore our portfolio of innovative software solutions, AI integration, and technical transformations that drive business success.",
+    "project1-title": "FLAGSHIP PROJECT",
+    "project1-desc": "Project Atlas Enterprise AI Analytics Platform",
+    "project1-label": "MACHINE LEARNING",
+    "project1-label1": "CLOUD ARCHITECTURE",
+    "project2-title": "QUANTUM EDGE",
+    "project2-desc": "Next-generation IoT platform with integrated AI capabilities",
+    "project2-label": "AI Integration",
+    "project2-label1": "Real-time Analytics",
+    "cta-title": "Ready to Transform Your Ideas?",
+    "cta-desc": "Transform your technical vision into reality through innovative engineering and precise execution.",
+    "cta-btn": "LET'S TALK"
   }
 }

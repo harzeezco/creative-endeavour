@@ -1,29 +1,38 @@
-import { Button } from '@/components/ui/button';
+import Contact from '@/components/contact';
 import useLocalize from '@/hooks/use-locale';
-import Link from 'next/link';
+import { Projects } from '@/page/home';
+import { Hero, WorkList } from '@/page/work';
+import { getSEOTags } from '@/utils/seo';
 
-const WorkPage = () => {
+import config from '../../../../config';
+
+export const metadata = getSEOTags({
+  title: `About Us | ${config.appName}`,
+  canonicalUrlRelative: '/about',
+  description:
+    'We partner with organizations to deliver innovative UI/UX design and effective growth strategies, helping you enhance customer experiences and achieve measurable growth',
+  keywords:
+    'UI/UX design, Building MVPs, Design & Research, Innovation Lab-aas',
+});
+const WOrkPage = () => {
   const { t } = useLocalize('Work');
 
   return (
-    <main className='work relative min-h-dvh'>
-      <div className='absolute left-1/2 top-1/2 z-[100] flex -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center text-center'>
-        <h1 className='text-5xl font-medium text-primary-350'>
-          {t('heading')}
-        </h1>
-        <p className='mb-6 mt-4 text-primary-200'>{t('desc')}</p>
-
-        <Link href='/'>
-          <Button
-            className='w-fit bg-black px-6 py-4 font-semibold text-white transition-all duration-300 hover:bg-black/70 active:bg-black/70'
-            type='submit'
-          >
-            {t('work-btn')}
-          </Button>
-        </Link>
+    <main>
+      <Hero />
+      <WorkList />
+      <Projects />
+      <div className='container mb-20'>
+        <hr className='border-t border-[#E0E0E0]' />
       </div>
+      <Contact
+        btnText={t('cta-btn')}
+        desc={t('cta-desc')}
+        href='#contact'
+        title={t('cta-title')}
+      />
     </main>
   );
 };
 
-export default WorkPage;
+export default WOrkPage;
