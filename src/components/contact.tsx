@@ -27,7 +27,7 @@ function Contact({
         {title}
       </h1>
 
-      <p className='mx-auto mb-7 max-w-[700px] text-center text-lg'>
+      <p className='mx-auto mb-7 mt-3 max-w-[700px] text-center text-lg'>
         {desc}
       </p>
 

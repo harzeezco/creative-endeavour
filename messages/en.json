@@ -80,7 +80,7 @@
   "About": {
     "title": "Hi, We're a Tech Innovation Hub Based in Riyadh.",
     "hero-label": "ABOUT US",
-    "hero-desc": "Hi, We're a Tech Innovation Hub Based in Riyadh.",
+    "hero-desc": "Hi, we're Creative Endeavour, a global studio based in Saudi Arabia, offering innovative software solutions for clients worldwide.",
     "hero-content-head1": "Creative Excellence",
     "hero-content-desc1": "Unparalleled creativity, pushing boundaries and exploring new ideas",
     "hero-content-head2": "Technical Mastery",
@@ -128,9 +128,40 @@
     "count-project": "Designs Created",
     "count-client": "Happy Clients"
   },
-  "Work": {
-    "heading": "Crafting Excellence: Behind the Scenes of Innovation",
-    "desc": "Coming soon...",
-    "work-btn": "Back Home"
+  "Service": {
+    "title": "Innovative Tech Solutions",
+    "hero-label": "OUR SERVICE",
+    "hero-desc": "Expert software development and AI integration services tailored for your business, delivering scalable, innovative, and future-ready solutions.",
+    "service-title": "THINGS WE HANDLE",
+    "service-label": "OUR SERVICE",
+    "service-desc": "Transforming complex technical challenges into elegant solutions through innovative engineering, clear communication, and precise execution.",
+    "cta-title": "Share Your Technical Vision",
+    "cta-desc": "From concept to deployment, we transform complex requirements intopowerful technical solutions through innovative engineering and precise execution.",
+    "cta-btn": "LET'S INNOVATE",
+    "project1-title": "SOFTWARE DEVELOPMENT",
+    "project1-desc": "Transform your business with our comprehensive software development solutions,built to scale and adapt to your evolving needs.",
+    "project1-label": "UI/UX",
+    "project1-label1": "Web Development",
+    "project1-label2": "App Development",
+    "project1-label3": "Web App Development",
+    "project2-title": "AI INTEGRATION",
+    "project2-desc": "Harness the power of artificial intelligence with our cutting-edge integration services and intelligent system solutions.",
+    "project2-label": "Custom AI Integration",
+    "project2-label1": "Machine Learning Integration",
+    "project2-label2": "AI Model Development",
+    "project2-label3": "Natural Language Processing",
+    "project3-title": "REVERSE ENGINEERING",
+    "project3-desc": "Decode and optimize existing systems with our advanced analysis and reconstruction expertise.",
+    "project3-label": "System Analysis",
+    "project3-label1": "Performance Optimization",
+    "project3-label2": "Code Recovery",
+    "project3-label3": "Legacy System Modernization",
+    "project4-title": "BUSINESS DIGITALIZATION",
+    "project4-desc": "Strategic help business tradition from traditional workflow to efficient, technology-driven operations.",
+    "project4-label": "Process Automation",
+    "project4-label1": "Cybersecurity Implementation",
+    "project4-label2": "Data integration and Analytics",
+    "project4-label3": "Cloud Migration",
+    "include": "INCLUDED :"
   }
 }
