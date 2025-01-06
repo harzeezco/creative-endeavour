@@ -29,7 +29,7 @@ export const Footer = () => {
 
   return (
     <div>
-      <footer className='mt-20 border-t border-solid border-[#EDEDED] pt-16 max-lg:px-4'>
+      <footer className='mt-20 border-t border-solid border-[#EDEDED] pt-16'>
         <div
           className={cn(
             locale === 'en' ? ' ' : 'flex-row-reverse',
@@ -109,7 +109,7 @@ export const Footer = () => {
           <div
             className={cn(
               locale === 'en' ? '' : 'flex-row-reverse',
-              'container flex items-center justify-between text-white',
+              'container flex max-sm:flex-col items-center justify-between text-white',
             )}
           >
             <p

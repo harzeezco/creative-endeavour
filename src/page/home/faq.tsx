@@ -8,14 +8,23 @@ import {
 } from '@/components/ui/accordion';
 import useLocalize from '@/hooks/use-locale';
 import { cn } from '@/utils/cn';
+import { slideUp } from '@/utils/motion';
+import { motion, useInView } from 'framer-motion';
 import Image from 'next/image';
+import { useRef } from 'react';
 
 export const Faq = () => {
   const { locale, t } = useLocalize('Home');
+  const ref = useRef(null);
+  const title = t('faq-title');
+  const desc = t('faq-desc');
+  const label = t('faq-label');
+  const isInView = useInView(ref, { amount: 0.3, once: true });
 
   return (
     <section className='container mt-20'>
       <div
+        ref={ref}
         className={cn(
           'mb-8 flex justify-between max-sm:flex-col',
           locale === 'en' ? '' : 'flex-row-reverse',
@@ -29,7 +38,22 @@ export const Faq = () => {
             )}
           >
             <span className='text-lg text-[#111111]'>
-              {t('faq-label')}
+              {label.split(' ').map((word, index) => (
+                <span
+                  key={index}
+                  className='relative inline-flex overflow-hidden '
+                >
+                  <motion.span
+                    key={index}
+                    animate={isInView ? 'open' : 'closed'}
+                    custom={index}
+                    variants={slideUp}
+                  >
+                    {word}
+                  </motion.span>
+                  <span className='inline-block'>&nbsp;</span>
+                </span>
+              ))}
             </span>
             <Image
               alt='line'
@@ -53,7 +77,22 @@ export const Faq = () => {
               'text-black text-2xl max-w-xl sm:text-3xl lg:text-4xl  md:!leading-[1.1]',
             )}
           >
-            {t('faq-title')}
+            {title.split(' ').map((word, index) => (
+              <span
+                key={index}
+                className='relative inline-flex overflow-hidden '
+              >
+                <motion.span
+                  key={index}
+                  animate={isInView ? 'open' : 'closed'}
+                  custom={index}
+                  variants={slideUp}
+                >
+                  {word}
+                </motion.span>
+                <span className='inline-block'>&nbsp;</span>
+              </span>
+            ))}
           </h1>
 
           <p
@@ -62,7 +101,22 @@ export const Faq = () => {
               'mt-5 max-w-[650px] text-lg',
             )}
           >
-            {t('faq-desc')}
+            {desc.split(' ').map((word, index) => (
+              <span
+                key={index}
+                className='relative inline-flex overflow-hidden '
+              >
+                <motion.span
+                  key={index}
+                  animate={isInView ? 'open' : 'closed'}
+                  custom={index}
+                  variants={slideUp}
+                >
+                  {word}
+                </motion.span>
+                <span className='inline-block'>&nbsp;</span>
+              </span>
+            ))}
           </p>
         </div>
       </div>
@@ -91,13 +145,13 @@ export const Faq = () => {
             <AccordionTrigger>
               <span className='text-left'>{t('faq-title4')}</span>
             </AccordionTrigger>
-            <AccordionContent>{t('faq-title4')}</AccordionContent>
+            <AccordionContent>{t('faq-desc4')}</AccordionContent>
           </AccordionItem>
           <AccordionItem className='pb-2' value='item-5'>
             <AccordionTrigger>
               <span className='text-left'>{t('faq-title5')}</span>
             </AccordionTrigger>
-            <AccordionContent>{t('faq-title5')}</AccordionContent>
+            <AccordionContent>{t('faq-desc5')}</AccordionContent>
           </AccordionItem>
         </Accordion>
       </div>

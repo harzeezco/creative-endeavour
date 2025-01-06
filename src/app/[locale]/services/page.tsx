@@ -18,7 +18,8 @@ const ServicePage = () => {
   const { t } = useLocalize('Service');
 
   return (
-    <main>
+    <main className='mt-[90px]'>
+      <hr className='mt-[90px] border-t border-[#E0E0E0]' />
       <Hero />
       <Service />
       <ServiceLists />

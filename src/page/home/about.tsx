@@ -3,11 +3,19 @@
 import useCounter from '@/hooks/use-counter';
 import useLocalize from '@/hooks/use-locale';
 import { cn } from '@/utils/cn';
+import { slideUp } from '@/utils/motion';
+import { motion, useInView } from 'framer-motion';
 import Image from 'next/image';
+import { useRef } from 'react';
 
 export const About = () => {
   const { locale, t } = useLocalize('Home');
   const { counter1, counter2, observe } = useCounter();
+  const ref = useRef(null);
+  const title = t('about-title');
+  const desc = t('about-desc');
+  const label = t('about-label');
+  const isInView = useInView(ref, { amount: 0.3, once: true });
 
   return (
     <section
@@ -18,29 +26,70 @@ export const About = () => {
       id='about'
     >
       <div>
-        <p
+        <div
           className={cn(
             locale === 'en' ? '' : 'flex-row-reverse',
             'flex items-center gap-2 mb-2',
           )}
         >
-          <span className='text-lg text-[#111111]'>
-            {t('about-label')}
-          </span>
+          <p className='text-lg text-[#111111]'>
+            {label.split(' ').map((word, index) => (
+              <span
+                key={index}
+                className='relative inline-flex overflow-hidden '
+              >
+                <motion.span
+                  key={index}
+                  animate={isInView ? 'open' : 'closed'}
+                  custom={index}
+                  variants={slideUp}
+                >
+                  {word}
+                </motion.span>
+                <span className='inline-block'>&nbsp;</span>
+              </span>
+            ))}
+          </p>
           <Image
             alt='line'
             height={30}
             src='/icons/line.svg'
             width={50}
           />
-        </p>
+        </div>
       </div>
 
-      <div>
+      <div ref={ref}>
         <div
           className={cn(locale === 'en' ? '' : 'flex justify-end')}
         >
-          <h1
+          <p
+            className={cn(
+              locale === 'en'
+                ? 'font-nebulica'
+                : 'text-end font-cairo',
+              'text-black text-2xl max-w-xl sm:text-3xl lg:text-4xl  md:!leading-[1.1]',
+            )}
+          >
+            {title.split(' ').map((word, index) => (
+              <span
+                key={index}
+                className='relative inline-flex overflow-hidden '
+              >
+                <motion.span
+                  key={index}
+                  animate={isInView ? 'open' : 'closed'}
+                  custom={index}
+                  variants={slideUp}
+                >
+                  {word}
+                </motion.span>
+                <span className='inline-block'>&nbsp;</span>
+              </span>
+            ))}
+          </p>
+
+          {/* <h1
             className={cn(
               locale === 'en'
                 ? 'font-nebulica'
@@ -49,7 +98,7 @@ export const About = () => {
             )}
           >
             {t('about-title')}
-          </h1>
+          </h1> */}
         </div>
 
         <p
@@ -58,7 +107,22 @@ export const About = () => {
             'mt-5 max-w-[650px] text-lg',
           )}
         >
-          {t('about-desc')}
+          {desc.split(' ').map((word, index) => (
+            <span
+              key={index}
+              className='relative inline-flex overflow-hidden'
+            >
+              <motion.span
+                key={index}
+                animate={isInView ? 'open' : 'closed'}
+                custom={index}
+                variants={slideUp}
+              >
+                {word}
+              </motion.span>
+              <span className='inline-block'>&nbsp;</span>
+            </span>
+          ))}
         </p>
 
         <div

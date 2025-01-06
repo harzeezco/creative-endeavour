@@ -1,5 +1,7 @@
 import useLocalize from '@/hooks/use-locale';
 import { cn } from '@/utils/cn';
+import { slideUp } from '@/utils/motion';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 import {
@@ -10,7 +12,11 @@ import {
   CarouselPrevious,
 } from './ui/carousel';
 
-export function TestimonialCarousel() {
+export function TestimonialCarousel({
+  isInView,
+}: {
+  isInView: boolean;
+}) {
   const { locale, t } = useLocalize('Home');
 
   const TestimonialData = [
@@ -47,7 +53,22 @@ export function TestimonialCarousel() {
                       'font-nebulica text-xl leading-7 text-body md:text-3xl md:leading-[33px]',
                     )}
                   >
-                    {description}
+                    {description.split(' ').map((word, index) => (
+                      <span
+                        key={index}
+                        className='relative inline-flex overflow-hidden '
+                      >
+                        <motion.span
+                          key={index}
+                          animate={isInView ? 'open' : 'closed'}
+                          custom={index}
+                          variants={slideUp}
+                        >
+                          {word}
+                        </motion.span>
+                        <span className='inline-block'>&nbsp;</span>
+                      </span>
+                    ))}
                   </blockquote>
 
                   <div className='mt-10 flex items-center justify-between'>
