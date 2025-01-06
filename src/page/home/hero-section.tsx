@@ -1,6 +1,5 @@
 'use client';
 
-import SlideInAnimation from '@/components/slide-in-animation';
 import { SlidingImages } from '@/components/sliding-images';
 import useLocalize from '@/hooks/use-locale';
 import { cn } from '@/utils/cn';
@@ -11,7 +10,7 @@ export const HeroSection = () => {
   const { locale, t } = useLocalize('Home');
 
   return (
-    <section className='container py-14 sm:min-h-[60dvh]'>
+    <section className='container py-14'>
       <div>
         <p
           className={cn(
@@ -30,23 +29,18 @@ export const HeroSection = () => {
           />
         </p>
       </div>
-      <SlideInAnimation
-        as='h1'
+      <h1
         className={cn(
-          'font-nebulica text-black text-3xl max-sm:px-4 sm:text-4xl md:text-5xl lg:text-6xl max-w-5xl md:!leading-[1.1]',
+          'font-nebulica text-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl max-w-5xl md:!leading-[1.1]',
         )}
       >
         {t('title')}
-      </SlideInAnimation>
+      </h1>
 
-      <p className='mt-5 max-w-[650px] text-lg'>
-        We’re Creative endeavor, a full-service agency where Software
-        and AI technology join to create extraordinary digital
-        experiences
-      </p>
+      <p className='mt-5 max-w-[650px] text-lg'>{t('hero-desc')}</p>
 
       <div className='mb-16 mt-8'>
-        <Link href='/work'>
+        <Link className='inline-block' href='/work'>
           <button className='flex items-center gap-2 rounded-[12px] bg-black px-4 py-3 text-white transition-all duration-300 hover:bg-[#2D313A]/70 active:bg-[#2D313A]/70'>
             <span>{t('hero-btn')}</span>
 

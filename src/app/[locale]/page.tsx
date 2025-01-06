@@ -1,10 +1,10 @@
 import JoinNow from '@/components/join-now';
 import Tenets from '@/components/tenets';
 import {
+  About,
   ContactSection,
   HeroSection,
   ServiceSection,
-  TrustedCompanies,
 } from '@/page/home';
 import { getSEOTags } from '@/utils/seo';
 
@@ -25,13 +25,11 @@ export const metadata = getSEOTags({
 const Homepage = () => (
   <main className='2xl:pr-6'>
     <HeroSection />
-    <TrustedCompanies />
+    <About />
     <ServiceSection />
     <ContactSection />
     <Tenets />
     <JoinNow />
-    {/* <LatestNews /> */}
-    {/* <QASection /> */}
   </main>
 );
 
