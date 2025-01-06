@@ -5,7 +5,7 @@ import { cn } from '@/utils/cn';
 import Image from 'next/image';
 
 export const Hero = () => {
-  const { locale, t } = useLocalize('About');
+  const { locale, t } = useLocalize('Service');
 
   return (
     <section className='container py-14'>
@@ -35,7 +35,7 @@ export const Hero = () => {
         <h1
           className={cn(
             locale === 'en' ? 'font-nebulica' : 'font-cairo text-end',
-            ' text-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl max-w-[850px] md:!leading-[1.1]',
+            ' text-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl max-w-[800px] md:!leading-[1.1]',
           )}
         >
           {t('title')}
@@ -44,7 +44,7 @@ export const Hero = () => {
         <p
           className={cn(
             locale === 'en' ? '' : 'text-end',
-            'mt-5 max-w-[650px] text-lg',
+            'mt-5 max-w-[700px] text-lg',
           )}
         >
           {t('hero-desc')}
