@@ -77,7 +77,7 @@ export function DrawerBar({
           </div>
 
           <ul className='mb-11 mt-3 flex gap-3'>
-            {SOCIALS.map(({ href, icon }) => (
+            {SOCIALS.map(({ href, name }) => (
               <Link
                 key={href}
                 className={cn(
@@ -86,7 +86,7 @@ export function DrawerBar({
                 href={href}
                 target='_blank'
               >
-                {icon}
+                {name}
               </Link>
             ))}
           </ul>

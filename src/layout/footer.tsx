@@ -1,56 +1,42 @@
 'use client';
 
-import LocaleSwitch from '@/components/locale-dropdown';
 import useLocalize from '@/hooks/use-locale';
 import { cn } from '@/utils/cn';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import {
-  FaInstagram,
-  FaLinkedinIn,
-  FaXTwitter,
-} from 'react-icons/fa6';
 
 export const Footer = () => {
   const { locale, t } = useLocalize('Home');
   const navigate = usePathname();
 
-  const Links = [
+  const navLinks = [
     {
-      label: t('footer-page1'),
-      href: '/work',
+      label: t('link-home'),
+      href: '',
     },
     {
-      label: t('footer-page2'),
+      label: t('link-about'),
       href: '/about',
     },
     {
-      label: t('footer-page3'),
-      href: '',
+      label: t('link-service'),
+      href: '/services',
     },
     {
-      label: t('footer-page4'),
-      href: '#contact',
-    },
-    {
-      label: t('footer-page5'),
-      href: '',
-    },
-    {
-      label: t('footer-page6'),
-      href: '',
+      label: t('link-project'),
+      href: '/work',
     },
   ];
 
   return (
     <div>
       {navigate.includes('work') ? null : (
-        <footer className='mt-20 border-t border-solid border-[#EDEDED] py-16 max-lg:px-4'>
+        <footer className='mt-20 border-t border-solid border-[#EDEDED] pt-16 max-lg:px-4'>
           <div
             className={cn(
               locale === 'en' ? ' ' : 'flex-row-reverse',
-              'mx-auto mb-3 flex max-xl:max-w-[1150px] xl:container justify-between max-sm:flex-col gap-y-10 sm:flex-wrap text-[#181A2E]',
+              'mx-auto mb-3 flex container justify-between max-sm:flex-col gap-y-10 sm:flex-wrap',
             )}
           >
             <div
@@ -66,73 +52,73 @@ export const Footer = () => {
               >
                 <Image
                   alt='logo'
-                  height={40}
+                  height={90}
                   src={
                     locale === 'en'
                       ? '/icons/logo.svg'
                       : '/icons/logo-ar.svg'
                   }
-                  width={70}
+                  width={120}
                 />
               </Link>
 
-              <p className='mt-3 max-w-md'>{t('footer-desc')}</p>
+              <p className='mb-5 mt-3 max-w-[300px]'>
+                2118 Thornridge Cir. Syracuse, Connecticut 35624
+              </p>
+
+              <Link
+                className='border-b-[1.5px] border-solid border-[#0A0A0A] text-[#0A0A0A] transition duration-300 hover:border-0'
+                href='mailto:hello@creativeendeavour.com'
+              >
+                hello@creativeendeavour.com
+              </Link>
             </div>
 
             <div>
-              <h3 className='mb-3 text-xl font-bold'>
-                {t('footer-pages-title')}
+              <h3 className='mb-3 text-lg font-medium text-body'>
+                Quick Links
               </h3>
-              <div className='grid grid-cols-2 gap-x-10 gap-y-3'>
-                {Links.map(({ href, label }) => (
+              <div className='flex flex-col gap-y-3'>
+                {navLinks.map(({ href, label }) => (
                   <Link href={`/${locale}${href}`}>{label}</Link>
                 ))}
               </div>
             </div>
 
             <div>
-              <h3 className='mb-3 text-xl font-bold'>
-                {t('footer-contact')}
+              <h3 className='mb-3 text-lg font-medium text-body'>
+                Contact Information
               </h3>
-              <Link
-                className='border-b border-solid'
-                href='mailto:Hello@sanaam.sa?subject=Pre-filled Subject&body=Please%20enter%20your%20message%20here.'
-              >
-                Hello@sanaam.sa
-              </Link>
+              <div className='flex flex-col gap-y-3'>
+                {contact.map((label) => (
+                  <Link href={`/${locale}${label}`}>{label}</Link>
+                ))}
+              </div>
             </div>
 
-            <div className='flex flex-col gap-7'>
-              <LocaleSwitch
-                className=''
-                icon='/icons/globe-black.svg'
-                textClass='text-[#181A2E]'
-              />
-
-              <Link
-                className='w-fit bg-primary-350 px-6 py-2 text-white transition-all duration-300 hover:bg-primary-350/70 active:bg-primary-350/70'
-                href='#contact'
-              >
-                {t('footer-btn')}
-              </Link>
+            <div>
+              <h3 className='mb-3 text-lg font-medium text-body'>
+                Social Media
+              </h3>
+              <div className='flex flex-col gap-y-3'>
+                {SOCIALS.map(({ href, name }) => (
+                  <Link href={`/${locale}${href}`}>{name}</Link>
+                ))}
+              </div>
             </div>
           </div>
 
-          <div className='mx-auto mt-8 flex items-center justify-between xl:container max-xl:max-w-[1150px]'>
-            <p className='max-w-md'>
-              Copyright © {new Date().getFullYear()} Sanaam | All
-              Rights Reserved | Terms and Conditions | Privacy Policy
-            </p>
+          <div className='mt-10 bg-black p-3'>
+            <div className='container flex items-center justify-between text-white'>
+              <p className='max-w-md'>
+                © {new Date().getFullYear()} Creative Endeavour All
+                rights reserved.
+              </p>
 
-            <div className='flex gap-2'>
-              {SOCIALS.map(({ href, icon }) => (
-                <Link
-                  className='h-fit bg-[#FAFAFA] p-2 text-xl'
-                  href={href}
-                >
-                  {icon}
-                </Link>
-              ))}
+              <div className='flex items-center gap-5'>
+                <Link href={`/${locale}/policy`}>Privacy Policy</Link>
+                <Link href={`/${locale}/terms`}>Term of Service</Link>
+              </div>
             </div>
           </div>
         </footer>
@@ -143,15 +129,21 @@ export const Footer = () => {
 
 export const SOCIALS = [
   {
-    icon: <FaLinkedinIn />,
-    href: 'https://www.linkedin.com/company/sanaam-sa',
+    name: 'Instagram',
+    href: '',
   },
   {
-    icon: <FaXTwitter />,
-    href: 'https://x.com/sanaam_sa',
+    name: 'X',
+    href: '',
   },
   {
-    icon: <FaInstagram />,
-    href: 'https://www.instagram.com/sanaam.in?igsh=Z3N5YXlodGRvcDc%3D&utm_source=qr',
+    name: 'Dribbble',
+    href: '',
+  },
+  {
+    name: 'Facebook',
+    href: '',
   },
 ];
+
+const contact = ['Email', 'Phone', 'Address'];

@@ -11,53 +11,72 @@ export const HeroSection = () => {
 
   return (
     <section className='container py-14'>
-      <div>
-        <p
-          className={cn(
-            locale === 'en' ? '' : 'flex-row-reverse',
-            'flex items-center gap-2 mb-2',
-          )}
-        >
-          <span className='text-lg text-[#111111]'>
-            {t('hero-label')}
-          </span>
-          <Image
-            alt='line'
-            height={30}
-            src='/icons/line.svg'
-            width={50}
-          />
-        </p>
-      </div>
-      <h1
+      <div
         className={cn(
-          'font-nebulica text-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl max-w-5xl md:!leading-[1.1]',
+          locale === 'en' ? '' : 'flex flex-col items-end',
         )}
       >
-        {t('title')}
-      </h1>
-
-      <p className='mt-5 max-w-[650px] text-lg'>{t('hero-desc')}</p>
-
-      <div className='mb-16 mt-8'>
-        <Link className='inline-block' href='/work'>
-          <button className='flex items-center gap-2 rounded-[12px] bg-black px-4 py-3 text-white transition-all duration-300 hover:bg-[#2D313A]/70 active:bg-[#2D313A]/70'>
-            <span>{t('hero-btn')}</span>
-
-            <span className='flex h-7 w-8 items-center justify-center rounded-[4px] bg-white'>
-              <Image
-                alt='arrow'
-                height={12}
-                src={
-                  locale === 'en'
-                    ? '/icons/arrow-right.svg'
-                    : '/icons/arrow-left.svg'
-                }
-                width={12}
-              />
+        <div>
+          <p
+            className={cn(
+              locale === 'en' ? '' : 'flex-row-reverse',
+              'flex items-center gap-2 mb-2',
+            )}
+          >
+            <span className='text-lg text-[#111111]'>
+              {t('hero-label')}
             </span>
-          </button>
-        </Link>
+            <Image
+              alt='line'
+              height={30}
+              src='/icons/line.svg'
+              width={50}
+            />
+          </p>
+        </div>
+        <h1
+          className={cn(
+            locale === 'en' ? 'font-nebulica' : 'font-cairo text-end',
+            ' text-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl max-w-5xl md:!leading-[1.1]',
+          )}
+        >
+          {t('title')}
+        </h1>
+
+        <p
+          className={cn(
+            locale === 'en' ? '' : 'text-end',
+            'mt-5 max-w-[650px] text-lg',
+          )}
+        >
+          {t('hero-desc')}
+        </p>
+
+        <div className='mb-16 mt-8'>
+          <Link className='inline-block' href='/work'>
+            <button
+              className={cn(
+                locale === 'en' ? '' : 'flex-row-reverse ',
+                'flex items-center gap-2 rounded-[12px] bg-black px-4 py-3 text-white transition-all duration-300 hover:bg-[#2D313A]/70 active:bg-[#2D313A]/70',
+              )}
+            >
+              <span>{t('hero-btn')}</span>
+
+              <span className='flex h-7 w-8 items-center justify-center rounded-[4px] bg-white'>
+                <Image
+                  alt='arrow'
+                  height={12}
+                  src={
+                    locale === 'en'
+                      ? '/icons/arrow-dark-right.svg'
+                      : '/icons/arrow-dark-left.svg'
+                  }
+                  width={12}
+                />
+              </span>
+            </button>
+          </Link>
+        </div>
       </div>
 
       <div className='flex items-center justify-between gap-x-4'>
