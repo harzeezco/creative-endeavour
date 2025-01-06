@@ -9,7 +9,7 @@ export const nebulica = localFont({
       style: 'normal',
     },
     {
-      path: '../../public/font/Nebulica-Semibold.otf',
+      path: '../../public/font/Nebulica-SemiBold.otf',
       weight: '600',
       style: 'normal',
     },
