@@ -31,43 +31,33 @@ export function SlidingImages() {
 
 const testimonials = [
   {
-    src: 'mock7.png',
+    src: 'hero-1.png',
     alt: 'Mock1',
     size: 750,
   },
   {
-    src: 'mock2.webp',
+    src: 'hero-2.png',
     alt: 'Mock2',
     size: 730,
   },
   {
-    src: 'mock8.png',
+    src: 'hero-3.png',
     alt: 'Mock3',
-    size: 350,
+    size: 650,
   },
   {
-    src: 'mock6.webp',
+    src: 'hero-4.png',
     alt: 'Mock4',
     size: 750,
   },
   {
-    src: 'mock4.webp',
+    src: 'hero-5.png',
     alt: 'Mock5',
-    size: 350,
+    size: 650,
   },
   {
-    src: 'mock2.webp',
-    alt: 'Mock1=5',
-    size: 450,
-  },
-  {
-    src: 'mock5.webp',
-    alt: 'Mock6',
-    size: 750,
-  },
-  {
-    src: 'mock3.webp',
-    alt: 'Mock7',
-    size: 750,
+    src: 'hero-6.png',
+    alt: 'Mock',
+    size: 650,
   },
 ];
