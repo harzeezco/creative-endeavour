@@ -15,7 +15,12 @@ export const Faq = () => {
 
   return (
     <section className='container mt-20'>
-      <div className='mb-8 flex justify-between max-sm:flex-col'>
+      <div
+        className={cn(
+          'mb-8 flex justify-between max-sm:flex-col',
+          locale === 'en' ? '' : 'flex-row-reverse',
+        )}
+      >
         <div>
           <p
             className={cn(
@@ -35,16 +40,28 @@ export const Faq = () => {
           </p>
         </div>
 
-        <div>
+        <div
+          className={cn(
+            locale === 'en' ? '' : 'flex flex-col items-end',
+          )}
+        >
           <h1
             className={cn(
-              'font-nebulica text-black text-2xl max-w-xl sm:text-3xl lg:text-4xl  md:!leading-[1.1]',
+              locale === 'en'
+                ? 'font-nebulica'
+                : 'text-end font-cairo',
+              'text-black text-2xl max-w-xl sm:text-3xl lg:text-4xl  md:!leading-[1.1]',
             )}
           >
             {t('faq-title')}
           </h1>
 
-          <p className='mt-5 max-w-[650px] text-lg'>
+          <p
+            className={cn(
+              locale === 'en' ? '' : 'text-end',
+              'mt-5 max-w-[650px] text-lg',
+            )}
+          >
             {t('faq-desc')}
           </p>
         </div>
@@ -54,43 +71,33 @@ export const Faq = () => {
         <Accordion type='multiple'>
           <AccordionItem className=' pb-2' value='item-1'>
             <AccordionTrigger>
-              <span className='text-left'>
-                The frequently asked question?
-              </span>
+              <span className='text-left'>{t('faq-title1')}</span>
             </AccordionTrigger>
-            <AccordionContent>
-              This is the description of the questions
-            </AccordionContent>
+            <AccordionContent>{t('faq-desc1')}</AccordionContent>
           </AccordionItem>
           <AccordionItem className='pb-2' value='item-2'>
             <AccordionTrigger>
-              <span className='text-left'>
-                The frequently asked question?
-              </span>
+              <span className='text-left'>{t('faq-title2')}</span>
             </AccordionTrigger>
-            <AccordionContent>
-              This is the description of the questions
-            </AccordionContent>
+            <AccordionContent>{t('faq-desc2')}</AccordionContent>
           </AccordionItem>
           <AccordionItem className='pb-2' value='item-3'>
             <AccordionTrigger>
-              <span className='text-left'>
-                The frequently asked question?
-              </span>
+              <span className='text-left'>{t('faq-title3')}</span>
             </AccordionTrigger>
-            <AccordionContent>
-              This is the description of the questions
-            </AccordionContent>
+            <AccordionContent>{t('faq-desc3')}</AccordionContent>
           </AccordionItem>
           <AccordionItem className='pb-2' value='item-4'>
             <AccordionTrigger>
-              <span className='text-left'>
-                The frequently asked question?
-              </span>
+              <span className='text-left'>{t('faq-title4')}</span>
             </AccordionTrigger>
-            <AccordionContent>
-              This is the description of the questions
-            </AccordionContent>
+            <AccordionContent>{t('faq-title4')}</AccordionContent>
+          </AccordionItem>
+          <AccordionItem className='pb-2' value='item-5'>
+            <AccordionTrigger>
+              <span className='text-left'>{t('faq-title5')}</span>
+            </AccordionTrigger>
+            <AccordionContent>{t('faq-title5')}</AccordionContent>
           </AccordionItem>
         </Accordion>
       </div>

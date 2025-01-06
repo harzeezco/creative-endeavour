@@ -7,6 +7,33 @@ import Image from 'next/image';
 export const Projects = () => {
   const { locale, t } = useLocalize('Home');
 
+  const projects = [
+    {
+      src: 'project2.png',
+      title: t('project1-title'),
+      desc: t('project1-desc'),
+      labels: [t('project1-label'), t('project1-label1')],
+    },
+    {
+      src: 'project1.png',
+      title: t('project2-title'),
+      desc: t('project2-desc'),
+      labels: [t('project2-label')],
+    },
+    {
+      src: 'project3.png',
+      title: t('project3-title'),
+      desc: t('project3-desc'),
+      labels: [t('project3-label'), t('project3-label1')],
+    },
+    {
+      src: 'project4.png',
+      title: t('project4-title'),
+      desc: t('project4-desc'),
+      labels: [t('project4-label'), t('project4-label1')],
+    },
+  ];
+
   return (
     <section className='container py-14'>
       <div className='mb-8 flex justify-between max-sm:flex-col'>
@@ -64,6 +91,8 @@ function ProjectList({
   src: string;
   title: string;
 }) {
+  const { locale } = useLocalize('Home');
+
   return (
     <div className=''>
       <Image
@@ -73,50 +102,34 @@ function ProjectList({
         src={`/images/${src}`}
         width={500}
       />
-      <h2 className='mt-2 font-nebulica text-lg text-[#111111]'>
-        {title}
-      </h2>
+      <div
+        className={cn(
+          locale === 'en' ? '' : 'flex flex-col items-end',
+        )}
+      >
+        <h2
+          className={cn(
+            locale === 'en' ? 'font-nebulica' : 'font-cairo',
+            'mt-2 text-lg text-[#111111]',
+          )}
+        >
+          {title}
+        </h2>
 
-      <p className='py-2'>{desc}</p>
+        <p className='py-2'>{desc}</p>
 
-      <div className='mt-4 flex items-center gap-x-4'>
-        {labels.map((label) => (
-          <button
-            key={label}
-            className='cursor-text rounded-[8px] bg-[#F4F1FD] px-4 py-1.5 text-body'
-            type='button'
-          >
-            {label}
-          </button>
-        ))}
+        <div className='mt-4 flex items-center gap-x-4'>
+          {labels.map((label) => (
+            <button
+              key={label}
+              className='cursor-text rounded-[8px] bg-[#F4F1FD] px-4 py-1.5 text-body'
+              type='button'
+            >
+              {label}
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   );
 }
-
-const projects = [
-  {
-    src: 'project2.png',
-    title: 'SMARTHEALTH WEBSITE',
-    desc: 'A dynamic website showcasing cutting-edge digital solutions and innovative software excellence.',
-    labels: ['Web Development', 'Web App Development'],
-  },
-  {
-    src: 'project1.png',
-    title: 'Enterprise Software Migration',
-    desc: 'We empower brands with innovative strategies and impactful digital solutions for growth and success.',
-    labels: ['SOFTWARE DEVELOPMENT'],
-  },
-  {
-    src: 'project3.png',
-    title: 'CityGov Portal',
-    desc: 'Exploring new horizons in digital innovation,  and transformative technological solutions for your business.',
-    labels: ['AI', 'SOFTWARE DEVELOPMENT'],
-  },
-  {
-    src: 'project4.png',
-    title: 'Legacy System Modernization',
-    desc: 'Redefining possibilities through groundbreaking digital solutions and creative innovation for enhanced business success.',
-    labels: ['REVERSE ENGINEERING', 'SOFTWARE DEVELOPMENT'],
-  },
-];

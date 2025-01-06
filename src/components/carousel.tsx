@@ -1,3 +1,5 @@
+import useLocalize from '@/hooks/use-locale';
+import { cn } from '@/utils/cn';
 import Image from 'next/image';
 
 import {
@@ -8,28 +10,27 @@ import {
   CarouselPrevious,
 } from './ui/carousel';
 
-const TestimonialData = [
-  {
-    src: 'testimonial-student.png',
-    description:
-      '"Creative Endeavour transformed our healthcare platform with their AI integration expertise. Their innovative solutions streamlined patient data management, improving efficiency by 70%. We’re proud to work with such a forward-thinking team."',
-    person: 'Kristin Watson',
-  },
-  {
-    src: 'testimonial-student.png',
-    description:
-      '"Creative Endeavour transformed our healthcare platform with their AI integration expertise. Their innovative solutions streamlined patient data management, improving efficiency by 70%. We’re proud to work with such a forward-thinking team."',
-    person: 'Kristin Watson',
-  },
-  {
-    src: 'testimonial-student.png',
-    description:
-      '"Creative Endeavour transformed our healthcare platform with their AI integration expertise. Their innovative solutions streamlined patient data management, improving efficiency by 70%. We’re proud to work with such a forward-thinking team."',
-    person: 'Kristin Watson',
-  },
-];
-
 export function TestimonialCarousel() {
+  const { locale, t } = useLocalize('Home');
+
+  const TestimonialData = [
+    {
+      src: 'testimonial-student.png',
+      description: `"${t('testimonial-comment')}"`,
+      person: 'Kristin Watson',
+    },
+    {
+      src: 'testimonial-student.png',
+      description: `"${t('testimonial-comment')}"`,
+      person: 'Kristin Watson',
+    },
+    {
+      src: 'testimonial-student.png',
+      description: `"${t('testimonial-comment')}"`,
+      person: 'Kristin Watson',
+    },
+  ];
+
   return (
     <div className=''>
       <Carousel>
@@ -38,7 +39,14 @@ export function TestimonialCarousel() {
             <CarouselItem key={index} className='relative z-[9999]'>
               <article className='relative mt-7 lg:mt-7 lg:px-7'>
                 <div>
-                  <blockquote className='font-nebulica text-xl leading-7 text-body md:text-3xl md:leading-[33px]'>
+                  <blockquote
+                    className={cn(
+                      locale === 'en'
+                        ? 'font-nebulica'
+                        : 'text-end font-cairo',
+                      'font-nebulica text-xl leading-7 text-body md:text-3xl md:leading-[33px]',
+                    )}
+                  >
                     {description}
                   </blockquote>
 

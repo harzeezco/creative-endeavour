@@ -20,7 +20,8 @@ function Contact({
     <section className='container text-center'>
       <h1
         className={cn(
-          'font-nebulica text-black mx-auto text-3xl sm:text-4xl md:text-5xl lg:text-6xl max-w-5xl md:!leading-[1.1]',
+          locale === 'en' ? 'font-nebulica' : 'font-cairo',
+          'text-black mx-auto text-3xl sm:text-4xl md:text-5xl lg:text-6xl max-w-5xl md:!leading-[1.1]',
         )}
       >
         {title}
@@ -32,7 +33,12 @@ function Contact({
 
       <Link href={href}>
         <div className='flex items-center justify-center rounded-lg border border-solid border-[#D9D9D9]'>
-          <button className='flex items-center gap-3 rounded-[12px] px-4 py-3'>
+          <button
+            className={cn(
+              locale === 'en' ? '' : 'flex-row-reverse ',
+              'flex items-center gap-3 rounded-[12px] px-4 py-3',
+            )}
+          >
             <span className='font-nebulica text-3xl text-black'>
               {btnText}
             </span>

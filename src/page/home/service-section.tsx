@@ -10,7 +10,12 @@ export const ServiceSection = () => {
 
   return (
     <section className='container py-14'>
-      <div className='mb-8 flex justify-between max-sm:flex-col'>
+      <div
+        className={cn(
+          'mb-8 flex justify-between max-sm:flex-col',
+          locale === 'en' ? '' : 'flex-row-reverse',
+        )}
+      >
         <div>
           <p
             className={cn(
@@ -30,16 +35,28 @@ export const ServiceSection = () => {
           </p>
         </div>
 
-        <div>
+        <div
+          className={cn(
+            locale === 'en' ? '' : 'flex flex-col items-end',
+          )}
+        >
           <h1
             className={cn(
-              'font-nebulica text-black text-2xl max-w-xl sm:text-3xl lg:text-4xl  md:!leading-[1.1]',
+              locale === 'en'
+                ? 'font-nebulica'
+                : 'text-end font-cairo',
+              'text-black text-2xl max-w-xl sm:text-3xl lg:text-4xl  md:!leading-[1.1]',
             )}
           >
             {t('service-title')}
           </h1>
 
-          <p className='mt-5 max-w-[650px] text-lg'>
+          <p
+            className={cn(
+              'mt-5  max-w-[450px] text-lg',
+              locale === 'en' ? '' : 'text-end',
+            )}
+          >
             {t('service-desc')}
           </p>
         </div>
@@ -47,34 +64,34 @@ export const ServiceSection = () => {
 
       <Service
         isOpen
-        desc='Custom solutions tailored to your business needs'
+        desc={t('service-desc1')}
         number='01'
         samples={Samples}
-        title='SOFTWARE DEVELOPMENT'
+        title={t('service-title1')}
       />
 
       <Service
-        desc='Custom solutions tailored to your business needs'
+        desc={t('service-desc2')}
         isOpen={false}
         number='02'
         samples={[]}
-        title='AI INTEGRATION'
+        title={t('service-title2')}
       />
 
       <Service
-        desc='Custom solutions tailored to your business needs'
+        desc={t('service-desc3')}
         isOpen={false}
         number='03'
         samples={[]}
-        title='REVERSE ENGINEERING'
+        title={t('service-title3')}
       />
 
       <Service
-        desc='Custom solutions tailored to your business needs'
+        desc={t('service-desc4')}
         isOpen={false}
         number='04'
         samples={[]}
-        title='BUSINESS DIGITALIZATION'
+        title={t('service-title4')}
       />
     </section>
   );
@@ -96,12 +113,32 @@ function Service({
   }[];
   title: string;
 }) {
+  const { locale } = useLocalize('Home');
+
   return (
     <div className='border-y border-solid border-[#D9D9D9] py-6'>
-      <div className='mb-2 flex items-center justify-between'>
-        <div className='grid grid-cols-[50px_auto] gap-x-5 font-nebulica text-4xl text-body'>
-          <p className='text-center'>{number}</p>
-          <h2 className=''>{title}</h2>
+      <div
+        className={cn(
+          locale === 'en' ? '' : 'flex-row-reverse',
+          'mb-2 flex items-center justify-between',
+        )}
+      >
+        <div
+          className={cn(
+            locale === 'en' ? '' : 'flex-row-reverse',
+            'flex items-center gap-x-5 text-4xl text-body',
+          )}
+        >
+          <p className='text-center font-nebulica'>{number}</p>
+          <h2
+            className={cn(
+              locale === 'en'
+                ? 'font-nebulica'
+                : 'text-end font-cairo',
+            )}
+          >
+            {title}
+          </h2>
         </div>
 
         <button aria-label='close' type='button'>
@@ -109,7 +146,7 @@ function Service({
         </button>
       </div>
 
-      <p>{desc}</p>
+      <p className={cn(locale === 'en' ? '' : 'text-end')}>{desc}</p>
 
       {isOpen && (
         <div className='mt-8 flex items-center gap-x-4'>

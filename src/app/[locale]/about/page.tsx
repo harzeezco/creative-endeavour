@@ -1,6 +1,4 @@
-import JoinNow from '@/components/join-now';
-import Tenets from '@/components/tenets';
-import { AboutSection, CountSection, Hero } from '@/page/about';
+import { About, Hero } from '@/page/about';
 import { getSEOTags } from '@/utils/seo';
 
 import config from '../../../../config';
@@ -17,11 +15,13 @@ export const metadata = getSEOTags({
 const AboutPage = () => (
   <main className='pt-20'>
     <Hero />
-    <CountSection />
-    <AboutSection />
-    <Tenets />
-    <JoinNow />
-    {/* <LatestNews /> */}
+    <div className='container'>
+      <hr className='border-t border-[#E0E0E0]' />
+    </div>
+    <About />
+    <div className='container'>
+      <hr className='border-t border-[#E0E0E0]' />
+    </div>
   </main>
 );
 

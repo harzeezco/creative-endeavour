@@ -1,4 +1,5 @@
 import Contact from '@/components/contact';
+import useLocalize from '@/hooks/use-locale';
 import {
   About,
   Faq,
@@ -23,27 +24,35 @@ export const metadata = getSEOTags({
   },
 });
 
-const Homepage = () => (
-  <main className='2xl:pr-6'>
-    <HeroSection />
-    <About />
-    <ServiceSection />
-    <Projects />
-    <Testimonials />
-    <div className='container'>
-      <hr className='border-t border-[#E0E0E0]' />
-    </div>
-    <Faq />
-    <div className='container my-20'>
-      <hr className='border-t border-[#E0E0E0]' />
-    </div>
-    <Contact
-      btnText='Let’s Talk'
-      desc="Let's explore how we can elevate your vision through our unique software development,AI integration and Reverse Engineering"
-      href='#contact'
-      title='"TELL US YOUR NEXT BIG IDEA"'
-    />
-  </main>
-);
+const Homepage = () => {
+  const { locale, t } = useLocalize('Home');
+
+  return (
+    <main className='2xl:pr-6'>
+      <HeroSection />
+      <About />
+      <ServiceSection />
+      <Projects />
+      <Testimonials />
+      <div className='container'>
+        <hr className='border-t border-[#E0E0E0]' />
+      </div>
+      <Faq />
+      <div className='container my-20'>
+        <hr className='border-t border-[#E0E0E0]' />
+      </div>
+      <Contact
+        btnText={t('contact-btn')}
+        desc={t('contact-desc')}
+        href='#contact'
+        title={
+          locale === 'en'
+            ? `"${t('contact-title')}"`
+            : t('contact-title')
+        }
+      />
+    </main>
+  );
+};
 
 export default Homepage;
