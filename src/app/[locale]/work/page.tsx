@@ -14,11 +14,12 @@ export const metadata = getSEOTags({
   keywords:
     'UI/UX design, Building MVPs, Design & Research, Innovation Lab-aas',
 });
-const WOrkPage = () => {
+const WorkPage = () => {
   const { t } = useLocalize('Work');
 
   return (
-    <main>
+    <main className='mt-[90px]'>
+      <hr className='mt-[90px] border-t border-[#E0E0E0]' />
       <Hero />
       <WorkList />
       <Projects />
@@ -35,4 +36,4 @@ const WOrkPage = () => {
   );
 };
 
-export default WOrkPage;
+export default WorkPage;

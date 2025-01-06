@@ -2,37 +2,61 @@
 
 import useLocalize from '@/hooks/use-locale';
 import { cn } from '@/utils/cn';
+import { slideUp } from '@/utils/motion';
+import { motion, useInView } from 'framer-motion';
 import { Minus } from 'lucide-react';
 import Image from 'next/image';
+import { useRef } from 'react';
 
 export const ServiceSection = () => {
   const { locale, t } = useLocalize('Home');
+  const ref = useRef(null);
+  const title = t('service-title');
+  const desc = t('service-desc');
+  const label = t('service-label');
+  const isInView = useInView(ref, { amount: 0.3, once: true });
 
   return (
     <section className='container py-14'>
       <div
+        ref={ref}
         className={cn(
           'mb-8 flex justify-between max-sm:flex-col',
           locale === 'en' ? '' : 'flex-row-reverse',
         )}
       >
         <div>
-          <p
+          <div
             className={cn(
               locale === 'en' ? '' : 'flex-row-reverse',
               'flex items-center gap-2 mb-2',
             )}
           >
-            <span className='text-lg text-[#111111]'>
-              {t('service-label')}
-            </span>
+            <p className='text-lg text-[#111111]'>
+              {label.split(' ').map((word, index) => (
+                <span
+                  key={index}
+                  className='relative inline-flex overflow-hidden '
+                >
+                  <motion.span
+                    key={index}
+                    animate={isInView ? 'open' : 'closed'}
+                    custom={index}
+                    variants={slideUp}
+                  >
+                    {word}
+                  </motion.span>
+                  <span className='inline-block'>&nbsp;</span>
+                </span>
+              ))}
+            </p>
             <Image
               alt='line'
               height={30}
               src='/icons/line.svg'
               width={50}
             />
-          </p>
+          </div>
         </div>
 
         <div
@@ -48,7 +72,22 @@ export const ServiceSection = () => {
               'text-black text-2xl max-w-xl sm:text-3xl lg:text-4xl  md:!leading-[1.1]',
             )}
           >
-            {t('service-title')}
+            {title.split(' ').map((word, index) => (
+              <span
+                key={index}
+                className='relative inline-flex overflow-hidden '
+              >
+                <motion.span
+                  key={index}
+                  animate={isInView ? 'open' : 'closed'}
+                  custom={index}
+                  variants={slideUp}
+                >
+                  {word}
+                </motion.span>
+                <span className='inline-block'>&nbsp;</span>
+              </span>
+            ))}
           </h1>
 
           <p
@@ -57,7 +96,22 @@ export const ServiceSection = () => {
               locale === 'en' ? '' : 'text-end',
             )}
           >
-            {t('service-desc')}
+            {desc.split(' ').map((word, index) => (
+              <span
+                key={index}
+                className='relative inline-flex overflow-hidden'
+              >
+                <motion.span
+                  key={index}
+                  animate={isInView ? 'open' : 'closed'}
+                  custom={index}
+                  variants={slideUp}
+                >
+                  {word}
+                </motion.span>
+                <span className='inline-block'>&nbsp;</span>
+              </span>
+            ))}
           </p>
         </div>
       </div>
@@ -126,7 +180,7 @@ function Service({
         <div
           className={cn(
             locale === 'en' ? '' : 'flex-row-reverse',
-            'flex items-center gap-x-5 text-4xl text-body',
+            'flex items-center gap-x-5 text-lg sm:text-2xl md:text-4xl text-body',
           )}
         >
           <p className='text-center font-nebulica'>{number}</p>
@@ -149,7 +203,7 @@ function Service({
       <p className={cn(locale === 'en' ? '' : 'text-end')}>{desc}</p>
 
       {isOpen && (
-        <div className='mt-8 flex items-center gap-x-4'>
+        <div className='mt-8 grid grid-cols-3 items-center gap-4 max-sm:grid-cols-2'>
           {samples.map((sample) => (
             <Image
               key={sample.src}

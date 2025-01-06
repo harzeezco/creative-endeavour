@@ -29,6 +29,8 @@ const Homepage = () => {
 
   return (
     <main className='2xl:pr-6'>
+      <hr className='mt-[90px] border-t border-[#E0E0E0]' />
+
       <HeroSection />
       <About />
       <ServiceSection />

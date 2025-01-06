@@ -16,10 +16,7 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html
-      className='no-visible-scrollbar scroll-smooth text-primary'
-      lang={locale}
-    >
+    <html className='no-visible-scrollbar text-primary' lang={locale}>
       <body
         className={`${inter.className} ${cairo.variable} ${nebulica.variable}`}
       >
