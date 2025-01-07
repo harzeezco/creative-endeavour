@@ -185,7 +185,7 @@ function ProjectList({
           {labels.map((label) => (
             <button
               key={label}
-              className='cursor-text rounded-[8px] bg-[#F4F1FD] px-4 py-1.5 text-body'
+              className='cursor-text rounded-[8px] bg-[#F4F1FD] px-4 py-1.5 text-xs text-body sm:text-sm'
               type='button'
             >
               {label}

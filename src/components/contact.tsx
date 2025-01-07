@@ -87,25 +87,31 @@ function Contact({
       </p>
 
       <Link href={href}>
-        <div className='flex items-center justify-center rounded-lg border border-solid border-[#D9D9D9]'>
+        <div className='group relative isolation-auto z-10 mx-auto flex items-center justify-center gap-2 overflow-hidden rounded-[16px] border border-solid border-[#D9D9D9] px-4 text-lg text-gray-900 backdrop-blur-md transition-colors duration-500 before:absolute before:bottom-0 before:-z-10 before:aspect-square before:w-full before:origin-bottom before:-translate-y-full before:bg-[#101010] before:transition-transform before:duration-300 hover:text-gray-50 before:hover:translate-y-0'>
           <button
             className={cn(
               locale === 'en' ? '' : 'flex-row-reverse ',
               'flex items-center gap-3 rounded-[12px] px-4 py-3',
             )}
           >
-            <span className='font-nebulica text-3xl text-black'>
+            <span className='font-nebulica text-lg text-black transition-all duration-300 group-hover:text-white sm:text-2xl md:text-3xl'>
               {btnText}
             </span>
 
             <span className='flex h-6 w-8 items-center justify-center rounded-[4px] bg-black'>
               <Image
                 alt='arrow'
+                className={cn(
+                  locale === 'en'
+                    ? 'group-hover:rotate-45'
+                    : 'group-hover:-rotate-45',
+                  'transition-all duration-300',
+                )}
                 height={12}
                 src={
                   locale === 'en'
-                    ? '/icons/arrow-right.svg'
-                    : '/icons/arrow-left.svg'
+                    ? '/icons/c-arrow.svg'
+                    : '/icons/c-ar-arrow.svg'
                 }
                 width={12}
               />

@@ -88,17 +88,6 @@ export const About = () => {
               </span>
             ))}
           </p>
-
-          {/* <h1
-            className={cn(
-              locale === 'en'
-                ? 'font-nebulica'
-                : 'text-end font-cairo',
-              'text-black text-2xl max-w-xl sm:text-3xl lg:text-4xl  md:!leading-[1.1]',
-            )}
-          >
-            {t('about-title')}
-          </h1> */}
         </div>
 
         <p
@@ -129,7 +118,7 @@ export const About = () => {
           ref={observe}
           className={cn(
             locale === 'en' ? '' : 'flex-row-reverse mx-auto',
-            'mt-10 flex max-w-[550px] items-center justify-between font-nebulica text-5xl text-black',
+            'mt-10 flex max-w-[550px]  max-sm:flex-col gap-6 sm:items-center justify-between font-nebulica text-5xl text-black',
           )}
         >
           <div className='flex flex-col items-center gap-y-4'>

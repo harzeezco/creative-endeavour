@@ -75,14 +75,14 @@ export function TestimonialCarousel({
                     <div className='flex items-center gap-3'>
                       <Image
                         alt='image'
-                        className='size-16 rounded-full object-cover'
+                        className='size-16 rounded-full object-cover max-sm:size-14'
                         height={70}
                         src='/images/image6.jpg'
                         width={70}
                       />
 
                       <div className=''>
-                        <p className='flex items-center gap-2 text-xl font-medium text-body'>
+                        <p className='flex items-center gap-2 text-lg font-medium text-body sm:text-xl'>
                           {' '}
                           {person}
                         </p>
@@ -92,8 +92,8 @@ export function TestimonialCarousel({
                     </div>
 
                     <div className='mt-10 items-center justify-end gap-4 md:flex'>
-                      <CarouselPrevious className='h-9 !w-12 from-[#024BA5] to-[#105DBD] transition-all hover:border-none hover:bg-gradient-to-r hover:text-white max-sm:absolute max-sm:!left-0 max-sm:!-translate-y-48' />
-                      <CarouselNext className='h-9 !w-12 from-[#024BA5] to-[#105DBD] transition-all hover:border-none hover:bg-gradient-to-r hover:text-white max-sm:absolute max-sm:!right-0 max-sm:!-translate-y-48' />
+                      <CarouselPrevious className='h-9 !w-12 from-[#024BA5] to-[#105DBD] transition-all hover:border-none hover:bg-gradient-to-r hover:text-white' />
+                      <CarouselNext className='h-9 !w-12 from-[#024BA5] to-[#105DBD] transition-all hover:border-none hover:bg-gradient-to-r hover:text-white max-sm:ml-3' />
                     </div>
                   </div>
                 </div>
