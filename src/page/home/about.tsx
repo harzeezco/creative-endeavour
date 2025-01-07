@@ -32,7 +32,7 @@ export const About = () => {
             'flex items-center gap-2 mb-2',
           )}
         >
-          <p className='text-lg text-[#111111]'>
+          <p className='text-[#111111] sm:text-lg'>
             {label.split(' ').map((word, index) => (
               <span
                 key={index}

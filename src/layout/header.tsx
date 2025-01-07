@@ -35,20 +35,20 @@ export function DrawerBar({
 
   const navLinks = [
     {
-      label: t('link-work'),
-      href: '/work',
-    },
-    {
-      label: t('link-service'),
-      href: '#services',
+      label: t('link-home'),
+      href: '',
     },
     {
       label: t('link-about'),
       href: '/about',
     },
     {
-      label: t('link-contact'),
-      href: '#contact',
+      label: t('link-service'),
+      href: '/services',
+    },
+    {
+      label: t('link-project'),
+      href: '/work',
     },
   ];
 
@@ -87,7 +87,7 @@ export function DrawerBar({
               <Link
                 key={href}
                 className={cn(
-                  'border-dark-400/20 border flex size-[70px] flex-col items-center justify-center gap-3 rounded-[2vw] border-solid bg-dark-600 p-2 transition-all duration-200',
+                  'border-dark-400/20 flex flex-col items-center justify-center gap-3 bg-dark-600 transition-all duration-200',
                 )}
                 href={href}
                 target='_blank'

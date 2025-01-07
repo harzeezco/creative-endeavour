@@ -26,7 +26,7 @@ export const HeroSection = () => {
                 'flex items-center gap-2 mb-2',
               )}
             >
-              <span className='text-lg text-[#111111]'>
+              <span className='text-[#111111] sm:text-lg'>
                 {t('hero-label')}
               </span>
               <Image

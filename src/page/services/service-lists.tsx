@@ -148,7 +148,7 @@ function Principle({
         <div
           className={cn(
             locale === 'en' ? '' : 'flex-row-reverse',
-            'flex items-center text-[#0A0A0A] gap-x-5 text-2xl',
+            'flex items-center text-[#0A0A0A] gap-x-5 text-sm sm:text-2xl',
           )}
         >
           <p className='text-center font-nebulica'>{number}</p>
@@ -181,7 +181,7 @@ function Principle({
         <div>
           <p className='mb-5 text-black'>{t('include')}</p>
 
-          <div className='space-y-2 text-body'>
+          <div className='space-y-2 text-sm text-body sm:text-base'>
             {tools?.map((tool) => <p>{tool}</p>)}
           </div>
         </div>
