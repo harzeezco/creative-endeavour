@@ -26,15 +26,15 @@ export const ServiceSection = () => {
       samples: [
         {
           alt: 'coinbase',
-          src: 'sample1.png',
+          src: 'service.png',
         },
         {
           alt: 'sportify',
-          src: 'sample2.png',
+          src: 'service2.png',
         },
         {
           alt: 'slack',
-          src: 'sample3.png',
+          src: 'service3.png',
         },
       ],
     },
@@ -47,15 +47,15 @@ export const ServiceSection = () => {
       samples: [
         {
           alt: 'coinbase',
-          src: 'sample1.png',
+          src: 'service.png',
         },
         {
           alt: 'sportify',
-          src: 'sample2.png',
+          src: 'service2.png',
         },
         {
           alt: 'slack',
-          src: 'sample3.png',
+          src: 'service3.png',
         },
       ],
     },
@@ -68,15 +68,15 @@ export const ServiceSection = () => {
       samples: [
         {
           alt: 'coinbase',
-          src: 'sample1.png',
+          src: 'service.png',
         },
         {
           alt: 'sportify',
-          src: 'sample2.png',
+          src: 'service2.png',
         },
         {
           alt: 'slack',
-          src: 'sample3.png',
+          src: 'service3.png',
         },
       ],
     },
@@ -89,15 +89,15 @@ export const ServiceSection = () => {
       samples: [
         {
           alt: 'coinbase',
-          src: 'sample1.png',
+          src: 'service.png',
         },
         {
           alt: 'sportify',
-          src: 'sample2.png',
+          src: 'service2.png',
         },
         {
           alt: 'slack',
-          src: 'sample3.png',
+          src: 'service3.png',
         },
       ],
     },
