@@ -5,6 +5,7 @@ import { cn } from '@/utils/cn';
 import { slideUp } from '@/utils/motion';
 import { motion, useInView } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useRef } from 'react';
 
 export const Projects = () => {
@@ -157,27 +158,32 @@ function ProjectList({
   const { locale } = useLocalize('Home');
 
   return (
-    <div className=''>
-      <Image
-        alt={title}
-        className='h-[350px] w-full'
-        height={500}
-        src={`/images/${src}`}
-        width={500}
-      />
+    <div className='group relative transition-all duration-300'>
+      <Link className='' href={`/${locale}/work/${title}`}>
+        <Image
+          alt={title}
+          className='h-[350px] w-full'
+          height={500}
+          src={`/images/${src}`}
+          width={500}
+        />
+      </Link>
+
       <div
         className={cn(
           locale === 'en' ? '' : 'flex flex-col items-end',
         )}
       >
-        <h2
-          className={cn(
-            locale === 'en' ? 'font-nebulica' : 'font-cairo',
-            'mt-2 text-lg text-[#111111]',
-          )}
-        >
-          {title}
-        </h2>
+        <Link href={`/${locale}/work/${title}`}>
+          <h2
+            className={cn(
+              locale === 'en' ? 'font-nebulica' : 'font-cairo',
+              'mt-2 text-lg text-[#111111] inline-block transition-all duration-300 hover:text-primary',
+            )}
+          >
+            {title}
+          </h2>
+        </Link>
 
         <p className='py-2'>{desc}</p>
 
@@ -193,6 +199,12 @@ function ProjectList({
           ))}
         </div>
       </div>
+
+      <Link href={`/${locale}/work/${title}`}>
+        <div className='absolute left-1/2 top-1/4 flex size-20 -translate-x-1/2 items-center justify-center rounded-full bg-black text-white  opacity-0 group-hover:opacity-100 group-hover:transition group-hover:duration-300'>
+          <span>Explore</span>
+        </div>
+      </Link>
     </div>
   );
 }
