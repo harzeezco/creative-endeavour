@@ -2,7 +2,6 @@
 
 import {
   Accordion,
-  AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
@@ -37,7 +36,7 @@ export const Faq = () => {
               'flex items-center gap-2 mb-2',
             )}
           >
-            <span className='text-lg text-[#111111]'>
+            <span className='text-[#111111] sm:text-lg'>
               {label.split(' ').map((word, index) => (
                 <span
                   key={index}
@@ -123,35 +122,30 @@ export const Faq = () => {
 
       <div className='mt-5'>
         <Accordion type='multiple'>
-          <AccordionItem className=' pb-2' value='item-1'>
-            <AccordionTrigger>
+          <AccordionItem className='pb-2' value='item-1'>
+            <AccordionTrigger content={t('faq-desc1')}>
               <span className='text-left'>{t('faq-title1')}</span>
             </AccordionTrigger>
-            <AccordionContent>{t('faq-desc1')}</AccordionContent>
           </AccordionItem>
           <AccordionItem className='pb-2' value='item-2'>
-            <AccordionTrigger>
+            <AccordionTrigger content={t('faq-desc2')}>
               <span className='text-left'>{t('faq-title2')}</span>
             </AccordionTrigger>
-            <AccordionContent>{t('faq-desc2')}</AccordionContent>
           </AccordionItem>
           <AccordionItem className='pb-2' value='item-3'>
-            <AccordionTrigger>
+            <AccordionTrigger content={t('faq-desc3')}>
               <span className='text-left'>{t('faq-title3')}</span>
             </AccordionTrigger>
-            <AccordionContent>{t('faq-desc3')}</AccordionContent>
           </AccordionItem>
           <AccordionItem className='pb-2' value='item-4'>
-            <AccordionTrigger>
+            <AccordionTrigger content={t('faq-desc4')}>
               <span className='text-left'>{t('faq-title4')}</span>
             </AccordionTrigger>
-            <AccordionContent>{t('faq-desc4')}</AccordionContent>
           </AccordionItem>
           <AccordionItem className='pb-2' value='item-5'>
-            <AccordionTrigger>
+            <AccordionTrigger content={t('faq-desc5')}>
               <span className='text-left'>{t('faq-title5')}</span>
             </AccordionTrigger>
-            <AccordionContent>{t('faq-desc5')}</AccordionContent>
           </AccordionItem>
         </Accordion>
       </div>

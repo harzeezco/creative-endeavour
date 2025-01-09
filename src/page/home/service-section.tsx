@@ -3,10 +3,10 @@
 import useLocalize from '@/hooks/use-locale';
 import { cn } from '@/utils/cn';
 import { slideUp } from '@/utils/motion';
-import { motion, useInView } from 'framer-motion';
-import { Minus } from 'lucide-react';
+import { AnimatePresence, motion, useInView } from 'framer-motion';
+import { Minus, Plus } from 'lucide-react';
 import Image from 'next/image';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 export const ServiceSection = () => {
   const { locale, t } = useLocalize('Home');
@@ -15,6 +15,105 @@ export const ServiceSection = () => {
   const desc = t('service-desc');
   const label = t('service-label');
   const isInView = useInView(ref, { amount: 0.3, once: true });
+
+  const ServiceList = [
+    {
+      isOpen: true,
+      id: 1,
+      number: '01',
+      title: t('project1-title'),
+      desc: t('project1-desc'),
+      samples: [
+        {
+          alt: 'coinbase',
+          src: 'service.png',
+        },
+        {
+          alt: 'sportify',
+          src: 'service2.png',
+        },
+        {
+          alt: 'slack',
+          src: 'service3.png',
+        },
+      ],
+    },
+    {
+      isOpen: false,
+      id: 2,
+      number: '02',
+      title: t('project2-title'),
+      desc: t('project2-desc'),
+      samples: [
+        {
+          alt: 'coinbase',
+          src: 'service.png',
+        },
+        {
+          alt: 'sportify',
+          src: 'service2.png',
+        },
+        {
+          alt: 'slack',
+          src: 'service3.png',
+        },
+      ],
+    },
+    {
+      isOpen: false,
+      id: 3,
+      number: '03',
+      title: t('project3-title'),
+      desc: t('project3-desc'),
+      samples: [
+        {
+          alt: 'coinbase',
+          src: 'service.png',
+        },
+        {
+          alt: 'sportify',
+          src: 'service2.png',
+        },
+        {
+          alt: 'slack',
+          src: 'service3.png',
+        },
+      ],
+    },
+    {
+      isOpen: false,
+      id: 4,
+      number: '04',
+      title: t('project4-title'),
+      desc: t('project4-desc'),
+      samples: [
+        {
+          alt: 'coinbase',
+          src: 'service.png',
+        },
+        {
+          alt: 'sportify',
+          src: 'service2.png',
+        },
+        {
+          alt: 'slack',
+          src: 'service3.png',
+        },
+      ],
+    },
+  ];
+
+  const [service, setService] = useState(ServiceList);
+
+  const handleService = (id: number) => {
+    setService((prev) =>
+      prev.map((options) =>
+        options.id === id
+          ? { ...options, isOpen: !options.isOpen }
+          : { ...options },
+      ),
+    );
+  };
 
   return (
     <section className='container py-14'>
@@ -32,7 +131,7 @@ export const ServiceSection = () => {
               'flex items-center gap-2 mb-2',
             )}
           >
-            <p className='text-lg text-[#111111]'>
+            <p className='text-[#111111] sm:text-lg'>
               {label.split(' ').map((word, index) => (
                 <span
                   key={index}
@@ -116,49 +215,38 @@ export const ServiceSection = () => {
         </div>
       </div>
 
-      <Service
-        isOpen
-        desc={t('service-desc1')}
-        number='01'
-        samples={Samples}
-        title={t('service-title1')}
-      />
-
-      <Service
-        desc={t('service-desc2')}
-        isOpen={false}
-        number='02'
-        samples={[]}
-        title={t('service-title2')}
-      />
-
-      <Service
-        desc={t('service-desc3')}
-        isOpen={false}
-        number='03'
-        samples={[]}
-        title={t('service-title3')}
-      />
-
-      <Service
-        desc={t('service-desc4')}
-        isOpen={false}
-        number='04'
-        samples={[]}
-        title={t('service-title4')}
-      />
+      <div>
+        {service.map(
+          ({ desc, id, isOpen, number, samples, title }) => (
+            <Service
+              key={number}
+              desc={desc}
+              handleClick={handleService}
+              id={id}
+              isOpen={isOpen}
+              number={number}
+              samples={samples}
+              title={title}
+            />
+          ),
+        )}
+      </div>
     </section>
   );
 };
 
 function Service({
   desc,
+  handleClick,
+  id,
   isOpen,
   number,
   samples,
   title,
 }: {
   desc: string;
+  handleClick: (id: number) => void;
+  id: number;
   isOpen: boolean;
   number: string;
   samples: {
@@ -170,7 +258,13 @@ function Service({
   const { locale } = useLocalize('Home');
 
   return (
-    <div className='border-y border-solid border-[#D9D9D9] py-6'>
+    <div
+      className='border-y border-solid border-[#D9D9D9] px-4 py-6 transition duration-200 ease-in-out hover:cursor-pointer hover:bg-[#737373]/10'
+      role='button'
+      tabIndex={0}
+      onClick={() => handleClick(id)}
+      onKeyDown={() => handleClick(id)}
+    >
       <div
         className={cn(
           locale === 'en' ? '' : 'flex-row-reverse',
@@ -196,40 +290,35 @@ function Service({
         </div>
 
         <button aria-label='close' type='button'>
-          <Minus />
+          <AnimatePresence>
+            {isOpen ? <Minus /> : <Plus />}
+          </AnimatePresence>
         </button>
       </div>
 
       <p className={cn(locale === 'en' ? '' : 'text-end')}>{desc}</p>
 
-      {isOpen && (
-        <div className='mt-8 grid grid-cols-3 items-center gap-4 max-sm:grid-cols-2'>
-          {samples.map((sample) => (
-            <Image
-              key={sample.src}
-              alt={sample.alt}
-              height={500}
-              src={`/images/${sample.src}`}
-              width={500}
-            />
-          ))}
-        </div>
-      )}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            animate={{ scale: 1 }}
+            className='mt-8 grid grid-cols-3 items-center gap-4 max-sm:grid-cols-2'
+            exit={{ scale: 0 }}
+            initial={{ scale: 0 }}
+            transition={{ duration: 0.3, ease: [0.25, 0.8, 0.25, 1] }}
+          >
+            {samples.map((sample) => (
+              <Image
+                key={sample.src}
+                alt={sample.alt}
+                height={500}
+                src={`/images/${sample.src}`}
+                width={500}
+              />
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
-
-const Samples = [
-  {
-    alt: 'coinbase',
-    src: 'sample1.png',
-  },
-  {
-    alt: 'sportify',
-    src: 'sample2.png',
-  },
-  {
-    alt: 'slack',
-    src: 'sample3.png',
-  },
-];

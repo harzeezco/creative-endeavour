@@ -2,36 +2,60 @@
 
 import useLocalize from '@/hooks/use-locale';
 import { cn } from '@/utils/cn';
+import { slideUp } from '@/utils/motion';
+import { motion, useInView } from 'framer-motion';
 import Image from 'next/image';
+import { useRef } from 'react';
 
 export const Achievement = () => {
   const { locale, t } = useLocalize('About');
+  const ref = useRef(null);
+  const title = t('service-title');
+  const label = t('service-label');
+  const desc = t('service-desc');
+  const isInView = useInView(ref, { amount: 0.3, once: true });
 
   return (
     <section className='container py-14'>
       <div
+        ref={ref}
         className={cn(
           'mb-8 flex justify-between max-sm:flex-col',
           locale === 'en' ? '' : 'flex-row-reverse',
         )}
       >
         <div>
-          <p
+          <div
             className={cn(
               locale === 'en' ? '' : 'flex-row-reverse',
               'flex items-center gap-2 mb-2',
             )}
           >
-            <span className='text-lg text-[#111111]'>
-              {t('service-label')}
-            </span>
+            <p className='text-lg text-[#111111]'>
+              {label.split(' ').map((word, index) => (
+                <span
+                  key={index}
+                  className='relative inline-flex overflow-hidden '
+                >
+                  <motion.span
+                    key={index}
+                    animate={isInView ? 'open' : 'closed'}
+                    custom={index}
+                    variants={slideUp}
+                  >
+                    {word}
+                  </motion.span>
+                  <span className='inline-block'>&nbsp;</span>
+                </span>
+              ))}
+            </p>
             <Image
               alt='line'
               height={30}
               src='/icons/line.svg'
               width={50}
             />
-          </p>
+          </div>
         </div>
 
         <div
@@ -48,7 +72,22 @@ export const Achievement = () => {
               'text-black text-2xl max-w-xl sm:text-3xl lg:text-4xl  md:!leading-[1.1]',
             )}
           >
-            {t('service-title')}
+            {title.split(' ').map((word, index) => (
+              <span
+                key={index}
+                className='relative inline-flex overflow-hidden '
+              >
+                <motion.span
+                  key={index}
+                  animate={isInView ? 'open' : 'closed'}
+                  custom={index}
+                  variants={slideUp}
+                >
+                  {word}
+                </motion.span>
+                <span className='inline-block'>&nbsp;</span>
+              </span>
+            ))}
           </h1>
 
           <p
@@ -57,7 +96,22 @@ export const Achievement = () => {
               locale === 'en' ? '' : 'text-end',
             )}
           >
-            {t('service-desc')}
+            {desc.split(' ').map((word, index) => (
+              <span
+                key={index}
+                className='relative inline-flex overflow-hidden '
+              >
+                <motion.span
+                  key={index}
+                  animate={isInView ? 'open' : 'closed'}
+                  custom={index}
+                  variants={slideUp}
+                >
+                  {word}
+                </motion.span>
+                <span className='inline-block'>&nbsp;</span>
+              </span>
+            ))}
           </p>
         </div>
       </div>
@@ -129,7 +183,7 @@ function Achieve({
         <div
           className={cn(
             locale === 'en' ? '' : 'flex-row-reverse',
-            'flex items-center gap-x-5 text-2xl text-body',
+            'flex items-center gap-x-5 text-xl sm:text-2xl text-body',
           )}
         >
           <p className='text-center font-nebulica'>{number}</p>

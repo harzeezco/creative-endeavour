@@ -1,5 +1,6 @@
 'use client';
 
+import { InfiniteMovingCards } from '@/components/infinite-moving-cards';
 import { SlidingImages } from '@/components/sliding-images';
 import useLocalize from '@/hooks/use-locale';
 import { cn } from '@/utils/cn';
@@ -25,7 +26,7 @@ export const HeroSection = () => {
                 'flex items-center gap-2 mb-2',
               )}
             >
-              <span className='text-lg text-[#111111]'>
+              <span className='text-[#111111] sm:text-lg'>
                 {t('hero-label')}
               </span>
               <Image
@@ -57,11 +58,11 @@ export const HeroSection = () => {
           </p>
 
           <div className='mb-16 mt-8'>
-            <Link className='inline-block' href='/work'>
+            <Link className='inline-block' href={`/${locale}/work`}>
               <button
                 className={cn(
                   locale === 'en' ? 'pr-[3.3em]' : 'pl-[1em] ',
-                  'cssbuttons-io-button flex',
+                  'cssbuttons-io-button flex group',
                 )}
               >
                 <span
@@ -80,6 +81,7 @@ export const HeroSection = () => {
                 >
                   {locale === 'en' ? (
                     <svg
+                      className='group-hover:rotate-45'
                       fill='none'
                       height='12'
                       viewBox='0 0 12 12'
@@ -96,6 +98,7 @@ export const HeroSection = () => {
                     </svg>
                   ) : (
                     <svg
+                      className='group-hover:-rotate-45'
                       fill='none'
                       height='12'
                       viewBox='0 0 12 12'
@@ -117,7 +120,21 @@ export const HeroSection = () => {
           </div>
         </div>
 
-        <div className='flex items-center justify-between gap-x-4'>
+        <div className='sm:hidden'>
+          <InfiniteMovingCards direction='right' speed='slow'>
+            {Logos.map(({ alt, src }) => (
+              <div className='relative max-w-full'>
+                <Image
+                  alt={alt}
+                  height={70}
+                  src={`/icons/${src}`}
+                  width={130}
+                />
+              </div>
+            ))}
+          </InfiniteMovingCards>
+        </div>
+        <div className='hidden items-center justify-between gap-x-4 sm:flex'>
           {Logos.map(({ alt, src }, index) => (
             <motion.div
               animate={{ opacity: 1, scale: 1 }}

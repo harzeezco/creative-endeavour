@@ -2,13 +2,26 @@
 
 import useLocalize from '@/hooks/use-locale';
 import { cn } from '@/utils/cn';
+import { slideUp } from '@/utils/motion';
+import { motion, useInView } from 'framer-motion';
 import Image from 'next/image';
+import { useRef } from 'react';
 
 export const ContactDetails = () => {
   const { locale, t } = useLocalize('About');
+  const ref = useRef(null);
+  const title = t('contact-title');
+  const title1 = t('contact-title1');
+  const title2 = t('contact-title2');
+  const label = t('contact-label');
+  const desc = t('contact-desc');
+  const desc1 = t('contact-desc1');
+  const desc2 = t('contact-desc2');
+  const desc3 = t('contact-desc3');
+  const isInView = useInView(ref, { amount: 0.3, once: true });
 
   return (
-    <section className='container py-14'>
+    <section ref={ref} className='container py-14'>
       <div
         className={cn(
           'mb-8 flex justify-between max-sm:flex-col',
@@ -16,22 +29,37 @@ export const ContactDetails = () => {
         )}
       >
         <div>
-          <p
+          <div
             className={cn(
               locale === 'en' ? '' : 'flex-row-reverse',
               'flex items-center gap-2 mb-2',
             )}
           >
-            <span className='text-lg text-[#111111]'>
-              {t('contact-label')}
-            </span>
+            <p className='text-[#111111] sm:text-lg'>
+              {label.split(' ').map((word, index) => (
+                <span
+                  key={index}
+                  className='relative inline-flex overflow-hidden '
+                >
+                  <motion.span
+                    key={index}
+                    animate={isInView ? 'open' : 'closed'}
+                    custom={index}
+                    variants={slideUp}
+                  >
+                    {word}
+                  </motion.span>
+                  <span className='inline-block'>&nbsp;</span>
+                </span>
+              ))}
+            </p>
             <Image
               alt='line'
               height={30}
               src='/icons/line.svg'
               width={50}
             />
-          </p>
+          </div>
         </div>
 
         <div
@@ -47,7 +75,22 @@ export const ContactDetails = () => {
               'text-black text-2xl max-w-xl sm:text-3xl lg:text-4xl  md:!leading-[1.1]',
             )}
           >
-            {t('contact-title')}
+            {title.split(' ').map((word, index) => (
+              <span
+                key={index}
+                className='relative inline-flex overflow-hidden '
+              >
+                <motion.span
+                  key={index}
+                  animate={isInView ? 'open' : 'closed'}
+                  custom={index}
+                  variants={slideUp}
+                >
+                  {word}
+                </motion.span>
+                <span className='inline-block'>&nbsp;</span>
+              </span>
+            ))}
           </h1>
 
           <p
@@ -56,7 +99,22 @@ export const ContactDetails = () => {
               locale === 'en' ? '' : 'text-end',
             )}
           >
-            {t('contact-desc')}
+            {desc.split(' ').map((word, index) => (
+              <span
+                key={index}
+                className='relative inline-flex overflow-hidden '
+              >
+                <motion.span
+                  key={index}
+                  animate={isInView ? 'open' : 'closed'}
+                  custom={index}
+                  variants={slideUp}
+                >
+                  {word}
+                </motion.span>
+                <span className='inline-block'>&nbsp;</span>
+              </span>
+            ))}
           </p>
 
           <div className='mt-10 w-full max-w-3xl bg-black p-5 text-white'>
@@ -68,7 +126,22 @@ export const ContactDetails = () => {
                     : 'text-end font-cairo',
                 )}
               >
-                {t('contact-title1')}
+                {title1.split(' ').map((word, index) => (
+                  <span
+                    key={index}
+                    className='relative inline-flex overflow-hidden '
+                  >
+                    <motion.span
+                      key={index}
+                      animate={isInView ? 'open' : 'closed'}
+                      custom={index}
+                      variants={slideUp}
+                    >
+                      {word}
+                    </motion.span>
+                    <span className='inline-block'>&nbsp;</span>
+                  </span>
+                ))}
               </h2>
               <p
                 className={cn(
@@ -76,7 +149,22 @@ export const ContactDetails = () => {
                   'max-w-2xl text-[#E0E0E0] mt-2',
                 )}
               >
-                {t('contact-desc1')}
+                {desc1.split(' ').map((word, index) => (
+                  <span
+                    key={index}
+                    className='relative inline-flex overflow-hidden '
+                  >
+                    <motion.span
+                      key={index}
+                      animate={isInView ? 'open' : 'closed'}
+                      custom={index}
+                      variants={slideUp}
+                    >
+                      {word}
+                    </motion.span>
+                    <span className='inline-block'>&nbsp;</span>
+                  </span>
+                ))}
               </p>
             </div>
 
@@ -89,7 +177,22 @@ export const ContactDetails = () => {
                   'mt-4',
                 )}
               >
-                {t('contact-title2')}
+                {title2.split(' ').map((word, index) => (
+                  <span
+                    key={index}
+                    className='relative inline-flex overflow-hidden '
+                  >
+                    <motion.span
+                      key={index}
+                      animate={isInView ? 'open' : 'closed'}
+                      custom={index}
+                      variants={slideUp}
+                    >
+                      {word}
+                    </motion.span>
+                    <span className='inline-block'>&nbsp;</span>
+                  </span>
+                ))}
               </h2>
 
               <p
@@ -98,7 +201,22 @@ export const ContactDetails = () => {
                   'max-w-2xl text-[#E0E0E0] mt-2',
                 )}
               >
-                {t('contact-desc2')}
+                {desc2.split(' ').map((word, index) => (
+                  <span
+                    key={index}
+                    className='relative inline-flex overflow-hidden '
+                  >
+                    <motion.span
+                      key={index}
+                      animate={isInView ? 'open' : 'closed'}
+                      custom={index}
+                      variants={slideUp}
+                    >
+                      {word}
+                    </motion.span>
+                    <span className='inline-block'>&nbsp;</span>
+                  </span>
+                ))}
               </p>
 
               <p
@@ -107,7 +225,22 @@ export const ContactDetails = () => {
                   'max-w-2xl text-[#E0E0E0]',
                 )}
               >
-                {t('contact-desc3')}
+                {desc3.split(' ').map((word, index) => (
+                  <span
+                    key={index}
+                    className='relative inline-flex overflow-hidden '
+                  >
+                    <motion.span
+                      key={index}
+                      animate={isInView ? 'open' : 'closed'}
+                      custom={index}
+                      variants={slideUp}
+                    >
+                      {word}
+                    </motion.span>
+                    <span className='inline-block'>&nbsp;</span>
+                  </span>
+                ))}
               </p>
             </div>
           </div>
