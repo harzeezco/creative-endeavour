@@ -9,16 +9,16 @@ export const WorkList = () => {
 
   const projects = [
     {
-      src: 'sample-project1.png',
+      src: 'work-large1.png',
       title: t('project1-title'),
       desc: t('project1-desc'),
-      labels: [t('project1-label'), t('project1-label1')],
+      labels: [t('project1-label')],
     },
     {
-      src: 'sample-project.png',
+      src: 'work-large2.png',
       title: t('project2-title'),
       desc: t('project2-desc'),
-      labels: [t('project2-label'), t('project2-label1')],
+      labels: [t('project2-label')],
     },
   ];
 
@@ -130,7 +130,14 @@ function ProjectList({
             'flex items-center justify-between max-sm:flex-col w-full',
           )}
         >
-          <p className='py-2'>{desc}</p>
+          <p
+            className={cn(
+              locale === 'en' ? '' : 'text-end',
+              'py-2 max-w-[500px]',
+            )}
+          >
+            {desc}
+          </p>
 
           <div className='mt-4 flex items-center gap-x-4'>
             {labels.map((label) => (
