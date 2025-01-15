@@ -21,6 +21,7 @@ export const Projects = () => {
       src: 'project1.png',
       title: t('project1-title'),
       desc: t('project1-desc'),
+      href: 'work/fin-tech',
       labels: [
         t('project1-label'),
         t('project1-label1'),
@@ -28,18 +29,21 @@ export const Projects = () => {
       ],
     },
     {
+      href: 'work/healthease',
       src: 'project2.png',
       title: t('project2-title'),
       desc: t('project2-desc'),
       labels: [t('project2-label'), t('project2-label1')],
     },
     {
+      href: '',
       src: 'project5.png',
       title: t('project5-title'),
       desc: t('project5-desc'),
       labels: [t('project5-label')],
     },
     {
+      href: '',
       src: 'project6.png',
       title: t('project6-title'),
       desc: t('project6-desc'),

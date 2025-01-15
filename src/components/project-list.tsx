@@ -5,11 +5,13 @@ import Link from 'next/link';
 
 export function ProjectList({
   desc,
+  href,
   labels,
   src,
   title,
 }: {
   desc: string;
+  href: string;
   labels: string[];
   src: string;
   title: string;
@@ -18,7 +20,7 @@ export function ProjectList({
 
   return (
     <div className='group relative transition-all duration-300'>
-      <Link className='' href={`/${locale}/work/${title}`}>
+      <Link className='' href={`/${locale}/${href}`}>
         <Image
           alt={title}
           className='h-[350px] w-full'
@@ -33,7 +35,7 @@ export function ProjectList({
           locale === 'en' ? '' : 'flex flex-col items-end',
         )}
       >
-        <Link href={`/${locale}/work/${title}`}>
+        <Link href={href}>
           <h2
             className={cn(
               locale === 'en' ? 'font-nebulica' : 'font-cairo',
@@ -61,7 +63,7 @@ export function ProjectList({
         </div>
       </div>
 
-      <Link href={`/${locale}/work/${title}`}>
+      <Link href={`/${locale}/${href}`}>
         <div className='absolute left-1/2 top-1/4 flex size-20 -translate-x-1/2 items-center justify-center rounded-full bg-black text-white  opacity-0 group-hover:opacity-100 group-hover:transition group-hover:duration-300'>
           <span>Explore</span>
         </div>

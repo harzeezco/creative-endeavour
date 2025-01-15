@@ -16,7 +16,7 @@ export const metadata = getSEOTags({
   keywords:
     'UI/UX design, Building MVPs, Design & Research, Innovation Lab-aas',
 });
-const SataPage = () => {
+const OloPage = () => {
   const { locale, t } = useLocalize('WorkDetail');
 
   return (
@@ -36,7 +36,7 @@ const SataPage = () => {
               )}
             >
               <span className='text-[#111111] sm:text-lg'>
-                {t('sata-label')}
+                {t('olo-label')}
               </span>
               <Image
                 alt='line'
@@ -54,7 +54,7 @@ const SataPage = () => {
               ' text-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl max-w-[800px] md:!leading-[1.1]',
             )}
           >
-            {t('sata-title')}
+            {t('olo-title')}
           </h1>
 
           <p
@@ -63,7 +63,7 @@ const SataPage = () => {
               'mt-5 max-w-[700px] text-lg',
             )}
           >
-            {t('sata-desc')}
+            {t('olo-desc')}
           </p>
         </div>
       </section>
@@ -82,4 +82,4 @@ const SataPage = () => {
   );
 };
 
-export default SataPage;
+export default OloPage;

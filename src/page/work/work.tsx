@@ -3,18 +3,21 @@
 import useLocalize from '@/hooks/use-locale';
 import { cn } from '@/utils/cn';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export const WorkList = () => {
   const { locale, t } = useLocalize('Work');
 
   const projects = [
     {
+      href: 'work/sata',
       src: 'work-large1.png',
       title: t('project1-title'),
       desc: t('project1-desc'),
       labels: [t('project1-label')],
     },
     {
+      href: 'work/olo',
       src: 'work-large2.png',
       title: t('project2-title'),
       desc: t('project2-desc'),
@@ -87,11 +90,13 @@ export const WorkList = () => {
 
 function ProjectList({
   desc,
+  href,
   labels,
   src,
   title,
 }: {
   desc: string;
+  href: string;
   labels: string[];
   src: string;
   title: string;
@@ -99,28 +104,32 @@ function ProjectList({
   const { locale } = useLocalize('Home');
 
   return (
-    <div className=''>
-      <Image
-        alt={title}
-        className='w-full'
-        height={600}
-        src={`/images/${src}`}
-        width={500}
-      />
+    <div className='group relative'>
+      <Link href={`/${locale}/${href}`}>
+        <Image
+          alt={title}
+          className='w-full'
+          height={600}
+          src={`/images/${src}`}
+          width={500}
+        />
+      </Link>
       <div
         className={cn(
           locale === 'en' ? '' : 'flex flex-col items-end',
           'mt-3',
         )}
       >
-        <h2
-          className={cn(
-            locale === 'en' ? 'font-nebulica' : 'font-cairo',
-            'mt-2 text-lg text-[#111111]',
-          )}
-        >
-          {title}
-        </h2>
+        <Link href={`/${locale}/${href}`}>
+          <h2
+            className={cn(
+              locale === 'en' ? 'font-nebulica' : 'font-cairo',
+              'mt-2 text-lg text-[#111111] transition-all duration-300 hover:text-primary',
+            )}
+          >
+            {title}
+          </h2>
+        </Link>
 
         <div
           className={cn(
@@ -152,6 +161,12 @@ function ProjectList({
           </div>
         </div>
       </div>
+
+      <Link href={`/${locale}/${href}`}>
+        <div className='absolute left-1/2 top-1/4 flex size-20 -translate-x-1/2 items-center justify-center rounded-full bg-black text-white  opacity-0 group-hover:opacity-100 group-hover:transition group-hover:duration-300'>
+          <span>Explore</span>
+        </div>
+      </Link>
     </div>
   );
 }
