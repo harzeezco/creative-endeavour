@@ -36,14 +36,14 @@ export const Projects = () => {
       labels: [t('project2-label'), t('project2-label1')],
     },
     {
-      href: '',
+      href: 'work/finex',
       src: 'project5.png',
       title: t('project5-title'),
       desc: t('project5-desc'),
       labels: [t('project5-label')],
     },
     {
-      href: '',
+      href: 'work/pipelined',
       src: 'project6.png',
       title: t('project6-title'),
       desc: t('project6-desc'),
