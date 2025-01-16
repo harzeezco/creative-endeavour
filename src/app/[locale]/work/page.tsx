@@ -1,7 +1,6 @@
 import Contact from '@/components/contact';
 import useLocalize from '@/hooks/use-locale';
-import { Projects } from '@/page/home';
-import { Hero, WorkList } from '@/page/work';
+import { Hero, Projects, WorkList } from '@/page/work';
 import { getSEOTags } from '@/utils/seo';
 
 import config from '../../../../config';
