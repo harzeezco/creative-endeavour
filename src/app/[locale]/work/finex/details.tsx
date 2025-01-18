@@ -35,7 +35,7 @@ function Details() {
           alt='finex'
           className='w-full'
           height={600}
-          src='/images/work-large5.png'
+          src='/images/work-large5.webp'
           width={500}
         />
 
@@ -46,12 +46,19 @@ function Details() {
                 locale === 'en'
                   ? 'font-nebulica'
                   : 'text-end font-cairo',
-                'text-lg',
+                'sm:text-lg',
               )}
             >
               {t('details1')}
             </h3>
-            <p className='text-xl text-black'>{t('finex-desc1')}</p>
+            <p
+              className={cn(
+                locale === 'en' ? '' : 'text-end',
+                'text-lg sm:text-xl text-black',
+              )}
+            >
+              {t('finex-desc1')}
+            </p>
           </div>
           <div>
             <h3
@@ -59,12 +66,19 @@ function Details() {
                 locale === 'en'
                   ? 'font-nebulica'
                   : 'text-end font-cairo',
-                'text-lg',
+                'sm:text-lg',
               )}
             >
               {t('details2')}
             </h3>
-            <p className='text-xl text-black'>{t('finex-desc1')}</p>
+            <p
+              className={cn(
+                locale === 'en' ? '' : 'text-end',
+                'text-lg sm:text-xl text-black',
+              )}
+            >
+              {t('finex-desc1')}
+            </p>
           </div>
           <div>
             <h3
@@ -72,12 +86,19 @@ function Details() {
                 locale === 'en'
                   ? 'font-nebulica'
                   : 'text-end font-cairo',
-                'text-lg',
+                'sm:text-lg',
               )}
             >
               {t('details3')}
             </h3>
-            <p className='text-xl text-black'>{t('finex-desc1')}</p>
+            <p
+              className={cn(
+                locale === 'en' ? '' : 'text-end',
+                'text-lg sm:text-xl text-black',
+              )}
+            >
+              {t('finex-desc1')}
+            </p>
           </div>
           <div>
             <h3
@@ -85,12 +106,19 @@ function Details() {
                 locale === 'en'
                   ? 'font-nebulica'
                   : 'text-end font-cairo',
-                'text-xl',
+                'sm:text-xl',
               )}
             >
               {t('details4')}
             </h3>
-            <p className='text-xl text-black'>{t('finex-desc1')}</p>
+            <p
+              className={cn(
+                locale === 'en' ? '' : 'text-end',
+                'text-lg sm:text-xl text-black',
+              )}
+            >
+              {t('finex-desc1')}
+            </p>
           </div>
         </div>
 

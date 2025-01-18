@@ -59,7 +59,7 @@ export function DrawerBar({
       </DrawerTrigger>
       <DrawerContent className='bg-primary-350 text-white'>
         <div className='px-6'>
-          <div className='flex flex-col gap-4'>
+          <div className='flex flex-col gap-3'>
             {navLinks.map(({ href, label }) => {
               const isActive = href === pathname;
 

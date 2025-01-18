@@ -61,7 +61,9 @@ export const HeroSection = () => {
             <Link className='inline-block' href={`/${locale}/work`}>
               <button
                 className={cn(
-                  locale === 'en' ? 'pr-[3.3em]' : 'pl-[1em] ',
+                  locale === 'en'
+                    ? 'pr-[3.3em]'
+                    : '!pl-[1.5em] !pr-[20px]',
                   'cssbuttons-io-button flex group',
                 )}
               >

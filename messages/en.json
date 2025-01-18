@@ -84,7 +84,9 @@
     "copy": "Creative Endeavour All rights reserved.",
     "privacy": "Privacy Policy",
     "terms": "Term of Service",
-    "contact-form": "Sanaam team will review your request and reach out to you soon :)"
+    "portfolio-title": "PORTFOLIO PROJECT: AGENCY EXPERTISE",
+    "portfolio-label": "ANOTHER PROJECT",
+    "portfolio-desc": "CHECK OUT OUR LATEST TECHNICAL ACHIEVEMENTS."
   },
   "About": {
     "title": "Hi, We're a Tech Innovation Hub Based in Riyadh.",
@@ -183,7 +185,7 @@
     "main-desc": "Explore our portfolio of innovative software solutions, AI integration, and technical transformations that drive business success.",
     "project1-title": "SATA",
     "project1-desc": "Customer data platform",
-    "project1-label": "DATA ANALYTICS",
+    "project1-label": "DATA ANALYTIC",
     "project2-title": "OLO",
     "project2-desc": "Elevating sustainable hydration through innovative design and conscious craftsmanship for the modern lifestyle.",
     "project2-label": "WEB DEVELOPMENT",

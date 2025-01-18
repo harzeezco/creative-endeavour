@@ -23,7 +23,7 @@ export function ProjectList({
       <Link className='' href={`/${locale}/${href}`}>
         <Image
           alt={title}
-          className='h-[350px] w-full'
+          className='h-[350px] w-full max-sm:object-cover'
           height={500}
           src={`/images/${src}`}
           width={500}

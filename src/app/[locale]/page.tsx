@@ -46,7 +46,6 @@ const Homepage = () => {
       <Contact
         btnText={t('contact-btn')}
         desc={t('contact-desc')}
-        href='#contact'
         title={
           locale === 'en'
             ? `"${t('contact-title')}"`

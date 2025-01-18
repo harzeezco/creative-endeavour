@@ -1,25 +1,23 @@
 'use client';
 
 import * as React from 'react';
-import Input from '@/components/input';
-import { Button } from '@/components/ui/button';
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
+  FormLabel,
   FormMessage,
 } from '@/components/ui/form';
-import useLocalize from '@/hooks/use-locale';
-import { cn } from '@/utils/cn';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 import emailjs from '@emailjs/browser';
 import { zodResolver } from '@hookform/resolvers/zod';
-import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
 const formSchema = z.object({
-  email: z
+  user_email: z
     .string()
     .regex(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, {
       message: 'Please Enter a valid email address',
@@ -50,13 +48,12 @@ const formSchema = z.object({
 export function ContactForm() {
   const [success, setSuccess] = React.useState(false);
   const [error, setError] = React.useState(false);
-  const { locale, t } = useLocalize('Home');
   const [loading, setLoading] = React.useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: '',
+      user_email: '',
       name: '',
       message: '',
     },
@@ -70,7 +67,7 @@ export function ContactForm() {
 
     const template = {
       name: values.name,
-      email: values.email,
+      user_email: values.user_email,
       message: values.message,
     };
 
@@ -83,131 +80,109 @@ export function ContactForm() {
       )
       .then(
         () => {
-          setLoading(false);
           setSuccess(true);
           setError(false);
-
+          setLoading(false);
+          form.reset();
           setTimeout(() => {
             setSuccess(false);
-          }, 10_000);
+          }, 4000);
         },
-        () => {
+        (error: any) => {
+          console.log(error);
           setLoading(false);
-          setError(true);
           setSuccess(false);
+          setError(true);
         },
       );
-
-    const sheet = {
-      name: values.name,
-      email: values.email,
-      message: values.message,
-    };
-
-    axios
-      .post(
-        'https://sheet.best/api/sheets/1d800149-df6a-45d7-83f7-944268ce4edf',
-        sheet,
-      )
-      .then(() => {
-        setLoading(false);
-        setSuccess(true);
-        setError(false);
-
-        setTimeout(() => {
-          setSuccess(false);
-        }, 10_000);
-      })
-      .catch(() => {
-        setLoading(false);
-        setError(true);
-        setSuccess(false);
-      });
-
-    form.reset();
   }
 
   return (
-    <div>
-      {success ? (
-        <div
-          className='flex min-h-[400px] w-full
-         items-center justify-center bg-[#FAFAFA] p-7'
-        >
-          <p className='max-w-sm text-center'> {t('contact-form')}</p>
+    <Form {...form}>
+      <form
+        className='mx-auto mt-14 max-w-4xl space-y-5'
+        onSubmit={form.handleSubmit(onSubmit)}
+      >
+        <div className='mb-4 flex flex-col space-y-2 md:flex-row md:space-x-4 md:space-y-0'>
+          <FormField
+            control={form.control}
+            name='name'
+            render={({ field }) => (
+              <FormItem className='w-full'>
+                <FormLabel className='font-semibold text-body'>
+                  Full Name:
+                </FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder='John Doe'
+                    type='text'
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name='user_email'
+            render={({ field }) => (
+              <FormItem className='w-full'>
+                <FormLabel className='font-semibold text-body'>
+                  Email:
+                </FormLabel>
+                <FormControl>
+                  <Input placeholder='johndoe@pro.com' {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
         </div>
-      ) : (
-        <Form {...form}>
-          <form
-            className={cn('mx-auto w-full bg-[#FAFAFA] p-7')}
-            onSubmit={form.handleSubmit(onSubmit)}
-          >
-            <div className='space-y-16'>
-              <FormField
-                control={form.control}
-                name='name'
-                render={({ field }) => (
-                  <FormItem className='w-full'>
-                    <FormControl>
-                      <Input label={t('contact-name')} {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
 
-              <FormField
-                control={form.control}
-                name='email'
-                render={({ field }) => (
-                  <FormItem className='w-full'>
-                    <FormControl>
-                      <Input label={t('contact-email')} {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+        <FormField
+          control={form.control}
+          name='message'
+          render={({ field }) => (
+            <FormItem className='mb-4'>
+              <FormLabel className='font-semibold text-body'>
+                Your Message:
+              </FormLabel>
+              <FormControl>
+                <Textarea
+                  className='resize-none'
+                  placeholder='We would love to know the scope, timeline and budget'
+                  rows={10}
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
-              <FormField
-                control={form.control}
-                name='message'
-                render={({ field }) => (
-                  <FormItem className='mb-4 w-full'>
-                    <FormControl>
-                      <Input label={t('contact-brief')} {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
+        <div>
+          {success && (
+            <p className='text-green-600'>
+              Your message has been sent Successfully. I will soon get
+              back to you.
+            </p>
+          )}
+          {error && (
+            <p className='text-red-500'>
+              Some error occurred. Please send me a direct message
+              using the email bottom 👇
+            </p>
+          )}
+        </div>
 
-            <div>
-              {error && (
-                <p className='text-red-500'>Some error occurred.</p>
-              )}
-            </div>
-
-            <div
-              className={cn(
-                locale === 'ar'
-                  ? 'flex justify-start'
-                  : 'justify-end',
-                'mt-7 flex',
-              )}
-            >
-              <Button
-                className='w-fit bg-black px-6 py-4 text-white transition-all duration-300 hover:bg-black/70 active:bg-black/70'
-                disabled={loading}
-                type='submit'
-              >
-                {t('contact-btn')}
-              </Button>
-            </div>
-          </form>
-        </Form>
-      )}
-    </div>
+        <div className='group relative isolation-auto z-10 mx-auto mt-7 flex cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-[16px] border border-solid border-[#D9D9D9] p-3 text-lg text-gray-900 backdrop-blur-md transition-colors duration-500 before:absolute before:bottom-0 before:-z-10 before:aspect-square before:w-full before:origin-bottom before:-translate-y-full before:bg-[#101010] before:transition-transform before:duration-300 hover:text-gray-50 before:hover:translate-y-0'>
+          <button type='submit'>
+            {loading ? 'Sending...' : 'Send Message'}
+          </button>
+        </div>
+      </form>
+    </Form>
   );
 }
