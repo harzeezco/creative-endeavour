@@ -86,7 +86,9 @@
     "terms": "Term of Service",
     "portfolio-title": "PORTFOLIO PROJECT: AGENCY EXPERTISE",
     "portfolio-label": "ANOTHER PROJECT",
-    "portfolio-desc": "CHECK OUT OUR LATEST TECHNICAL ACHIEVEMENTS."
+    "portfolio-desc": "CHECK OUT OUR LATEST TECHNICAL ACHIEVEMENTS.",
+    "portfolio-b-title": "ANOTHER PROJECT: DESIGN AGENCY EXPERTISE",
+    "portfolio-b-desc": "Explore our design agency's expertise in delivering innovative solutions tailored to elevate your brand's identity."
   },
   "About": {
     "title": "Hi, We're a Tech Innovation Hub Based in Riyadh.",
