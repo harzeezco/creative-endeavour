@@ -11,8 +11,8 @@ import { useRef } from 'react';
 export const OtherProjects = () => {
   const { locale, t } = useLocalize('Home');
   const ref = useRef(null);
-  const title = t('portfolio-title');
-  const desc = t('portfolio-desc');
+  const title = t('portfolio-b-title');
+  const desc = t('portfolio-b-desc');
   const label = t('portfolio-label');
   const isInView = useInView(ref, { amount: 0.3, once: true });
 
