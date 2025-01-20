@@ -29,7 +29,6 @@ const ServicePage = () => {
       <Contact
         btnText={t('cta-btn')}
         desc={t('cta-desc')}
-        href='#contact'
         title={t('cta-title')}
       />
     </main>

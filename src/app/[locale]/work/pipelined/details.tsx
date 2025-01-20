@@ -35,7 +35,7 @@ function Details() {
           alt='pipelined'
           className='w-full'
           height={600}
-          src='/images/work-large6.png'
+          src='/images/work-large6.webp'
           width={500}
         />
 
@@ -46,12 +46,17 @@ function Details() {
                 locale === 'en'
                   ? 'font-nebulica'
                   : 'text-end font-cairo',
-                'text-lg',
+                'sm:text-lg',
               )}
             >
               {t('details1')}
             </h3>
-            <p className='text-xl text-black'>
+            <p
+              className={cn(
+                locale === 'en' ? '' : 'text-end',
+                'text-lg sm:text-xl text-black',
+              )}
+            >
               {t('pipelined-desc1')}
             </p>
           </div>
@@ -61,12 +66,17 @@ function Details() {
                 locale === 'en'
                   ? 'font-nebulica'
                   : 'text-end font-cairo',
-                'text-lg',
+                'sm:text-lg',
               )}
             >
               {t('details2')}
             </h3>
-            <p className='text-xl text-black'>
+            <p
+              className={cn(
+                locale === 'en' ? '' : 'text-end',
+                'text-lg sm:text-xl text-black',
+              )}
+            >
               {t('pipelined-desc1')}
             </p>
           </div>
@@ -76,12 +86,17 @@ function Details() {
                 locale === 'en'
                   ? 'font-nebulica'
                   : 'text-end font-cairo',
-                'text-lg',
+                'sm:text-lg',
               )}
             >
               {t('details3')}
             </h3>
-            <p className='text-xl text-black'>
+            <p
+              className={cn(
+                locale === 'en' ? '' : 'text-end',
+                'text-lg sm:text-xl text-black',
+              )}
+            >
               {t('pipelined-desc1')}
             </p>
           </div>
@@ -91,12 +106,17 @@ function Details() {
                 locale === 'en'
                   ? 'font-nebulica'
                   : 'text-end font-cairo',
-                'text-xl',
+                'sm:text-xl',
               )}
             >
               {t('details4')}
             </h3>
-            <p className='text-xl text-black'>
+            <p
+              className={cn(
+                locale === 'en' ? '' : 'text-end',
+                'text-lg sm:text-xl text-black',
+              )}
+            >
               {t('pipelined-desc1')}
             </p>
           </div>

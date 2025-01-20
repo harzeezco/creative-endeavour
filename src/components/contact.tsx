@@ -5,8 +5,9 @@ import { cn } from '@/utils/cn';
 import { slideUp } from '@/utils/motion';
 import { motion, useInView } from 'framer-motion';
 import Image from 'next/image';
-import Link from 'next/link';
 import { useRef } from 'react';
+
+import Modal from './modal';
 
 const defaultAnimation = {
   hidden: { opacity: 0, y: 20 },
@@ -16,12 +17,10 @@ const defaultAnimation = {
 function Contact({
   btnText,
   desc,
-  href,
   title,
 }: {
   btnText: string;
   desc: string;
-  href: string;
   title: string;
 }) {
   const { locale } = useLocalize('Home');
@@ -86,8 +85,8 @@ function Contact({
         ))}
       </p>
 
-      <Link href={href}>
-        <div className='group relative isolation-auto z-10 mx-auto flex items-center justify-center gap-2 overflow-hidden rounded-[16px] border border-solid border-[#D9D9D9] px-4 text-lg text-gray-900 backdrop-blur-md transition-colors duration-500 before:absolute before:bottom-0 before:-z-10 before:aspect-square before:w-full before:origin-bottom before:-translate-y-full before:bg-[#101010] before:transition-transform before:duration-300 hover:text-gray-50 before:hover:translate-y-0'>
+      <Modal>
+        <div className='group relative isolation-auto z-10 mx-auto flex cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-[16px] border border-solid border-[#D9D9D9] px-4 text-lg text-gray-900 backdrop-blur-md transition-colors duration-500 before:absolute before:bottom-0 before:-z-10 before:aspect-square before:w-full before:origin-bottom before:-translate-y-full before:bg-[#101010] before:transition-transform before:duration-300 hover:text-gray-50 before:hover:translate-y-0'>
           <button
             className={cn(
               locale === 'en' ? '' : 'flex-row-reverse ',
@@ -118,7 +117,7 @@ function Contact({
             </span>
           </button>
         </div>
-      </Link>
+      </Modal>
     </section>
   );
 }

@@ -114,7 +114,9 @@ export const Footer = () => {
           >
             <p
               className={cn(
-                locale === 'en' ? 'flex-row-reverse' : '',
+                locale === 'en'
+                  ? 'flex-row-reverse whitespace-nowrap'
+                  : '',
                 'flex max-w-md gap-2',
               )}
             >

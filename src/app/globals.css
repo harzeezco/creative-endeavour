@@ -18,62 +18,6 @@
   display: none;
 }
 
-.input-container {
-  position: relative;
-  width: 100%;
-}
-
-.input-container input[type='text'] {
-  width: 100%;
-  border: none;
-  border-bottom: 2px solid #ccc;
-  padding: 5px 0;
-  background-color: transparent;
-  outline: none;
-}
-
-.input-container .label {
-  font-weight: 600;
-  color: #000;
-  opacity: 70%;
-  transition: all 0.3s ease;
-  pointer-events: none;
-}
-
-.input-container input[type='text']:focus ~ .label,
-.input-container input[type='text']:valid ~ .label {
-  top: -20px;
-  font-size: 16px;
-  color: #000;
-  opacity: 100%;
-}
-
-.input-container .underline {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 2px;
-  width: 100%;
-  background-color: #333;
-  transform: scaleX(0);
-  transition: all 0.3s ease;
-}
-
-.input-container input[type='text']:focus ~ .underline,
-.input-container input[type='text']:valid ~ .underline {
-  transform: scaleX(1);
-}
-
-.work {
-  background-image: url('/images/body.webp');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  height: 100vh;
-  width: 100%;
-}
-
-/* From Uiverse.io by adamgiebl */
 .cssbuttons-io-button {
   background: #000;
   color: white;

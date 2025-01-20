@@ -5,6 +5,7 @@ import { getSEOTags } from '@/utils/seo';
 import Image from 'next/image';
 
 import Details from './details';
+import { OtherProjects } from './other-projects';
 
 // import config from '../../../../config';
 
@@ -69,13 +70,13 @@ const FinTechPage = () => {
       </section>
 
       <Details />
+      <OtherProjects />
       <div className='container mb-20'>
         <hr className='border-t border-[#E0E0E0]' />
       </div>
       <Contact
         btnText={t('cta-btn')}
         desc={t('cta-desc')}
-        href='#contact'
         title={t('cta-title')}
       />
     </main>
