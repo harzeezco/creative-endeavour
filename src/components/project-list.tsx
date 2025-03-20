@@ -29,7 +29,6 @@ export function ProjectList({
           width={500}
         />
       </Link>
-
       <div
         className={cn(
           locale === 'en' ? '' : 'flex flex-col items-end',

@@ -1,7 +1,6 @@
 'use client';
 
 import * as React from 'react';
-import LocaleSwitch from '@/components/locale-dropdown';
 import { Button } from '@/components/ui/button';
 import {
   Drawer,
@@ -130,19 +129,19 @@ export const Header = () => {
   const navLinks = [
     {
       label: t('link-home'),
-      href: '',
+      href: '#home',
     },
     {
       label: t('link-about'),
-      href: '/about',
+      href: '#service',
     },
     {
       label: t('link-service'),
-      href: '/services',
+      href: '#about',
     },
     {
       label: t('link-project'),
-      href: '/work',
+      href: '#cta',
     },
   ];
 
@@ -170,11 +169,7 @@ export const Header = () => {
               <Image
                 alt='logo'
                 height={90}
-                src={
-                  locale === 'ar'
-                    ? '/icons/logo-ar.svg'
-                    : '/icons/logo.svg'
-                }
+                src='/icons/logo.svg'
                 width={130}
               />
             </Link>
@@ -195,8 +190,8 @@ export const Header = () => {
                       key={item.href}
                       className={cn(
                         isActive
-                          ? 'text-body'
-                          : 'text-primary hover:text-body',
+                          ? 'text-[#475467]'
+                          : 'text-[#475467] hover:text-body',
                         'transition-all duration-300',
                       )}
                       href={`/${locale}${item.href}`}
@@ -228,19 +223,15 @@ export const Header = () => {
               'flex items-center gap-x-3',
             )}
           >
-            <div className='hidden md:block'>
-              <Link
-                className='border-b-[1.5px] border-solid border-[#0A0A0A] text-[#0A0A0A] transition duration-300 hover:border-0'
-                href='mailto:hello@creativeendeavour.com'
-              >
-                hello@creativeendeavour.com
-              </Link>
+            <div className='hidden space-x-4 md:block'>
+              <Button className='rounded-lg border-[1.5px] border-[#0020AC] bg-transparent px-4 py-2 font-medium text-[#0020AC] transition duration-300 hover:!bg-[#0020AC]/20'>
+                كن معلماً
+              </Button>
+
+              <Button className='text-capitalize rounded-lg !bg-[#0020AC] px-5 font-medium !text-white transition duration-300 hover:opacity-85'>
+                حمّل التطبيق
+              </Button>
             </div>
-            <LocaleSwitch
-              className='rounded-md bg-[#2D313A] px-4 py-2 text-white transition-all duration-300 hover:bg-[#2D313A]/70 active:bg-[#2D313A]/70'
-              icon='/icons/globe.svg'
-              textClass=''
-            />
 
             <div className='md:hidden'>
               <DrawerBar>

@@ -1,6 +1,6 @@
 'use client';
 
-import useCounter from '@/hooks/use-counter';
+import { Button } from '@/components/ui/button';
 import useLocalize from '@/hooks/use-locale';
 import { cn } from '@/utils/cn';
 import { slideUp } from '@/utils/motion';
@@ -9,66 +9,30 @@ import Image from 'next/image';
 import { useRef } from 'react';
 
 export const About = () => {
-  const { locale, t } = useLocalize('Home');
-  const { counter1, counter2, observe } = useCounter();
+  const { locale } = useLocalize('Home');
   const ref = useRef(null);
-  const title = t('about-title');
-  const desc = t('about-desc');
-  const label = t('about-label');
+  const title = 'للطلاب، اعثر على الشريك التعليمي المثالي';
+  const desc =
+    'اعثر على شريكك التعليمي المثالي وارتقِ بتعليمك لمستويات جديدة';
   const isInView = useInView(ref, { amount: 0.3, once: true });
 
   return (
     <section
       className={cn(
         locale === 'en' ? '' : 'flex-row-reverse',
-        'container flex justify-between pb-14 max-sm:flex-col',
+        'container pb-14 max-sm:flex-col text-end',
       )}
       id='about'
     >
-      <div>
-        <div
-          className={cn(
-            locale === 'en' ? '' : 'flex-row-reverse',
-            'flex items-center gap-2 mb-2',
-          )}
-        >
-          <p className='text-[#111111] sm:text-lg'>
-            {label.split(' ').map((word, index) => (
-              <span
-                key={index}
-                className='relative inline-flex overflow-hidden '
-              >
-                <motion.span
-                  key={index}
-                  animate={isInView ? 'open' : 'closed'}
-                  custom={index}
-                  variants={slideUp}
-                >
-                  {word}
-                </motion.span>
-                <span className='inline-block'>&nbsp;</span>
-              </span>
-            ))}
-          </p>
-          <Image
-            alt='line'
-            height={30}
-            src='/icons/line.svg'
-            width={50}
-          />
-        </div>
-      </div>
-
       <div ref={ref}>
         <div
-          className={cn(locale === 'en' ? '' : 'flex justify-end')}
+          className={cn(
+            locale === 'en' ? '' : 'flex flex-col items-end',
+          )}
         >
           <p
             className={cn(
-              locale === 'en'
-                ? 'font-nebulica'
-                : 'text-end font-cairo',
-              'text-black text-2xl max-w-xl sm:text-3xl lg:text-4xl  md:!leading-[1.1]',
+              'text-[#253459] text-2xl max-w-[650px] sm:text-3xl lg:text-4xl font-medium font-nebulica md:!leading-[1.1]',
             )}
           >
             {title.split(' ').map((word, index) => (
@@ -88,76 +52,85 @@ export const About = () => {
               </span>
             ))}
           </p>
-        </div>
 
-        <p
-          className={cn(
-            locale === 'en' ? '' : 'text-end',
-            'mt-5 max-w-[650px] text-lg',
-          )}
-        >
-          {desc.split(' ').map((word, index) => (
-            <span
-              key={index}
-              className='relative inline-flex overflow-hidden'
-            >
-              <motion.span
+          <p
+            className={cn(
+              'mt-5 max-w-[650px] text-lg text-[#212121]',
+            )}
+          >
+            {desc.split(' ').map((word, index) => (
+              <span
                 key={index}
-                animate={isInView ? 'open' : 'closed'}
-                custom={index}
-                variants={slideUp}
+                className='relative inline-flex overflow-hidden'
               >
-                {word}
-              </motion.span>
-              <span className='inline-block'>&nbsp;</span>
-            </span>
-          ))}
-        </p>
-
-        <div
-          ref={observe}
-          className={cn(
-            locale === 'en' ? '' : 'flex-row-reverse mx-auto',
-            'mt-10 flex max-w-[550px]  max-sm:flex-col gap-6 sm:items-center justify-between font-nebulica text-5xl text-black',
-          )}
-        >
-          <div className='flex flex-col items-center gap-y-4'>
-            <p className='text-3xl font-semibold md:text-4xl lg:text-6xl'>
-              <span ref={counter1} data-value='45'>
-                45
+                <motion.span
+                  key={index}
+                  animate={isInView ? 'open' : 'closed'}
+                  custom={index}
+                  variants={slideUp}
+                >
+                  {word}
+                </motion.span>
+                <span className='inline-block'>&nbsp;</span>
               </span>
-              +
-            </p>
+            ))}
+          </p>
 
-            <span className='text-lg text-primary'>
-              {t('review-project')}
-            </span>
-          </div>
-
-          <div className='flex flex-col items-center gap-y-4'>
-            <p className='text-3xl font-semibold md:text-4xl lg:text-6xl'>
-              <span ref={counter2} data-value='92'>
-                92
-              </span>
-              %
-            </p>
-
-            <span className='text-lg text-primary'>
-              {t('review-customer')}
-            </span>
-          </div>
-
-          <div className='flex flex-col items-center gap-y-4'>
-            <p className='text-3xl font-semibold md:text-4xl lg:text-6xl'>
-              4.8
-            </p>
-
-            <span className='text-lg text-primary'>
-              {t('review-rating')}
-            </span>
-          </div>
+          <Button className='text-capitalize mt-10 rounded-lg !bg-[#0020AC] px-5 text-lg !text-white transition duration-300 hover:opacity-85 max-sm:w-full'>
+            احجز درسًا الآن
+          </Button>
         </div>
+      </div>
+
+      <div className='mt-14 flex items-center justify-between gap-10 max-sm:flex-col'>
+        {DATA.map((item, index) => (
+          <div
+            key={index}
+            className={cn(
+              locale === 'en' ? '' : 'flex flex-col items-end',
+            )}
+          >
+            <Image
+              alt={item.title}
+              className='w-full'
+              height={400}
+              src={`/images/${item.src}`}
+              width={300}
+            />
+            <div
+              className={cn(
+                locale === 'en' ? '' : 'flex flex-col items-end',
+                'mt-3',
+              )}
+            >
+              <h3 className='font-nebulica text-lg font-medium text-[#212121]'>
+                {item.title}
+              </h3>
+              <p className='mt-2 text-sm text-[#212121]'>
+                {item.desc}
+              </p>
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );
 };
+
+const DATA = [
+  {
+    src: 'dashboard.png',
+    title: 'تطابق شخصي',
+    desc: 'معلمون متوافقون تمامًا مع احتياجاتك',
+  },
+  {
+    src: 'dashboard2.png',
+    title: 'تطابق شخصي',
+    desc: 'معلمون متوافقون تمامًا مع احتياجاتك',
+  },
+  {
+    src: 'dashboard3.png',
+    title: 'جدولة مرنة',
+    desc: 'دروسك في أي وقت ومن أي مكان',
+  },
+];

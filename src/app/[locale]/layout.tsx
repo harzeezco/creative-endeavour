@@ -2,7 +2,7 @@ import { Footer, Header } from '@/layout';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 
-import { cairo, inter, nebulica } from '../font';
+import { cairo, nebulica } from '../font';
 
 export default async function LocaleLayout({
   children,
@@ -17,9 +17,7 @@ export default async function LocaleLayout({
 
   return (
     <html className='no-visible-scrollbar text-primary' lang={locale}>
-      <body
-        className={`${inter.className} ${cairo.variable} ${nebulica.variable}`}
-      >
+      <body className={`${cairo.className} ${nebulica.variable}`}>
         <NextIntlClientProvider messages={messages}>
           <Header />
           {children}

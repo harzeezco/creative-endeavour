@@ -4,130 +4,164 @@ import useLocalize from '@/hooks/use-locale';
 import { cn } from '@/utils/cn';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export const Footer = () => {
   const { locale, t } = useLocalize('Home');
+  const navigate = usePathname();
 
   const navLinks = [
     {
       label: t('link-home'),
-      href: '',
+      href: '#home',
     },
     {
       label: t('link-about'),
-      href: '/about',
+      href: '#about',
     },
     {
       label: t('link-service'),
-      href: '/services',
+      href: '#service',
     },
     {
       label: t('link-project'),
-      href: '/work',
+      href: '#cta',
     },
   ];
 
   return (
     <div>
-      <footer className='mt-20 border-t border-solid border-[#EDEDED] pt-16'>
+      <footer className='mt-20'>
         <div
           className={cn(
             locale === 'en' ? ' ' : 'flex-row-reverse',
             'mx-auto mb-3 flex container justify-between max-sm:flex-col gap-y-10 sm:flex-wrap',
           )}
         >
-          <div
-            className={cn(
-              locale === 'en' ? 'text-start' : 'text-end',
-            )}
-          >
-            <Link
-              className={cn(
-                locale === 'en' ? '' : 'flex justify-end',
-              )}
-              href='/'
-            >
+          <div className='flex flex-col items-end gap-y-5'>
+            <Link href='/'>
               <Image
                 alt='logo'
                 height={90}
-                src={
-                  locale === 'en'
-                    ? '/icons/logo.svg'
-                    : '/icons/logo-ar.svg'
-                }
-                width={120}
+                src='/icons/logo.svg'
+                width={130}
               />
             </Link>
 
-            <p className='mb-5 mt-3 max-w-[300px]'>
-              2118 Thornridge Cir. Syracuse, Connecticut 35624
+            <nav>
+              <ul
+                className={cn(
+                  'flex items-center justify-between gap-x-6',
+                  locale === 'ar' && 'flex-row-reverse',
+                )}
+              >
+                {navLinks.map((item) => {
+                  const isActive =
+                    `/${locale}${item.href}` === navigate;
+
+                  return (
+                    <Link
+                      key={item.href}
+                      className={cn(
+                        isActive
+                          ? 'text-[#475467]'
+                          : 'text-[#475467] hover:text-body',
+                        'transition-all duration-300',
+                      )}
+                      href={`/${locale}${item.href}`}
+                    >
+                      <li
+                        key={item.label}
+                        className={cn(
+                          locale === 'ar' && 'flex-row-reverse',
+                          'flex items-center gap-x-[2px]',
+                        )}
+                      >
+                        {item.label}
+                      </li>
+                    </Link>
+                  );
+                })}
+              </ul>
+            </nav>
+          </div>
+
+          <div className='text-end'>
+            <p className='font-medium text-[#175CD3]'>
+              احصل على التطبيق
             </p>
 
-            <Link
-              className='border-b-[1.5px] border-solid border-[#0A0A0A] text-[#0A0A0A] transition duration-300 hover:border-0'
-              href='mailto:hello@creativeendeavour.com'
-            >
-              hello@creativeendeavour.com
-            </Link>
-          </div>
+            <div className='mt-5 flex items-center gap-x-4'>
+              <Link href='/'>
+                <Image
+                  alt='logo'
+                  className='transition-all duration-300 hover:scale-105'
+                  height={50}
+                  src='/images/app-store.png'
+                  width={150}
+                />
+              </Link>
 
-          <div>
-            <h3 className='mb-3 text-lg font-medium text-body'>
-              Quick Links
-            </h3>
-            <div className='flex flex-col gap-y-3'>
-              {navLinks.map(({ href, label }) => (
-                <Link href={`/${locale}${href}`}>{label}</Link>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <h3 className='mb-3 text-lg font-medium text-body'>
-              Contact Information
-            </h3>
-            <div className='flex flex-col gap-y-3'>
-              {contact.map((label) => (
-                <Link href={`/${locale}${label}`}>{label}</Link>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <h3 className='mb-3 text-lg font-medium text-body'>
-              Social Media
-            </h3>
-            <div className='flex flex-col gap-y-3'>
-              {SOCIALS.map(({ href, name }) => (
-                <Link href={`/${locale}${href}`}>{name}</Link>
-              ))}
+              <Link href='/'>
+                <Image
+                  alt='logo'
+                  className='transition-all duration-300 hover:scale-105'
+                  height={50}
+                  src='/images/google-app.png'
+                  width={150}
+                />
+              </Link>
             </div>
           </div>
         </div>
 
-        <div className='mt-10 bg-black p-3'>
-          <div
-            className={cn(
-              locale === 'en' ? '' : 'flex-row-reverse',
-              'container flex max-sm:flex-col items-center justify-between text-white',
-            )}
-          >
-            <p
-              className={cn(
-                locale === 'en'
-                  ? 'flex-row-reverse whitespace-nowrap'
-                  : '',
-                'flex max-w-md gap-2',
-              )}
-            >
-              <span>{t('copy')}</span>
-              <span>{new Date().getFullYear()} ©</span>
-            </p>
+        <hr className='container my-14 border-t border-solid border-[#98A2B3]' />
 
-            <div className='flex items-center gap-5'>
-              <Link href={`/${locale}/policy`}>{t('privacy')}</Link>
-              <Link href={`/${locale}/terms`}>{t('terms')}</Link>
-            </div>
+        <div
+          className={cn(
+            'mx-auto mb-10 flex container justify-between max-sm:flex-col gap-y-10 sm:flex-wrap',
+          )}
+        >
+          <div className='flex items-center gap-4'>
+            <Link href='/'>
+              <Image
+                alt='logo'
+                className='transition-all duration-300 hover:scale-105'
+                height={25}
+                src='/icons/twitter.svg'
+                width={25}
+              />
+            </Link>
+
+            <Link href='/'>
+              <Image
+                alt='logo'
+                className='transition-all duration-300 hover:scale-105'
+                height={25}
+                src='/icons/linkedin.svg'
+                width={25}
+              />
+            </Link>
+
+            <Link href='/'>
+              <Image
+                alt='logo'
+                className='transition-all duration-300 hover:scale-105'
+                height={25}
+                src='/icons/facebook.svg'
+                width={25}
+              />
+            </Link>
+          </div>
+          <div className='flex items-center gap-x-4'>
+            <p>© 2025 علم. جميع الحقوق محفوظة.</p>
+
+            <Link
+              className='text-right underline transition-all duration-300 hover:no-underline '
+              href={`/${locale}/about`}
+            >
+              سياسة الخصوصية
+            </Link>
           </div>
         </div>
       </footer>
@@ -145,13 +179,7 @@ export const SOCIALS = [
     href: '',
   },
   {
-    name: 'Dribbble',
-    href: '',
-  },
-  {
     name: 'Facebook',
     href: '',
   },
 ];
-
-const contact = ['Email', 'Phone', 'Address'];

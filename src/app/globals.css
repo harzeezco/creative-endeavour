@@ -68,3 +68,38 @@
 .cssbuttons-io-button:active .icon {
   transform: scale(0.95);
 }
+
+.hero {
+  background-image: url('/images/hero-section.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.cta {
+  background-image: url('/images/cta.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  width: 100%;
+  border-radius: 24px;
+  max-width: 1100px;
+}
+
+@media screen and (max-width: 468px) {
+  .cta {
+    background-image: url('/images/cta-small.png');
+  }
+}
+
+.privacy {
+  background-image: url('/images/privacy.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 30vh;
+  width: 100%;
+}

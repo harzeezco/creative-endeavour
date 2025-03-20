@@ -1,154 +1,125 @@
 'use client';
 
-import {
-  Accordion,
-  AccordionItem,
-  AccordionTrigger,
-} from '@/components/ui/accordion';
-import useLocalize from '@/hooks/use-locale';
 import { cn } from '@/utils/cn';
 import { slideUp } from '@/utils/motion';
 import { motion, useInView } from 'framer-motion';
-import Image from 'next/image';
 import { useRef } from 'react';
 
-export const Faq = () => {
-  const { locale, t } = useLocalize('Home');
+export function FAQSection() {
   const ref = useRef(null);
-  const title = t('faq-title');
-  const desc = t('faq-desc');
-  const label = t('faq-label');
+  const title = 'الأسئلة الشائعة';
+  const desc =
+    'إليك قائمة بالأسئلة الشائعة حول منصة Teachr وكيفية عملها لكل من الطلاب والمعلمين';
   const isInView = useInView(ref, { amount: 0.3, once: true });
 
   return (
     <section className='container mt-20'>
       <div
         ref={ref}
-        className={cn(
-          'mb-8 flex justify-between max-sm:flex-col',
-          locale === 'en' ? '' : 'flex-row-reverse',
-        )}
+        className='mb-9 flex flex-col items-center justify-center text-center'
       >
-        <div>
-          <p
-            className={cn(
-              locale === 'en' ? '' : 'flex-row-reverse',
-              'flex items-center gap-2 mb-2',
-            )}
-          >
-            <span className='text-[#111111] sm:text-lg'>
-              {label.split(' ').map((word, index) => (
-                <span
-                  key={index}
-                  className='relative inline-flex overflow-hidden '
-                >
-                  <motion.span
-                    key={index}
-                    animate={isInView ? 'open' : 'closed'}
-                    custom={index}
-                    variants={slideUp}
-                  >
-                    {word}
-                  </motion.span>
-                  <span className='inline-block'>&nbsp;</span>
-                </span>
-              ))}
-            </span>
-            <Image
-              alt='line'
-              height={30}
-              src='/icons/line.svg'
-              width={50}
-            />
-          </p>
-        </div>
-
-        <div
+        <h3
           className={cn(
-            locale === 'en' ? '' : 'flex flex-col items-end',
+            'text-[#253459] text-2xl max-w-xl sm:text-3xl lg:text-4xl font-nebulica font-medium md:!leading-[1.1]',
           )}
         >
-          <h1
-            className={cn(
-              locale === 'en'
-                ? 'font-nebulica'
-                : 'text-end font-cairo',
-              'text-black text-2xl max-w-xl sm:text-3xl lg:text-4xl  md:!leading-[1.1]',
-            )}
-          >
-            {title.split(' ').map((word, index) => (
-              <span
+          {title.split(' ').map((word, index) => (
+            <span
+              key={index}
+              className='relative inline-flex overflow-hidden '
+            >
+              <motion.span
                 key={index}
-                className='relative inline-flex overflow-hidden '
+                animate={isInView ? 'open' : 'closed'}
+                custom={index}
+                variants={slideUp}
               >
-                <motion.span
-                  key={index}
-                  animate={isInView ? 'open' : 'closed'}
-                  custom={index}
-                  variants={slideUp}
-                >
-                  {word}
-                </motion.span>
-                <span className='inline-block'>&nbsp;</span>
-              </span>
-            ))}
-          </h1>
+                {word}
+              </motion.span>
+              <span className='inline-block'>&nbsp;</span>
+            </span>
+          ))}
+        </h3>
 
-          <p
-            className={cn(
-              locale === 'en' ? '' : 'text-end',
-              'mt-5 max-w-[650px] text-lg',
-            )}
-          >
-            {desc.split(' ').map((word, index) => (
-              <span
+        <p
+          className={cn('mt-5 max-w-[650px] text-lg text-[#212121]')}
+        >
+          {desc.split(' ').map((word, index) => (
+            <span
+              key={index}
+              className='relative inline-flex overflow-hidden'
+            >
+              <motion.span
                 key={index}
-                className='relative inline-flex overflow-hidden '
+                animate={isInView ? 'open' : 'closed'}
+                custom={index}
+                variants={slideUp}
               >
-                <motion.span
-                  key={index}
-                  animate={isInView ? 'open' : 'closed'}
-                  custom={index}
-                  variants={slideUp}
-                >
-                  {word}
-                </motion.span>
-                <span className='inline-block'>&nbsp;</span>
-              </span>
-            ))}
-          </p>
-        </div>
+                {word}
+              </motion.span>
+              <span className='inline-block'>&nbsp;</span>
+            </span>
+          ))}
+        </p>
       </div>
 
-      <div className='mt-5'>
-        <Accordion type='multiple'>
-          <AccordionItem className='pb-2' value='item-1'>
-            <AccordionTrigger content={t('faq-desc1')}>
-              <span className='text-left'>{t('faq-title1')}</span>
-            </AccordionTrigger>
-          </AccordionItem>
-          <AccordionItem className='pb-2' value='item-2'>
-            <AccordionTrigger content={t('faq-desc2')}>
-              <span className='text-left'>{t('faq-title2')}</span>
-            </AccordionTrigger>
-          </AccordionItem>
-          <AccordionItem className='pb-2' value='item-3'>
-            <AccordionTrigger content={t('faq-desc3')}>
-              <span className='text-left'>{t('faq-title3')}</span>
-            </AccordionTrigger>
-          </AccordionItem>
-          <AccordionItem className='pb-2' value='item-4'>
-            <AccordionTrigger content={t('faq-desc4')}>
-              <span className='text-left'>{t('faq-title4')}</span>
-            </AccordionTrigger>
-          </AccordionItem>
-          <AccordionItem className='pb-2' value='item-5'>
-            <AccordionTrigger content={t('faq-desc5')}>
-              <span className='text-left'>{t('faq-title5')}</span>
-            </AccordionTrigger>
-          </AccordionItem>
-        </Accordion>
+      <div className='mx-auto grid gap-4 p-4 text-end max-sm:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'>
+        <div className='rounded-lg border border-solid border-[#E8E8E8] bg-[#F7F6F7] p-4'>
+          <h3 className='font-nebulica text-2xl font-medium text-[#282828]'>
+            كيف أعثر على المعلم المناسب؟
+          </h3>
+          <p className='mt-4 rounded-lg bg-white px-2 py-4 text-[#212121]'>
+            ابحث بسهولة، واختر معلمًا يطابق احتياجاتك التعليمية،
+            وأسلوبك، وجدولك
+          </p>
+        </div>
+        <div className=' rounded-lg bg-[#0020AC] p-4 text-white'>
+          <div className='rounded-lg bg-[#F2F9FF] p-4 text-[#0020AC]'>
+            <h3 className='font-nebulica text-2xl font-medium text-[#282828]'>
+              هل أحتاج إلى الدفع للاشتراك؟
+            </h3>
+          </div>
+
+          <p className='mt-4 rounded-lg px-2 text-white'>
+            الاشتراك مجاني، تدفع فقط مقابل الدروس التي تحجزها
+          </p>
+        </div>
+        <div className='rounded-lg border border-solid border-[#E8E8E8] bg-[#F7F6F7] p-4'>
+          <h3 className='font-nebulica text-2xl font-medium text-[#282828]'>
+            هل التطبيق آمن؟
+          </h3>
+          <p className='mt-4 rounded-lg bg-white px-2 py-4 text-[#212121]'>
+            نعم، خصوصية معلوماتك الشخصية وأمن بياناتك هما أولويتنا
+          </p>
+        </div>
+        <div className='rounded-lg border border-solid border-[#E8E8E8] bg-[#F7F6F7] p-4'>
+          <h3 className='font-nebulica text-2xl font-medium text-[#282828]'>
+            ما هي المواد التعليمية المتاحة؟
+          </h3>
+          <p className='mt-4 rounded-lg bg-white px-2 py-4 text-[#212121]'>
+            نقدم مجموعة واسعة من المواد تشمل اللغات والعلوم والرياضيات
+            وغيرها الكثير
+          </p>
+        </div>
+        <div className='rounded-lg border border-solid border-[#E8E8E8] bg-[#F7F6F7] p-4'>
+          <h3 className='font-nebulica text-2xl font-medium text-[#282828]'>
+            كيف يستلم المعلمون مدفوعاتهم؟
+          </h3>
+          <p className='mt-4 rounded-lg bg-white px-2 py-4 text-[#212121]'>
+            يمكن للمعلمين سحب أرباحهم فورًا وبسهولة إلى حسابهم البنكي
+            الحالي
+          </p>
+        </div>
+        <div className='rounded-lg border border-solid border-[#E8E8E8] bg-[#F7F6F7] p-4'>
+          <h3 className='font-nebulica text-2xl font-medium text-[#282828]'>
+            هل يمكنني تجربة درس مجاني؟
+          </h3>
+          <p className='mt-4 rounded-lg bg-white px-2 py-4 text-[#212121]'>
+            نعم، نوفر للطلاب الجدد إمكانية تجربة درس مجاني مع أي معلم
+            يختارونه
+          </p>
+        </div>
       </div>
     </section>
   );
-};
+}
